@@ -1,0 +1,16 @@
+INPUT(
+./release\chatmanager.o
+./release\clientmanager.o
+./release\friendmanager.o
+./release\groupmanager.o
+./release\main.o
+./release\mainwindow.o
+./release\signin.o
+./release\signup.o
+./release\moc_chatmanager.o
+./release\moc_friendmanager.o
+./release\moc_groupmanager.o
+./release\moc_mainwindow.o
+./release\moc_signin.o
+./release\moc_signup.o
+);
