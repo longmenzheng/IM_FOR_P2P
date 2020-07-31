@@ -38,6 +38,7 @@ bool FriendManager::init()
 
 void FriendManager::clickMsg()
 {
+    //隐藏自己并发送信号
     this->hide();
     emit clickMsgSignal();
 }
