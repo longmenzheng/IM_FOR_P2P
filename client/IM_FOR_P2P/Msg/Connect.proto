@@ -1,0 +1,8 @@
+syntax ="proto2";
+package IM;
+message Connect
+{
+      required int32 networkType=1;
+      required int32 recvID=2;
+      required int32 msgID=3;
+}

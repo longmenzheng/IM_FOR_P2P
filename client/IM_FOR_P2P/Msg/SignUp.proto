@@ -1,0 +1,14 @@
+syntax ="proto3";
+package IM;
+message SignUp
+{
+      int32 networkType=1;
+      int32 msgID=2;//每条消息的标识
+      int32 recvID=3;
+      int32 userID=4;
+      bytes password=5;
+      bytes nickname=6; //昵称
+      bytes phone=7;
+      bytes desc=8;   //介绍
+      bytes icon=9;   //头像
+}

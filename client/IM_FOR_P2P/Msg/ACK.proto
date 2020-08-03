@@ -1,0 +1,9 @@
+syntax="proto3";
+package IM;
+message ACK
+{
+      int32 networkType=1;
+	  int32 recvID=2;
+      int32 msgID=3;
+      bool flag=4;
+}
