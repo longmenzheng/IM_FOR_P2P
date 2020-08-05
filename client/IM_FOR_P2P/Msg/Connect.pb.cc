@@ -39,7 +39,7 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Connect_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Connect_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::IM::Connect, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::IM::Connect, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -47,12 +47,10 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Connect_2eproto::offsets[] PRO
   PROTOBUF_FIELD_OFFSET(::IM::Connect, networktype_),
   PROTOBUF_FIELD_OFFSET(::IM::Connect, recvid_),
   PROTOBUF_FIELD_OFFSET(::IM::Connect, msgid_),
-  0,
-  1,
-  2,
+  PROTOBUF_FIELD_OFFSET(::IM::Connect, sendid_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, sizeof(::IM::Connect)},
+  { 0, -1, sizeof(::IM::Connect)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -60,9 +58,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Connect_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rConnect.proto\022\002IM\"=\n\007Connect\022\023\n\013networ"
-  "kType\030\001 \002(\005\022\016\n\006recvID\030\002 \002(\005\022\r\n\005msgID\030\003 \002"
-  "(\005"
+  "\n\rConnect.proto\022\002IM\"M\n\007Connect\022\023\n\013networ"
+  "kType\030\001 \001(\005\022\016\n\006recvID\030\002 \001(\005\022\r\n\005msgID\030\003 \001"
+  "(\005\022\016\n\006sendID\030\004 \001(\005b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Connect_2eproto_deps[1] = {
 };
@@ -71,7 +69,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Con
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Connect_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Connect_2eproto = {
-  false, false, descriptor_table_protodef_Connect_2eproto, "Connect.proto", 82,
+  false, false, descriptor_table_protodef_Connect_2eproto, "Connect.proto", 106,
   &descriptor_table_Connect_2eproto_once, descriptor_table_Connect_2eproto_sccs, descriptor_table_Connect_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_Connect_2eproto::offsets,
   file_level_metadata_Connect_2eproto, 1, file_level_enum_descriptors_Connect_2eproto, file_level_service_descriptors_Connect_2eproto,
@@ -87,19 +85,6 @@ void Connect::InitAsDefaultInstance() {
 }
 class Connect::_Internal {
  public:
-  using HasBits = decltype(std::declval<Connect>()._has_bits_);
-  static void set_has_networktype(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static void set_has_recvid(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
-  static void set_has_msgid(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
-  static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
-  }
 };
 
 Connect::Connect(::PROTOBUF_NAMESPACE_ID::Arena* arena)
@@ -109,19 +94,18 @@ Connect::Connect(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   // @@protoc_insertion_point(arena_constructor:IM.Connect)
 }
 Connect::Connect(const Connect& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&msgid_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(msgid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&sendid_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
   // @@protoc_insertion_point(copy_constructor:IM.Connect)
 }
 
 void Connect::SharedCtor() {
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&msgid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(msgid_));
+      reinterpret_cast<char*>(&sendid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
 }
 
 Connect::~Connect() {
@@ -155,46 +139,45 @@ void Connect::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
-    ::memset(&networktype_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&msgid_) -
-        reinterpret_cast<char*>(&networktype_)) + sizeof(msgid_));
-  }
-  _has_bits_.Clear();
+  ::memset(&networktype_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&sendid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Connect::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required int32 networkType = 1;
+      // int32 networkType = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          _Internal::set_has_networktype(&has_bits);
           networktype_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required int32 recvID = 2;
+      // int32 recvID = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          _Internal::set_has_recvid(&has_bits);
           recvid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required int32 msgID = 3;
+      // int32 msgID = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          _Internal::set_has_msgid(&has_bits);
           msgid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 sendID = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          sendid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -213,7 +196,6 @@ const char* Connect::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
     }  // switch
   }  // while
 success:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -227,23 +209,28 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required int32 networkType = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // int32 networkType = 1;
+  if (this->networktype() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_networktype(), target);
   }
 
-  // required int32 recvID = 2;
-  if (cached_has_bits & 0x00000002u) {
+  // int32 recvID = 2;
+  if (this->recvid() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_recvid(), target);
   }
 
-  // required int32 msgID = 3;
-  if (cached_has_bits & 0x00000004u) {
+  // int32 msgID = 3;
+  if (this->msgid() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_msgid(), target);
+  }
+
+  // int32 sendID = 4;
+  if (this->sendid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_sendid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -254,59 +241,41 @@ failure:
   return target;
 }
 
-size_t Connect::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:IM.Connect)
-  size_t total_size = 0;
-
-  if (_internal_has_networktype()) {
-    // required int32 networkType = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_networktype());
-  }
-
-  if (_internal_has_recvid()) {
-    // required int32 recvID = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_recvid());
-  }
-
-  if (_internal_has_msgid()) {
-    // required int32 msgID = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_msgid());
-  }
-
-  return total_size;
-}
 size_t Connect::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:IM.Connect)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required int32 networkType = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_networktype());
-
-    // required int32 recvID = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_recvid());
-
-    // required int32 msgID = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_msgid());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // int32 networkType = 1;
+  if (this->networktype() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_networktype());
+  }
+
+  // int32 recvID = 2;
+  if (this->recvid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_recvid());
+  }
+
+  // int32 msgID = 3;
+  if (this->msgid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_msgid());
+  }
+
+  // int32 sendID = 4;
+  if (this->sendid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sendid());
+  }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
@@ -339,18 +308,17 @@ void Connect::MergeFrom(const Connect& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
-    if (cached_has_bits & 0x00000001u) {
-      networktype_ = from.networktype_;
-    }
-    if (cached_has_bits & 0x00000002u) {
-      recvid_ = from.recvid_;
-    }
-    if (cached_has_bits & 0x00000004u) {
-      msgid_ = from.msgid_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (from.networktype() != 0) {
+    _internal_set_networktype(from._internal_networktype());
+  }
+  if (from.recvid() != 0) {
+    _internal_set_recvid(from._internal_recvid());
+  }
+  if (from.msgid() != 0) {
+    _internal_set_msgid(from._internal_msgid());
+  }
+  if (from.sendid() != 0) {
+    _internal_set_sendid(from._internal_sendid());
   }
 }
 
@@ -369,17 +337,15 @@ void Connect::CopyFrom(const Connect& from) {
 }
 
 bool Connect::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
 void Connect::InternalSwap(Connect* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Connect, msgid_)
-      + sizeof(Connect::msgid_)
+      PROTOBUF_FIELD_OFFSET(Connect, sendid_)
+      + sizeof(Connect::sendid_)
       - PROTOBUF_FIELD_OFFSET(Connect, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

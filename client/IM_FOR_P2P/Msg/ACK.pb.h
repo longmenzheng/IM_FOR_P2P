@@ -181,8 +181,9 @@ class ACK PROTOBUF_FINAL :
   enum : int {
     kNetworkTypeFieldNumber = 1,
     kRecvIDFieldNumber = 2,
-    kMsgIDFieldNumber = 3,
-    kFlagFieldNumber = 4,
+    kSendIDFieldNumber = 3,
+    kMsgIDFieldNumber = 4,
+    kFlagFieldNumber = 5,
   };
   // int32 networkType = 1;
   void clear_networktype();
@@ -202,7 +203,16 @@ class ACK PROTOBUF_FINAL :
   void _internal_set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 msgID = 3;
+  // int32 sendID = 3;
+  void clear_sendid();
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid() const;
+  void set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sendid() const;
+  void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 msgID = 4;
   void clear_msgid();
   ::PROTOBUF_NAMESPACE_ID::int32 msgid() const;
   void set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -211,7 +221,7 @@ class ACK PROTOBUF_FINAL :
   void _internal_set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // bool flag = 4;
+  // bool flag = 5;
   void clear_flag();
   bool flag() const;
   void set_flag(bool value);
@@ -229,6 +239,7 @@ class ACK PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   bool flag_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -285,7 +296,27 @@ inline void ACK::set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.ACK.recvID)
 }
 
-// int32 msgID = 3;
+// int32 sendID = 3;
+inline void ACK::clear_sendid() {
+  sendid_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ACK::_internal_sendid() const {
+  return sendid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ACK::sendid() const {
+  // @@protoc_insertion_point(field_get:IM.ACK.sendID)
+  return _internal_sendid();
+}
+inline void ACK::_internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  sendid_ = value;
+}
+inline void ACK::set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sendid(value);
+  // @@protoc_insertion_point(field_set:IM.ACK.sendID)
+}
+
+// int32 msgID = 4;
 inline void ACK::clear_msgid() {
   msgid_ = 0;
 }
@@ -305,7 +336,7 @@ inline void ACK::set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.ACK.msgID)
 }
 
-// bool flag = 4;
+// bool flag = 5;
 inline void ACK::clear_flag() {
   flag_ = false;
 }

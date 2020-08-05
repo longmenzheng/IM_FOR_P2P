@@ -46,6 +46,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ACK_2eproto::offsets[] PROTOBU
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::IM::ACK, networktype_),
   PROTOBUF_FIELD_OFFSET(::IM::ACK, recvid_),
+  PROTOBUF_FIELD_OFFSET(::IM::ACK, sendid_),
   PROTOBUF_FIELD_OFFSET(::IM::ACK, msgid_),
   PROTOBUF_FIELD_OFFSET(::IM::ACK, flag_),
 };
@@ -58,9 +59,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ACK_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\tACK.proto\022\002IM\"G\n\003ACK\022\023\n\013networkType\030\001 "
-  "\001(\005\022\016\n\006recvID\030\002 \001(\005\022\r\n\005msgID\030\003 \001(\005\022\014\n\004fl"
-  "ag\030\004 \001(\010b\006proto3"
+  "\n\tACK.proto\022\002IM\"W\n\003ACK\022\023\n\013networkType\030\001 "
+  "\001(\005\022\016\n\006recvID\030\002 \001(\005\022\016\n\006sendID\030\003 \001(\005\022\r\n\005m"
+  "sgID\030\004 \001(\005\022\014\n\004flag\030\005 \001(\010b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ACK_2eproto_deps[1] = {
 };
@@ -69,7 +70,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ACK
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ACK_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ACK_2eproto = {
-  false, false, descriptor_table_protodef_ACK_2eproto, "ACK.proto", 96,
+  false, false, descriptor_table_protodef_ACK_2eproto, "ACK.proto", 112,
   &descriptor_table_ACK_2eproto_once, descriptor_table_ACK_2eproto_sccs, descriptor_table_ACK_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ACK_2eproto::offsets,
   file_level_metadata_ACK_2eproto, 1, file_level_enum_descriptors_ACK_2eproto, file_level_service_descriptors_ACK_2eproto,
@@ -167,16 +168,23 @@ const char* ACK::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::intern
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 msgID = 3;
+      // int32 sendID = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          sendid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 msgID = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           msgid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bool flag = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+      // bool flag = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           flag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -221,16 +229,22 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_recvid(), target);
   }
 
-  // int32 msgID = 3;
-  if (this->msgid() != 0) {
+  // int32 sendID = 3;
+  if (this->sendid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_msgid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_sendid(), target);
   }
 
-  // bool flag = 4;
+  // int32 msgID = 4;
+  if (this->msgid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_msgid(), target);
+  }
+
+  // bool flag = 5;
   if (this->flag() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_flag(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_flag(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -263,14 +277,21 @@ size_t ACK::ByteSizeLong() const {
         this->_internal_recvid());
   }
 
-  // int32 msgID = 3;
+  // int32 sendID = 3;
+  if (this->sendid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sendid());
+  }
+
+  // int32 msgID = 4;
   if (this->msgid() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_msgid());
   }
 
-  // bool flag = 4;
+  // bool flag = 5;
   if (this->flag() != 0) {
     total_size += 1 + 1;
   }
@@ -311,6 +332,9 @@ void ACK::MergeFrom(const ACK& from) {
   }
   if (from.recvid() != 0) {
     _internal_set_recvid(from._internal_recvid());
+  }
+  if (from.sendid() != 0) {
+    _internal_set_sendid(from._internal_sendid());
   }
   if (from.msgid() != 0) {
     _internal_set_msgid(from._internal_msgid());

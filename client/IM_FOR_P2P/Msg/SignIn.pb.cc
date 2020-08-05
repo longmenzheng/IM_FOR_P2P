@@ -47,7 +47,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_SignIn_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::IM::SignIn, networktype_),
   PROTOBUF_FIELD_OFFSET(::IM::SignIn, msgid_),
   PROTOBUF_FIELD_OFFSET(::IM::SignIn, recvid_),
-  PROTOBUF_FIELD_OFFSET(::IM::SignIn, userid_),
+  PROTOBUF_FIELD_OFFSET(::IM::SignIn, sendid_),
   PROTOBUF_FIELD_OFFSET(::IM::SignIn, password_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -61,7 +61,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_SignIn_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\014SignIn.proto\022\002IM\"^\n\006SignIn\022\023\n\013networkT"
   "ype\030\001 \001(\005\022\r\n\005msgID\030\002 \001(\005\022\016\n\006recvID\030\003 \001(\005"
-  "\022\016\n\006userID\030\004 \001(\005\022\020\n\010password\030\005 \001(\014b\006prot"
+  "\022\016\n\006sendID\030\004 \001(\005\022\020\n\010password\030\005 \001(\014b\006prot"
   "o3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_SignIn_2eproto_deps[1] = {
@@ -104,8 +104,8 @@ SignIn::SignIn(const SignIn& from)
       GetArena());
   }
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&userid_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(userid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&sendid_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
   // @@protoc_insertion_point(copy_constructor:IM.SignIn)
 }
 
@@ -113,8 +113,8 @@ void SignIn::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SignIn_SignIn_2eproto.base);
   password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&userid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(userid_));
+      reinterpret_cast<char*>(&sendid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
 }
 
 SignIn::~SignIn() {
@@ -151,8 +151,8 @@ void SignIn::Clear() {
 
   password_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&userid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(userid_));
+      reinterpret_cast<char*>(&sendid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -185,10 +185,10 @@ const char* SignIn::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 userID = 4;
+      // int32 sendID = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          userid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          sendid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -246,10 +246,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_recvid(), target);
   }
 
-  // int32 userID = 4;
-  if (this->userid() != 0) {
+  // int32 sendID = 4;
+  if (this->sendid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_userid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_sendid(), target);
   }
 
   // bytes password = 5;
@@ -302,11 +302,11 @@ size_t SignIn::ByteSizeLong() const {
         this->_internal_recvid());
   }
 
-  // int32 userID = 4;
-  if (this->userid() != 0) {
+  // int32 sendID = 4;
+  if (this->sendid() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_userid());
+        this->_internal_sendid());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -352,8 +352,8 @@ void SignIn::MergeFrom(const SignIn& from) {
   if (from.recvid() != 0) {
     _internal_set_recvid(from._internal_recvid());
   }
-  if (from.userid() != 0) {
-    _internal_set_userid(from._internal_userid());
+  if (from.sendid() != 0) {
+    _internal_set_sendid(from._internal_sendid());
   }
 }
 
@@ -380,8 +380,8 @@ void SignIn::InternalSwap(SignIn* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   password_.Swap(&other->password_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SignIn, userid_)
-      + sizeof(SignIn::userid_)
+      PROTOBUF_FIELD_OFFSET(SignIn, sendid_)
+      + sizeof(SignIn::sendid_)
       - PROTOBUF_FIELD_OFFSET(SignIn, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

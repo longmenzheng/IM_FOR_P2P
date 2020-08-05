@@ -48,6 +48,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_BuildP2P_2eproto::offsets[] PR
   PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, flag_),
   PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, msgid_),
   PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, recvid_),
+  PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, sendid_),
   PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, peerid_),
   PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, peerip_),
   PROTOBUF_FIELD_OFFSET(::IM::BuildP2P, peerposrt_),
@@ -61,10 +62,11 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_BuildP2P_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016BuildP2P.proto\022\002IM\"\177\n\010BuildP2P\022\023\n\013netw"
-  "orkType\030\001 \001(\005\022\014\n\004flag\030\002 \001(\010\022\r\n\005msgID\030\003 \001"
-  "(\005\022\016\n\006recvID\030\004 \001(\005\022\016\n\006peerID\030\005 \001(\005\022\016\n\006pe"
-  "erIP\030\006 \001(\t\022\021\n\tpeerPosrt\030\007 \001(\005b\006proto3"
+  "\n\016BuildP2P.proto\022\002IM\"\217\001\n\010BuildP2P\022\023\n\013net"
+  "workType\030\001 \001(\005\022\014\n\004flag\030\002 \001(\010\022\r\n\005msgID\030\003 "
+  "\001(\005\022\016\n\006recvID\030\004 \001(\005\022\016\n\006sendID\030\010 \001(\005\022\016\n\006p"
+  "eerID\030\005 \001(\005\022\016\n\006peerIP\030\006 \001(\t\022\021\n\tpeerPosrt"
+  "\030\007 \001(\005b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_BuildP2P_2eproto_deps[1] = {
 };
@@ -73,7 +75,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Bui
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_BuildP2P_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_BuildP2P_2eproto = {
-  false, false, descriptor_table_protodef_BuildP2P_2eproto, "BuildP2P.proto", 157,
+  false, false, descriptor_table_protodef_BuildP2P_2eproto, "BuildP2P.proto", 174,
   &descriptor_table_BuildP2P_2eproto_once, descriptor_table_BuildP2P_2eproto_sccs, descriptor_table_BuildP2P_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_BuildP2P_2eproto::offsets,
   file_level_metadata_BuildP2P_2eproto, 1, file_level_enum_descriptors_BuildP2P_2eproto, file_level_service_descriptors_BuildP2P_2eproto,
@@ -106,8 +108,8 @@ BuildP2P::BuildP2P(const BuildP2P& from)
       GetArena());
   }
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&peerposrt_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(peerposrt_));
+    static_cast<size_t>(reinterpret_cast<char*>(&sendid_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
   // @@protoc_insertion_point(copy_constructor:IM.BuildP2P)
 }
 
@@ -115,8 +117,8 @@ void BuildP2P::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_BuildP2P_BuildP2P_2eproto.base);
   peerip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&peerposrt_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(peerposrt_));
+      reinterpret_cast<char*>(&sendid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
 }
 
 BuildP2P::~BuildP2P() {
@@ -153,8 +155,8 @@ void BuildP2P::Clear() {
 
   peerip_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&peerposrt_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(peerposrt_));
+      reinterpret_cast<char*>(&sendid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -214,6 +216,13 @@ const char* BuildP2P::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
           peerposrt_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 sendID = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          sendid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -291,6 +300,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_peerposrt(), target);
   }
 
+  // int32 sendID = 8;
+  if (this->sendid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_sendid(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -354,6 +369,13 @@ size_t BuildP2P::ByteSizeLong() const {
         this->_internal_peerposrt());
   }
 
+  // int32 sendID = 8;
+  if (this->sendid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sendid());
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -406,6 +428,9 @@ void BuildP2P::MergeFrom(const BuildP2P& from) {
   if (from.peerposrt() != 0) {
     _internal_set_peerposrt(from._internal_peerposrt());
   }
+  if (from.sendid() != 0) {
+    _internal_set_sendid(from._internal_sendid());
+  }
 }
 
 void BuildP2P::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -431,8 +456,8 @@ void BuildP2P::InternalSwap(BuildP2P* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   peerip_.Swap(&other->peerip_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(BuildP2P, peerposrt_)
-      + sizeof(BuildP2P::peerposrt_)
+      PROTOBUF_FIELD_OFFSET(BuildP2P, sendid_)
+      + sizeof(BuildP2P::sendid_)
       - PROTOBUF_FIELD_OFFSET(BuildP2P, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

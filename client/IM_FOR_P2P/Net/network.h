@@ -1,5 +1,6 @@
 #ifndef NETWORK_H
 #define NETWORK_H
+#include <ctime>
 #include <queue>
 #include <list>
 #include <map>
@@ -9,6 +10,7 @@
 #include "recvthread.h"
 #include "distributethread.h"
 #include <QDebug>
+#include <QTimer>
 
 class SendThread;
 class RecvThread;
@@ -34,13 +36,18 @@ enum MsgType
     SYSTEMMSG=14,
     CHAT=15,
     AGREEADDFRIEND=16,
-    AGREEADDGROUP=17
+    AGREEADDGROUP=17,
+    ACK=18
 };
 
-struct NetworkAddr{
-    std::string ip;
-    int port;
+
+class NetworkAddr{
+public:
+    QHostAddress ip;
+    quint16 port;
 };
+
+
 
 class Network:public QObject
 {
@@ -49,8 +56,11 @@ private:
     std::map<int,char*> *m_sendMap;              //全部发送消息队列，当确认收到后，delete
     std::queue<const char*> *m_recvQueue;        //消息接收队列
     std::list<NetObserver*> *m_observers;        //观察者列表
-    std::map<int,NetworkAddr*> *m_netInfo;        //每个通信对象的网络信息
+    std::map<int,NetworkAddr> *m_netInfo;       //每个通信对象的网络信息
+    std::map<int,clock_t> *m_time;               //记录超时
     static Network* m_instance;
+    static int NetMsgID;
+    QTimer *m_timeout;
     QUdpSocket *m_udpSocket;
     SendThread *pSendThread;
     RecvThread *pRecvThread;
@@ -58,12 +68,7 @@ private:
 private:
     Network();
     Network(Network&);
-    //void sendToServer(const char *msg)const;
-    //void sendToPeer(const int& peerID,const char *msg)const;
-    //void sendMsg();
-    //void recvMsg();
-    //void distributeMsg();
-    void keepConnectWithServer();
+    void keepConnectWithServer(); //每隔几秒向服务器发送一次心跳
 
 public:
     template<class T>
@@ -78,25 +83,38 @@ public:
 template<class T>
 void Network::addMsg(T& msg)
 {
+    int recvID = msg.recvid();        //获取接收者ID，根据其选择在m_netInfo中选择IP:post 发送消息
+    int msgType=msg.networktype();    //获取消息类型，加在报文头部，接收端根据其确定解析类型
+    int sendID=msg.sendid();          //发送者ID，加在报文头部，便于快速确认消息，同时更新m_netInfo
+    int msgID= ++NetMsgID;           //消息ID，加在报文头部，用于确认消息(ACK)
+    msg.set_msgid(msgID);
+    size_t msgLen=msg.ByteSizeLong();   //获取消息字节长度
 
-    int recvID = msg.recvid();        //获取接收者ID
-    int msgType=msg.networktype();    //获取消息类型
-    msg.clear_recvid();               //清除接收者ID
-    msg.clear_networktype();          //清除消息类型
 
     qDebug()<<"模板已进入";
-    size_t msgLen=msg.ByteSizeLong();   //获取消息字节长度
-    char *msgBytes=(char*)malloc(msgLen);
+
+
+
+    char msgBytes[msgLen];
     msg.SerializeToArray(msgBytes,msgLen);  //序列化到msgBytes中
-    char *queueElement=(char *)malloc(sizeof(int)*2+3+msgLen);//发送队列元素
-    //格式：接收者ID\n消息类型\n消息内容
+    char *queueElement=(char *)malloc(sizeof(int)*3+4+msgLen);//发送队列元素
     memset(queueElement,0,sizeof(*queueElement));
-    sprintf(queueElement,"%d\n%d\n%d\n%s\n",recvID,msgType,msgLen,msgBytes);
-    //sprintf(queueElement,"%d\n%d\n%s\n",recvID,msgType,"msgBytes");
-    qDebug()<<queueElement;
-    delete msgBytes;
-    m_sendQueue->push(queueElement);//放入待队列当中
-    m_sendMap->insert(std::pair<int,char*>(msg.msgid(),queueElement));
+
+    /*格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
+     *为什么用这种格式，因为对端接收到消息做下面几件事：
+     *              1)立马回一个ACK
+     *              2)更新接收者与网络映射map
+     *              3)根据消息类型，解析消息
+     */
+
+    sprintf(queueElement,"%d\n%d\n%d\n%d\n%d\n%s\n",recvID,sendID,msgID,msgType,msgLen,msgBytes);
+
+    //qDebug()<<queueElement;
+
+    m_sendQueue->push(queueElement);       //放入待发队列当中
+    if(msgType==MsgType::ACK)              //ACK消息不需要重发，不插入m_sendMap中
+        return;
+    m_sendMap->insert(std::pair<int,char*>(msgID,queueElement));  //插入未确认表
 }
 
 #endif // NETWORK_H

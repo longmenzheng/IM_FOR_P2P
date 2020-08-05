@@ -183,7 +183,7 @@ class SignIn PROTOBUF_FINAL :
     kNetworkTypeFieldNumber = 1,
     kMsgIDFieldNumber = 2,
     kRecvIDFieldNumber = 3,
-    kUserIDFieldNumber = 4,
+    kSendIDFieldNumber = 4,
   };
   // bytes password = 5;
   void clear_password();
@@ -237,13 +237,13 @@ class SignIn PROTOBUF_FINAL :
   void _internal_set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 userID = 4;
-  void clear_userid();
-  ::PROTOBUF_NAMESPACE_ID::int32 userid() const;
-  void set_userid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 sendID = 4;
+  void clear_sendid();
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid() const;
+  void set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_userid() const;
-  void _internal_set_userid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sendid() const;
+  void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:IM.SignIn)
@@ -257,7 +257,7 @@ class SignIn PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
-  ::PROTOBUF_NAMESPACE_ID::int32 userid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_SignIn_2eproto;
 };
@@ -332,24 +332,24 @@ inline void SignIn::set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.SignIn.recvID)
 }
 
-// int32 userID = 4;
-inline void SignIn::clear_userid() {
-  userid_ = 0;
+// int32 sendID = 4;
+inline void SignIn::clear_sendid() {
+  sendid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 SignIn::_internal_userid() const {
-  return userid_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignIn::_internal_sendid() const {
+  return sendid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 SignIn::userid() const {
-  // @@protoc_insertion_point(field_get:IM.SignIn.userID)
-  return _internal_userid();
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignIn::sendid() const {
+  // @@protoc_insertion_point(field_get:IM.SignIn.sendID)
+  return _internal_sendid();
 }
-inline void SignIn::_internal_set_userid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void SignIn::_internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  userid_ = value;
+  sendid_ = value;
 }
-inline void SignIn::set_userid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_userid(value);
-  // @@protoc_insertion_point(field_set:IM.SignIn.userID)
+inline void SignIn::set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sendid(value);
+  // @@protoc_insertion_point(field_set:IM.SignIn.sendID)
 }
 
 // bytes password = 5;

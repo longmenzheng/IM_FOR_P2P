@@ -91,13 +91,6 @@ class Connect PROTOBUF_FINAL :
     return *this;
   }
 
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-  }
-
   static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
     return GetDescriptor();
   }
@@ -189,12 +182,9 @@ class Connect PROTOBUF_FINAL :
     kNetworkTypeFieldNumber = 1,
     kRecvIDFieldNumber = 2,
     kMsgIDFieldNumber = 3,
+    kSendIDFieldNumber = 4,
   };
-  // required int32 networkType = 1;
-  bool has_networktype() const;
-  private:
-  bool _internal_has_networktype() const;
-  public:
+  // int32 networkType = 1;
   void clear_networktype();
   ::PROTOBUF_NAMESPACE_ID::int32 networktype() const;
   void set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -203,11 +193,7 @@ class Connect PROTOBUF_FINAL :
   void _internal_set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // required int32 recvID = 2;
-  bool has_recvid() const;
-  private:
-  bool _internal_has_recvid() const;
-  public:
+  // int32 recvID = 2;
   void clear_recvid();
   ::PROTOBUF_NAMESPACE_ID::int32 recvid() const;
   void set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -216,11 +202,7 @@ class Connect PROTOBUF_FINAL :
   void _internal_set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // required int32 msgID = 3;
-  bool has_msgid() const;
-  private:
-  bool _internal_has_msgid() const;
-  public:
+  // int32 msgID = 3;
   void clear_msgid();
   ::PROTOBUF_NAMESPACE_ID::int32 msgid() const;
   void set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -229,21 +211,27 @@ class Connect PROTOBUF_FINAL :
   void _internal_set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 sendID = 4;
+  void clear_sendid();
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid() const;
+  void set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sendid() const;
+  void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:IM.Connect)
  private:
   class _Internal;
 
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
-
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Connect_2eproto;
 };
 // ===================================================================
@@ -257,17 +245,9 @@ class Connect PROTOBUF_FINAL :
 #endif  // __GNUC__
 // Connect
 
-// required int32 networkType = 1;
-inline bool Connect::_internal_has_networktype() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  return value;
-}
-inline bool Connect::has_networktype() const {
-  return _internal_has_networktype();
-}
+// int32 networkType = 1;
 inline void Connect::clear_networktype() {
   networktype_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::_internal_networktype() const {
   return networktype_;
@@ -277,7 +257,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::networktype() const {
   return _internal_networktype();
 }
 inline void Connect::_internal_set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000001u;
+  
   networktype_ = value;
 }
 inline void Connect::set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -285,17 +265,9 @@ inline void Connect::set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.Connect.networkType)
 }
 
-// required int32 recvID = 2;
-inline bool Connect::_internal_has_recvid() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
-  return value;
-}
-inline bool Connect::has_recvid() const {
-  return _internal_has_recvid();
-}
+// int32 recvID = 2;
 inline void Connect::clear_recvid() {
   recvid_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::_internal_recvid() const {
   return recvid_;
@@ -305,7 +277,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::recvid() const {
   return _internal_recvid();
 }
 inline void Connect::_internal_set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  
   recvid_ = value;
 }
 inline void Connect::set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -313,17 +285,9 @@ inline void Connect::set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.Connect.recvID)
 }
 
-// required int32 msgID = 3;
-inline bool Connect::_internal_has_msgid() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
-  return value;
-}
-inline bool Connect::has_msgid() const {
-  return _internal_has_msgid();
-}
+// int32 msgID = 3;
 inline void Connect::clear_msgid() {
   msgid_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::_internal_msgid() const {
   return msgid_;
@@ -333,12 +297,32 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::msgid() const {
   return _internal_msgid();
 }
 inline void Connect::_internal_set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000004u;
+  
   msgid_ = value;
 }
 inline void Connect::set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_msgid(value);
   // @@protoc_insertion_point(field_set:IM.Connect.msgID)
+}
+
+// int32 sendID = 4;
+inline void Connect::clear_sendid() {
+  sendid_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::_internal_sendid() const {
+  return sendid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Connect::sendid() const {
+  // @@protoc_insertion_point(field_get:IM.Connect.sendID)
+  return _internal_sendid();
+}
+inline void Connect::_internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  sendid_ = value;
+}
+inline void Connect::set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sendid(value);
+  // @@protoc_insertion_point(field_set:IM.Connect.sendID)
 }
 
 #ifdef __GNUC__

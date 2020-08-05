@@ -186,6 +186,7 @@ class BuildP2P PROTOBUF_FINAL :
     kRecvIDFieldNumber = 4,
     kPeerIDFieldNumber = 5,
     kPeerPosrtFieldNumber = 7,
+    kSendIDFieldNumber = 8,
   };
   // string peerIP = 6;
   void clear_peerip();
@@ -266,6 +267,15 @@ class BuildP2P PROTOBUF_FINAL :
   void _internal_set_peerposrt(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 sendID = 8;
+  void clear_sendid();
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid() const;
+  void set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sendid() const;
+  void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:IM.BuildP2P)
  private:
   class _Internal;
@@ -280,6 +290,7 @@ class BuildP2P PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 peerid_;
   ::PROTOBUF_NAMESPACE_ID::int32 peerposrt_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_BuildP2P_2eproto;
 };
@@ -372,6 +383,26 @@ inline void BuildP2P::_internal_set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value)
 inline void BuildP2P::set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_recvid(value);
   // @@protoc_insertion_point(field_set:IM.BuildP2P.recvID)
+}
+
+// int32 sendID = 8;
+inline void BuildP2P::clear_sendid() {
+  sendid_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BuildP2P::_internal_sendid() const {
+  return sendid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BuildP2P::sendid() const {
+  // @@protoc_insertion_point(field_get:IM.BuildP2P.sendID)
+  return _internal_sendid();
+}
+inline void BuildP2P::_internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  sendid_ = value;
+}
+inline void BuildP2P::set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sendid(value);
+  // @@protoc_insertion_point(field_set:IM.BuildP2P.sendID)
 }
 
 // int32 peerID = 5;

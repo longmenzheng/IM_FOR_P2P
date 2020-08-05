@@ -26,7 +26,7 @@ void NetTest::on_sendButton_released()
 {
     IM::ChatMsg testMsg;
     testMsg.set_networktype(MsgType::CHAT);
-    testMsg.set_recvid(0);
+    testMsg.set_recvid(1);
     QString data=ui->textEdit->toPlainText();
     data.replace(QString(" "),QString("\a"));
     qDebug()<<data<<"长度："<<sizeof(data)<<sizeof(data.toUtf8());
