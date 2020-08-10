@@ -25,12 +25,19 @@ class ChatManager;
 class ClientManager
 {
 private:
-    UserInfo m_userInfo;                   //用户信息
+    UserInfo m_userInfo;               //用户信息
     SignIn* m_signIn;                  //登录界面
     SignUp* m_signUp;                  //注册界面
     FriendManager* m_friendManager;    //好友管理界面
     GroupManager* m_groupManager;      //群管理界面
     ChatManager* m_chatManager;        //聊天管理界面
+
+    ClientManager();
+    ClientManager(SignIn *signIn,SignUp *signUp,
+                  FriendManager *friendManager,
+                  GroupManager *groupManager,
+                  ChatManager *chatManager);
+    static ClientManager* clientManager;
 
 public:
     void run();
@@ -40,11 +47,9 @@ public:
     inline FriendManager *getFriendManager(){return m_friendManager;}
     inline GroupManager *getGroupManager(){return m_groupManager;}
     inline ChatManager *getChatManager(){return m_chatManager;}
-    ClientManager();
-    ClientManager(SignIn *signIn,SignUp *signUp,
-                  FriendManager *friendManager,
-                  GroupManager *groupManager,
-                  ChatManager *chatManager);
+
+    static ClientManager* getInstance();
+
     ~ClientManager();
 };
 

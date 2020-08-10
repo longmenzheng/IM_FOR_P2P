@@ -111,6 +111,8 @@ void *SignIn::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_SignIn.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "NetObserver"))
+        return static_cast< NetObserver*>(this);
     return QWidget::qt_metacast(_clname);
 }
 

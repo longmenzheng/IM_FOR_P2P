@@ -10,11 +10,11 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     //MainWindow w;
     //w.show();
-    //ClientManager clientManager;
-    //clientManager.run();
-    NetTest test1;
+    ClientManager *clientManager=ClientManager::getInstance();
+    clientManager->run();
+    //NetTest test1;
     //NetTest2 *test2=new NetTest2();
-    test1.show();
+    //test1.show();
     //test2->show();
 
     return a.exec();

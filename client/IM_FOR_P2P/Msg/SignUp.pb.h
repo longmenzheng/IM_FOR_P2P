@@ -182,12 +182,13 @@ class SignUp PROTOBUF_FINAL :
     kPasswordFieldNumber = 5,
     kNicknameFieldNumber = 6,
     kPhoneFieldNumber = 7,
-    kDescFieldNumber = 8,
     kIconFieldNumber = 9,
     kNetworkTypeFieldNumber = 1,
     kMsgIDFieldNumber = 2,
     kRecvIDFieldNumber = 3,
     kSendIDFieldNumber = 4,
+    kSexFieldNumber = 8,
+    kStateFieldNumber = 10,
   };
   // bytes password = 5;
   void clear_password();
@@ -264,31 +265,6 @@ class SignUp PROTOBUF_FINAL :
   std::string* _internal_mutable_phone();
   public:
 
-  // bytes desc = 8;
-  void clear_desc();
-  const std::string& desc() const;
-  void set_desc(const std::string& value);
-  void set_desc(std::string&& value);
-  void set_desc(const char* value);
-  void set_desc(const void* value, size_t size);
-  std::string* mutable_desc();
-  std::string* release_desc();
-  void set_allocated_desc(std::string* desc);
-  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
-  "    string fields are deprecated and will be removed in a"
-  "    future release.")
-  std::string* unsafe_arena_release_desc();
-  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
-  "    string fields are deprecated and will be removed in a"
-  "    future release.")
-  void unsafe_arena_set_allocated_desc(
-      std::string* desc);
-  private:
-  const std::string& _internal_desc() const;
-  void _internal_set_desc(const std::string& value);
-  std::string* _internal_mutable_desc();
-  public:
-
   // bytes icon = 9;
   void clear_icon();
   const std::string& icon() const;
@@ -350,6 +326,24 @@ class SignUp PROTOBUF_FINAL :
   void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 sex = 8;
+  void clear_sex();
+  ::PROTOBUF_NAMESPACE_ID::int32 sex() const;
+  void set_sex(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sex() const;
+  void _internal_set_sex(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 state = 10;
+  void clear_state();
+  ::PROTOBUF_NAMESPACE_ID::int32 state() const;
+  void set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state() const;
+  void _internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:IM.SignUp)
  private:
   class _Internal;
@@ -360,12 +354,13 @@ class SignUp PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr phone_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desc_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr icon_;
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sex_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_SignUp_2eproto;
 };
@@ -703,85 +698,24 @@ inline void SignUp::unsafe_arena_set_allocated_phone(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.SignUp.phone)
 }
 
-// bytes desc = 8;
-inline void SignUp::clear_desc() {
-  desc_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+// int32 sex = 8;
+inline void SignUp::clear_sex() {
+  sex_ = 0;
 }
-inline const std::string& SignUp::desc() const {
-  // @@protoc_insertion_point(field_get:IM.SignUp.desc)
-  return _internal_desc();
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignUp::_internal_sex() const {
+  return sex_;
 }
-inline void SignUp::set_desc(const std::string& value) {
-  _internal_set_desc(value);
-  // @@protoc_insertion_point(field_set:IM.SignUp.desc)
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignUp::sex() const {
+  // @@protoc_insertion_point(field_get:IM.SignUp.sex)
+  return _internal_sex();
 }
-inline std::string* SignUp::mutable_desc() {
-  // @@protoc_insertion_point(field_mutable:IM.SignUp.desc)
-  return _internal_mutable_desc();
-}
-inline const std::string& SignUp::_internal_desc() const {
-  return desc_.Get();
-}
-inline void SignUp::_internal_set_desc(const std::string& value) {
+inline void SignUp::_internal_set_sex(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+  sex_ = value;
 }
-inline void SignUp::set_desc(std::string&& value) {
-  
-  desc_.Set(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:IM.SignUp.desc)
-}
-inline void SignUp::set_desc(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
-              GetArena());
-  // @@protoc_insertion_point(field_set_char:IM.SignUp.desc)
-}
-inline void SignUp::set_desc(const void* value,
-    size_t size) {
-  
-  desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:IM.SignUp.desc)
-}
-inline std::string* SignUp::_internal_mutable_desc() {
-  
-  return desc_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline std::string* SignUp::release_desc() {
-  // @@protoc_insertion_point(field_release:IM.SignUp.desc)
-  return desc_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline void SignUp::set_allocated_desc(std::string* desc) {
-  if (desc != nullptr) {
-    
-  } else {
-    
-  }
-  desc_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), desc,
-      GetArena());
-  // @@protoc_insertion_point(field_set_allocated:IM.SignUp.desc)
-}
-inline std::string* SignUp::unsafe_arena_release_desc() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:IM.SignUp.desc)
-  GOOGLE_DCHECK(GetArena() != nullptr);
-  
-  return desc_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      GetArena());
-}
-inline void SignUp::unsafe_arena_set_allocated_desc(
-    std::string* desc) {
-  GOOGLE_DCHECK(GetArena() != nullptr);
-  if (desc != nullptr) {
-    
-  } else {
-    
-  }
-  desc_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      desc, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.SignUp.desc)
+inline void SignUp::set_sex(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sex(value);
+  // @@protoc_insertion_point(field_set:IM.SignUp.sex)
 }
 
 // bytes icon = 9;
@@ -863,6 +797,26 @@ inline void SignUp::unsafe_arena_set_allocated_icon(
   icon_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       icon, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.SignUp.icon)
+}
+
+// int32 state = 10;
+inline void SignUp::clear_state() {
+  state_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignUp::_internal_state() const {
+  return state_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignUp::state() const {
+  // @@protoc_insertion_point(field_get:IM.SignUp.state)
+  return _internal_state();
+}
+inline void SignUp::_internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  state_ = value;
+}
+inline void SignUp::set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:IM.SignUp.state)
 }
 
 #ifdef __GNUC__

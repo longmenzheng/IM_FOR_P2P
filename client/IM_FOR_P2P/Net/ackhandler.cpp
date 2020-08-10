@@ -1,6 +1,7 @@
 #include "ackhandler.h"
 #include "network.h"
 #include <exception>
+#include <QDebug>
 
 ACKHandler::ACKHandler()
 {
@@ -13,7 +14,7 @@ ACKHandler::ACKHandler(std::map<int,char*> *sendMap,
     m_sendMap(sendMap),
     m_time(time)
 {
-
+  qDebug()<<"-------------------ACKhandler---------------------";
 }
 
 void ACKHandler::recvMsg(const char *msg)
@@ -25,6 +26,7 @@ void ACKHandler::recvMsg(const char *msg)
      */
     int msgType=-1;
     int msgID=-1;
+    //qDebug()<<"-------------------ACKhandler---------------------";
     //格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
     sscanf(msg,"%*d\n%*d\n%d\n%d\n",&msgID,&msgType);  //获取消息ID 消息类型
     if(msgType==MsgType::ACK)

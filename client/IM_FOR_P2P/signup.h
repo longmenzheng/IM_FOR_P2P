@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "clientmanager.h"
+#include "netobserver.h"
 
 
 namespace Ui {
@@ -11,11 +12,12 @@ class SignUp;
 
 class ClientManager;
 
-class SignUp : public QWidget
+class SignUp : public QWidget,public NetObserver
 {
     Q_OBJECT
 private:
     ClientManager *clientManager;
+    int state=-1;
 
 public:
     explicit SignUp(QWidget *parent = nullptr);
@@ -24,6 +26,7 @@ public:
     bool init();
     void clickSignIn();
     void clickSignUp();
+    void recvMsg(const char *msg) override;
 
 signals:
     void clickSignInSignal();

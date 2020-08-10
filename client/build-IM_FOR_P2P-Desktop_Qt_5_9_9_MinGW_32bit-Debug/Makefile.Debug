@@ -46,11 +46,16 @@ OBJECTS_DIR   = debug
 ####### Files
 
 SOURCES       = ..\IM_FOR_P2P\Msg\ACK.pb.cc \
+		..\IM_FOR_P2P\Msg\ApplyAgree.pb.cc \
 		..\IM_FOR_P2P\Msg\BuildP2P.pb.cc \
 		..\IM_FOR_P2P\Msg\ChatMsg.pb.cc \
 		..\IM_FOR_P2P\Msg\Connect.pb.cc \
+		..\IM_FOR_P2P\Msg\ModifyInfo.pb.cc \
+		..\IM_FOR_P2P\Msg\OfflineMsg.pb.cc \
+		..\IM_FOR_P2P\Msg\RelationManage.pb.cc \
 		..\IM_FOR_P2P\Msg\SignIn.pb.cc \
 		..\IM_FOR_P2P\Msg\SignUp.pb.cc \
+		..\IM_FOR_P2P\Msg\SystemMsg.pb.cc \
 		..\IM_FOR_P2P\Net\ackhandler.cpp \
 		..\IM_FOR_P2P\Net\distributethread.cpp \
 		..\IM_FOR_P2P\Net\netobserver.cpp \
@@ -67,7 +72,8 @@ SOURCES       = ..\IM_FOR_P2P\Msg\ACK.pb.cc \
 		..\IM_FOR_P2P\main.cpp \
 		..\IM_FOR_P2P\mainwindow.cpp \
 		..\IM_FOR_P2P\signin.cpp \
-		..\IM_FOR_P2P\signup.cpp debug\moc_nettest.cpp \
+		..\IM_FOR_P2P\signup.cpp debug\qrc_Res.cpp \
+		debug\moc_nettest.cpp \
 		debug\moc_nettest2.cpp \
 		debug\moc_chatmanager.cpp \
 		debug\moc_friendmanager.cpp \
@@ -76,11 +82,16 @@ SOURCES       = ..\IM_FOR_P2P\Msg\ACK.pb.cc \
 		debug\moc_signin.cpp \
 		debug\moc_signup.cpp
 OBJECTS       = debug/ACK.pb.o \
+		debug/ApplyAgree.pb.o \
 		debug/BuildP2P.pb.o \
 		debug/ChatMsg.pb.o \
 		debug/Connect.pb.o \
+		debug/ModifyInfo.pb.o \
+		debug/OfflineMsg.pb.o \
+		debug/RelationManage.pb.o \
 		debug/SignIn.pb.o \
 		debug/SignUp.pb.o \
+		debug/SystemMsg.pb.o \
 		debug/ackhandler.o \
 		debug/distributethread.o \
 		debug/netobserver.o \
@@ -98,6 +109,7 @@ OBJECTS       = debug/ACK.pb.o \
 		debug/mainwindow.o \
 		debug/signin.o \
 		debug/signup.o \
+		debug/qrc_Res.o \
 		debug/moc_nettest.o \
 		debug/moc_nettest2.o \
 		debug/moc_chatmanager.o \
@@ -108,11 +120,16 @@ OBJECTS       = debug/ACK.pb.o \
 		debug/moc_signup.o
 
 DIST          =  ..\IM_FOR_P2P\Msg\ACK.pb.h \
+		..\IM_FOR_P2P\Msg\ApplyAgree.pb.h \
 		..\IM_FOR_P2P\Msg\BuildP2P.pb.h \
 		..\IM_FOR_P2P\Msg\ChatMsg.pb.h \
 		..\IM_FOR_P2P\Msg\Connect.pb.h \
+		..\IM_FOR_P2P\Msg\ModifyInfo.pb.h \
+		..\IM_FOR_P2P\Msg\OfflineMsg.pb.h \
+		..\IM_FOR_P2P\Msg\RelationManage.pb.h \
 		..\IM_FOR_P2P\Msg\SignIn.pb.h \
 		..\IM_FOR_P2P\Msg\SignUp.pb.h \
+		..\IM_FOR_P2P\Msg\SystemMsg.pb.h \
 		..\IM_FOR_P2P\Net\ackhandler.h \
 		..\IM_FOR_P2P\Net\distributethread.h \
 		..\IM_FOR_P2P\Net\netobserver.h \
@@ -129,11 +146,16 @@ DIST          =  ..\IM_FOR_P2P\Msg\ACK.pb.h \
 		..\IM_FOR_P2P\mainwindow.h \
 		..\IM_FOR_P2P\signin.h \
 		..\IM_FOR_P2P\signup.h ..\IM_FOR_P2P\Msg\ACK.pb.cc \
+		..\IM_FOR_P2P\Msg\ApplyAgree.pb.cc \
 		..\IM_FOR_P2P\Msg\BuildP2P.pb.cc \
 		..\IM_FOR_P2P\Msg\ChatMsg.pb.cc \
 		..\IM_FOR_P2P\Msg\Connect.pb.cc \
+		..\IM_FOR_P2P\Msg\ModifyInfo.pb.cc \
+		..\IM_FOR_P2P\Msg\OfflineMsg.pb.cc \
+		..\IM_FOR_P2P\Msg\RelationManage.pb.cc \
 		..\IM_FOR_P2P\Msg\SignIn.pb.cc \
 		..\IM_FOR_P2P\Msg\SignUp.pb.cc \
+		..\IM_FOR_P2P\Msg\SystemMsg.pb.cc \
 		..\IM_FOR_P2P\Net\ackhandler.cpp \
 		..\IM_FOR_P2P\Net\distributethread.cpp \
 		..\IM_FOR_P2P\Net\netobserver.cpp \
@@ -170,10 +192,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) IM_FOR_P2P.zip $(SOURCES) $(DIST) ..\IM_FOR_P2P\IM_FOR_P2P.pro ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\spec_pre.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\qdevice.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\device_config.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\sanitize.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\gcc-base.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\g++-base.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\angle.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\qconfig.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qt_functions.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qt_config.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\toolchain.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\default_pre.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\resolve_config.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\default_post.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\build_pass.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qml_debug.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\precompile_header.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\warn_on.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qt.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\resources.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\moc.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\uic.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qmake_use.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\file_copies.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\win32\windows.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\exceptions.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\yacc.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\lex.prf ..\IM_FOR_P2P\IM_FOR_P2P.pro ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\qtmaind.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Widgetsd.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Guid.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Networkd.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Cored.prl    ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\data\dummy.cpp ..\IM_FOR_P2P\Msg\ACK.pb.h ..\IM_FOR_P2P\Msg\BuildP2P.pb.h ..\IM_FOR_P2P\Msg\ChatMsg.pb.h ..\IM_FOR_P2P\Msg\Connect.pb.h ..\IM_FOR_P2P\Msg\SignIn.pb.h ..\IM_FOR_P2P\Msg\SignUp.pb.h ..\IM_FOR_P2P\Net\ackhandler.h ..\IM_FOR_P2P\Net\distributethread.h ..\IM_FOR_P2P\Net\netobserver.h ..\IM_FOR_P2P\Net\nettest.h ..\IM_FOR_P2P\Net\nettest2.h ..\IM_FOR_P2P\Net\network.h ..\IM_FOR_P2P\Net\recvthread.h ..\IM_FOR_P2P\Net\resendthread.h ..\IM_FOR_P2P\Net\sendthread.h ..\IM_FOR_P2P\chatmanager.h ..\IM_FOR_P2P\clientmanager.h ..\IM_FOR_P2P\friendmanager.h ..\IM_FOR_P2P\groupmanager.h ..\IM_FOR_P2P\mainwindow.h ..\IM_FOR_P2P\signin.h ..\IM_FOR_P2P\signup.h ..\IM_FOR_P2P\Msg\ACK.pb.cc ..\IM_FOR_P2P\Msg\BuildP2P.pb.cc ..\IM_FOR_P2P\Msg\ChatMsg.pb.cc ..\IM_FOR_P2P\Msg\Connect.pb.cc ..\IM_FOR_P2P\Msg\SignIn.pb.cc ..\IM_FOR_P2P\Msg\SignUp.pb.cc ..\IM_FOR_P2P\Net\ackhandler.cpp ..\IM_FOR_P2P\Net\distributethread.cpp ..\IM_FOR_P2P\Net\netobserver.cpp ..\IM_FOR_P2P\Net\nettest.cpp ..\IM_FOR_P2P\Net\nettest2.cpp ..\IM_FOR_P2P\Net\network.cpp ..\IM_FOR_P2P\Net\recvthread.cpp ..\IM_FOR_P2P\Net\resendthread.cpp ..\IM_FOR_P2P\Net\sendthread.cpp ..\IM_FOR_P2P\chatmanager.cpp ..\IM_FOR_P2P\clientmanager.cpp ..\IM_FOR_P2P\friendmanager.cpp ..\IM_FOR_P2P\groupmanager.cpp ..\IM_FOR_P2P\main.cpp ..\IM_FOR_P2P\mainwindow.cpp ..\IM_FOR_P2P\signin.cpp ..\IM_FOR_P2P\signup.cpp ..\IM_FOR_P2P\Net\nettest.ui ..\IM_FOR_P2P\Net\nettest2.ui ..\IM_FOR_P2P\chatmanager.ui ..\IM_FOR_P2P\friendmanager.ui ..\IM_FOR_P2P\groupmanager.ui ..\IM_FOR_P2P\mainwindow.ui ..\IM_FOR_P2P\signin.ui ..\IM_FOR_P2P\signup.ui    
+	$(ZIP) IM_FOR_P2P.zip $(SOURCES) $(DIST) ..\IM_FOR_P2P\IM_FOR_P2P.pro ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\spec_pre.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\qdevice.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\device_config.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\sanitize.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\gcc-base.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\g++-base.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\common\angle.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\qconfig.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qt_functions.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qt_config.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\toolchain.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\default_pre.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\resolve_config.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\default_post.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\build_pass.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qml_debug.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\precompile_header.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\warn_on.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qt.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\resources.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\moc.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\uic.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\qmake_use.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\file_copies.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\win32\windows.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\exceptions.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\yacc.prf ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\lex.prf ..\IM_FOR_P2P\IM_FOR_P2P.pro ..\IM_FOR_P2P\Res.qrc ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\qtmaind.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Widgetsd.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Guid.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Networkd.prl ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\lib\Qt5Cored.prl   ..\IM_FOR_P2P\Res.qrc ..\..\..\..\Qt\Qt5.9.9\5.9.9\mingw53_32\mkspecs\features\data\dummy.cpp ..\IM_FOR_P2P\Msg\ACK.pb.h ..\IM_FOR_P2P\Msg\ApplyAgree.pb.h ..\IM_FOR_P2P\Msg\BuildP2P.pb.h ..\IM_FOR_P2P\Msg\ChatMsg.pb.h ..\IM_FOR_P2P\Msg\Connect.pb.h ..\IM_FOR_P2P\Msg\ModifyInfo.pb.h ..\IM_FOR_P2P\Msg\OfflineMsg.pb.h ..\IM_FOR_P2P\Msg\RelationManage.pb.h ..\IM_FOR_P2P\Msg\SignIn.pb.h ..\IM_FOR_P2P\Msg\SignUp.pb.h ..\IM_FOR_P2P\Msg\SystemMsg.pb.h ..\IM_FOR_P2P\Net\ackhandler.h ..\IM_FOR_P2P\Net\distributethread.h ..\IM_FOR_P2P\Net\netobserver.h ..\IM_FOR_P2P\Net\nettest.h ..\IM_FOR_P2P\Net\nettest2.h ..\IM_FOR_P2P\Net\network.h ..\IM_FOR_P2P\Net\recvthread.h ..\IM_FOR_P2P\Net\resendthread.h ..\IM_FOR_P2P\Net\sendthread.h ..\IM_FOR_P2P\chatmanager.h ..\IM_FOR_P2P\clientmanager.h ..\IM_FOR_P2P\friendmanager.h ..\IM_FOR_P2P\groupmanager.h ..\IM_FOR_P2P\mainwindow.h ..\IM_FOR_P2P\signin.h ..\IM_FOR_P2P\signup.h ..\IM_FOR_P2P\Msg\ACK.pb.cc ..\IM_FOR_P2P\Msg\ApplyAgree.pb.cc ..\IM_FOR_P2P\Msg\BuildP2P.pb.cc ..\IM_FOR_P2P\Msg\ChatMsg.pb.cc ..\IM_FOR_P2P\Msg\Connect.pb.cc ..\IM_FOR_P2P\Msg\ModifyInfo.pb.cc ..\IM_FOR_P2P\Msg\OfflineMsg.pb.cc ..\IM_FOR_P2P\Msg\RelationManage.pb.cc ..\IM_FOR_P2P\Msg\SignIn.pb.cc ..\IM_FOR_P2P\Msg\SignUp.pb.cc ..\IM_FOR_P2P\Msg\SystemMsg.pb.cc ..\IM_FOR_P2P\Net\ackhandler.cpp ..\IM_FOR_P2P\Net\distributethread.cpp ..\IM_FOR_P2P\Net\netobserver.cpp ..\IM_FOR_P2P\Net\nettest.cpp ..\IM_FOR_P2P\Net\nettest2.cpp ..\IM_FOR_P2P\Net\network.cpp ..\IM_FOR_P2P\Net\recvthread.cpp ..\IM_FOR_P2P\Net\resendthread.cpp ..\IM_FOR_P2P\Net\sendthread.cpp ..\IM_FOR_P2P\chatmanager.cpp ..\IM_FOR_P2P\clientmanager.cpp ..\IM_FOR_P2P\friendmanager.cpp ..\IM_FOR_P2P\groupmanager.cpp ..\IM_FOR_P2P\main.cpp ..\IM_FOR_P2P\mainwindow.cpp ..\IM_FOR_P2P\signin.cpp ..\IM_FOR_P2P\signup.cpp ..\IM_FOR_P2P\Net\nettest.ui ..\IM_FOR_P2P\Net\nettest2.ui ..\IM_FOR_P2P\chatmanager.ui ..\IM_FOR_P2P\friendmanager.ui ..\IM_FOR_P2P\groupmanager.ui ..\IM_FOR_P2P\mainwindow.ui ..\IM_FOR_P2P\signin.ui ..\IM_FOR_P2P\signup.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\ACK.pb.o debug\BuildP2P.pb.o debug\ChatMsg.pb.o debug\Connect.pb.o debug\SignIn.pb.o debug\SignUp.pb.o debug\ackhandler.o debug\distributethread.o debug\netobserver.o debug\nettest.o debug\nettest2.o debug\network.o debug\recvthread.o debug\resendthread.o debug\sendthread.o debug\chatmanager.o debug\clientmanager.o debug\friendmanager.o debug\groupmanager.o debug\main.o debug\mainwindow.o debug\signin.o debug\signup.o debug\moc_nettest.o debug\moc_nettest2.o debug\moc_chatmanager.o debug\moc_friendmanager.o debug\moc_groupmanager.o debug\moc_mainwindow.o debug\moc_signin.o debug\moc_signup.o
+	-$(DEL_FILE) debug\ACK.pb.o debug\ApplyAgree.pb.o debug\BuildP2P.pb.o debug\ChatMsg.pb.o debug\Connect.pb.o debug\ModifyInfo.pb.o debug\OfflineMsg.pb.o debug\RelationManage.pb.o debug\SignIn.pb.o debug\SignUp.pb.o debug\SystemMsg.pb.o debug\ackhandler.o debug\distributethread.o debug\netobserver.o debug\nettest.o debug\nettest2.o debug\network.o debug\recvthread.o debug\resendthread.o debug\sendthread.o debug\chatmanager.o debug\clientmanager.o debug\friendmanager.o debug\groupmanager.o debug\main.o debug\mainwindow.o debug\signin.o debug\signup.o debug\qrc_Res.o debug\moc_nettest.o debug\moc_nettest2.o debug\moc_chatmanager.o debug\moc_friendmanager.o debug\moc_groupmanager.o debug\moc_mainwindow.o debug\moc_signin.o debug\moc_signup.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -190,8 +212,21 @@ benchmark: first
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
-compiler_rcc_make_all:
+compiler_rcc_make_all: debug/qrc_Res.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) debug\qrc_Res.cpp
+debug/qrc_Res.cpp: ../IM_FOR_P2P/Res.qrc \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/bin/rcc.exe \
+		../IM_FOR_P2P/Images/sex.png \
+		../IM_FOR_P2P/Images/signInF_Icon.png \
+		../IM_FOR_P2P/Images/signIn.png \
+		../IM_FOR_P2P/Images/signUp.png \
+		../IM_FOR_P2P/Images/sexF.png \
+		../IM_FOR_P2P/Images/signUpF_Icon.png \
+		../IM_FOR_P2P/Images/userIcon.png \
+		../IM_FOR_P2P/Images/sexM.png
+	D:\Qt\Qt5.9.9\5.9.9\mingw53_32\bin\rcc.exe -name Res ..\IM_FOR_P2P\Res.qrc -o debug\qrc_Res.cpp
+
 compiler_moc_predefs_make_all: debug/moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) debug\moc_predefs.h
@@ -516,6 +551,7 @@ debug/moc_chatmanager.cpp: ../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWid
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -627,6 +663,7 @@ debug/moc_friendmanager.cpp: ../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtW
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -738,6 +775,7 @@ debug/moc_groupmanager.cpp: ../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWi
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -957,6 +995,7 @@ debug/moc_signin.cpp: ../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -1068,6 +1107,7 @@ debug/moc_signup.cpp: ../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -1119,7 +1159,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 
 
@@ -1174,6 +1214,56 @@ debug/ACK.pb.o: ../IM_FOR_P2P/Msg/ACK.pb.cc ../IM_FOR_P2P/Msg/ACK.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/reflection_ops.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ACK.pb.o ..\IM_FOR_P2P\Msg\ACK.pb.cc
+
+debug/ApplyAgree.pb.o: ../IM_FOR_P2P/Msg/ApplyAgree.pb.cc ../IM_FOR_P2P/Msg/ApplyAgree.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/reflection_ops.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ApplyAgree.pb.o ..\IM_FOR_P2P\Msg\ApplyAgree.pb.cc
 
 debug/BuildP2P.pb.o: ../IM_FOR_P2P/Msg/BuildP2P.pb.cc ../IM_FOR_P2P/Msg/BuildP2P.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
@@ -1325,6 +1415,156 @@ debug/Connect.pb.o: ../IM_FOR_P2P/Msg/Connect.pb.cc ../IM_FOR_P2P/Msg/Connect.pb
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Connect.pb.o ..\IM_FOR_P2P\Msg\Connect.pb.cc
 
+debug/ModifyInfo.pb.o: ../IM_FOR_P2P/Msg/ModifyInfo.pb.cc ../IM_FOR_P2P/Msg/ModifyInfo.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/reflection_ops.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ModifyInfo.pb.o ..\IM_FOR_P2P\Msg\ModifyInfo.pb.cc
+
+debug/OfflineMsg.pb.o: ../IM_FOR_P2P/Msg/OfflineMsg.pb.cc ../IM_FOR_P2P/Msg/OfflineMsg.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/reflection_ops.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\OfflineMsg.pb.o ..\IM_FOR_P2P\Msg\OfflineMsg.pb.cc
+
+debug/RelationManage.pb.o: ../IM_FOR_P2P/Msg/RelationManage.pb.cc ../IM_FOR_P2P/Msg/RelationManage.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/reflection_ops.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\RelationManage.pb.o ..\IM_FOR_P2P\Msg\RelationManage.pb.cc
+
 debug/SignIn.pb.o: ../IM_FOR_P2P/Msg/SignIn.pb.cc ../IM_FOR_P2P/Msg/SignIn.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
@@ -1425,6 +1665,56 @@ debug/SignUp.pb.o: ../IM_FOR_P2P/Msg/SignUp.pb.cc ../IM_FOR_P2P/Msg/SignUp.pb.h 
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\SignUp.pb.o ..\IM_FOR_P2P\Msg\SignUp.pb.cc
 
+debug/SystemMsg.pb.o: ../IM_FOR_P2P/Msg/SystemMsg.pb.cc ../IM_FOR_P2P/Msg/SystemMsg.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/reflection_ops.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\SystemMsg.pb.o ..\IM_FOR_P2P\Msg\SystemMsg.pb.cc
+
 debug/ackhandler.o: ../IM_FOR_P2P/Net/ackhandler.cpp ../IM_FOR_P2P/Net/ackhandler.h \
 		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/Net/network.h \
@@ -1499,7 +1789,10 @@ debug/ackhandler.o: ../IM_FOR_P2P/Net/ackhandler.cpp ../IM_FOR_P2P/Net/ackhandle
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qthread.h \
 		../IM_FOR_P2P/Net/recvthread.h \
 		../IM_FOR_P2P/Net/distributethread.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ackhandler.o ..\IM_FOR_P2P\Net\ackhandler.cpp
 
 debug/distributethread.o: ../IM_FOR_P2P/Net/distributethread.cpp ../IM_FOR_P2P/Net/distributethread.h \
@@ -1575,7 +1868,10 @@ debug/distributethread.o: ../IM_FOR_P2P/Net/distributethread.cpp ../IM_FOR_P2P/N
 		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/Net/sendthread.h \
 		../IM_FOR_P2P/Net/recvthread.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\distributethread.o ..\IM_FOR_P2P\Net\distributethread.cpp
 
 debug/netobserver.o: ../IM_FOR_P2P/Net/netobserver.cpp 
@@ -1745,6 +2041,9 @@ debug/nettest.o: ../IM_FOR_P2P/Net/nettest.cpp ../IM_FOR_P2P/Net/nettest.h \
 		../IM_FOR_P2P/Net/recvthread.h \
 		../IM_FOR_P2P/Net/distributethread.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
 		../IM_FOR_P2P/Msg/ChatMsg.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
@@ -1943,6 +2242,9 @@ debug/nettest2.o: ../IM_FOR_P2P/Net/nettest2.cpp ../IM_FOR_P2P/Net/nettest2.h \
 		../IM_FOR_P2P/Net/recvthread.h \
 		../IM_FOR_P2P/Net/distributethread.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
 		../IM_FOR_P2P/Msg/ChatMsg.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
@@ -2064,7 +2366,56 @@ debug/network.o: ../IM_FOR_P2P/Net/network.cpp ../IM_FOR_P2P/Net/network.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qthread.h \
 		../IM_FOR_P2P/Net/recvthread.h \
 		../IM_FOR_P2P/Net/distributethread.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
+		../IM_FOR_P2P/Msg/Connect.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\network.o ..\IM_FOR_P2P\Net\network.cpp
 
 debug/recvthread.o: ../IM_FOR_P2P/Net/recvthread.cpp ../IM_FOR_P2P/Net/recvthread.h \
@@ -2141,6 +2492,9 @@ debug/recvthread.o: ../IM_FOR_P2P/Net/recvthread.cpp ../IM_FOR_P2P/Net/recvthrea
 		../IM_FOR_P2P/Net/sendthread.h \
 		../IM_FOR_P2P/Net/distributethread.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
 		../IM_FOR_P2P/Msg/ACK.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
@@ -2314,6 +2668,9 @@ debug/sendthread.o: ../IM_FOR_P2P/Net/sendthread.cpp ../IM_FOR_P2P/Net/sendthrea
 		../IM_FOR_P2P/Net/recvthread.h \
 		../IM_FOR_P2P/Net/distributethread.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
 		../IM_FOR_P2P/Msg/ChatMsg.pb.h \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
 		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
@@ -2466,6 +2823,7 @@ debug/chatmanager.o: ../IM_FOR_P2P/chatmanager.cpp ../IM_FOR_P2P/chatmanager.h \
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		ui_chatmanager.h \
@@ -2618,6 +2976,7 @@ debug/clientmanager.o: ../IM_FOR_P2P/clientmanager.cpp ../IM_FOR_P2P/clientmanag
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtouchdevice.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h
@@ -2727,6 +3086,7 @@ debug/friendmanager.o: ../IM_FOR_P2P/friendmanager.cpp ../IM_FOR_P2P/friendmanag
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
 		ui_friendmanager.h \
@@ -2885,6 +3245,7 @@ debug/groupmanager.o: ../IM_FOR_P2P/groupmanager.cpp ../IM_FOR_P2P/groupmanager.
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signin.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
 		ui_groupmanager.h \
@@ -3041,6 +3402,7 @@ debug/main.o: ../IM_FOR_P2P/main.cpp ../IM_FOR_P2P/clientmanager.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtouchdevice.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -3052,7 +3414,6 @@ debug/main.o: ../IM_FOR_P2P/main.cpp ../IM_FOR_P2P/clientmanager.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
 		../IM_FOR_P2P/Net/nettest.h \
-		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/Net/nettest2.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\IM_FOR_P2P\main.cpp
 
@@ -3310,6 +3671,7 @@ debug/signin.o: ../IM_FOR_P2P/signin.cpp ../IM_FOR_P2P/signin.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtouchdevice.h \
 		../IM_FOR_P2P/clientmanager.h \
 		../IM_FOR_P2P/signup.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
@@ -3346,6 +3708,8 @@ debug/signin.o: ../IM_FOR_P2P/signin.cpp ../IM_FOR_P2P/signin.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLabel \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlabel.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLineEdit \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlineedit.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
@@ -3463,6 +3827,7 @@ debug/signup.o: ../IM_FOR_P2P/signup.cpp ../IM_FOR_P2P/signup.h \
 		../IM_FOR_P2P/friendmanager.h \
 		../IM_FOR_P2P/groupmanager.h \
 		../IM_FOR_P2P/chatmanager.h \
+		../IM_FOR_P2P/Net/netobserver.h \
 		ui_signup.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QVariant \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QAction \
@@ -3478,13 +3843,11 @@ debug/signup.o: ../IM_FOR_P2P/signup.cpp ../IM_FOR_P2P/signup.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qframe.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QComboBox \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qcombobox.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractspinbox.h \
@@ -3496,6 +3859,15 @@ debug/signup.o: ../IM_FOR_P2P/signup.cpp ../IM_FOR_P2P/signup.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLabel \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlabel.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLineEdit \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlineedit.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
@@ -3504,8 +3876,72 @@ debug/signup.o: ../IM_FOR_P2P/signup.cpp ../IM_FOR_P2P/signup.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QPushButton \
 		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractbutton.h
+		../IM_FOR_P2P/Msg/SignUp.pb.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_def.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port_undef.inc \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/coded_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/common.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/platform_macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/macros.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/logging.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/strutil.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stringpiece.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/hash.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/port.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arena_impl.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/arenastring.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/fastmem.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_table_driven.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/metadata_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/once.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_type_handler.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/parse_context.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/implicit_weak_message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/repeated_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/casts.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/wire_format_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_entry_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/any.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/has_bits.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/map_field_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/inlined_string_field.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_message_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/descriptor.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/mutex.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/generated_enum_reflection.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/unknown_field_set.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/callback.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/stubs/stl_util.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/message.h \
+		../IM_FOR_P2P/Protobuf/include/google/protobuf/extension_set.h \
+		../IM_FOR_P2P/Net/network.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtNetwork/QUdpSocket \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtNetwork/qudpsocket.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtNetwork/qhostaddress.h \
+		../IM_FOR_P2P/Net/sendthread.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QThread \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qthread.h \
+		../IM_FOR_P2P/Net/recvthread.h \
+		../IM_FOR_P2P/Net/distributethread.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QTimer \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qtimer.h \
+		../../../../Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\signup.o ..\IM_FOR_P2P\signup.cpp
+
+debug/qrc_Res.o: debug/qrc_Res.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qrc_Res.o debug\qrc_Res.cpp
 
 debug/moc_nettest.o: debug/moc_nettest.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_nettest.o debug\moc_nettest.cpp

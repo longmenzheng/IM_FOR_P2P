@@ -180,10 +180,12 @@ class SignIn PROTOBUF_FINAL :
 
   enum : int {
     kPasswordFieldNumber = 5,
+    kPhoneFieldNumber = 6,
     kNetworkTypeFieldNumber = 1,
     kMsgIDFieldNumber = 2,
     kRecvIDFieldNumber = 3,
     kSendIDFieldNumber = 4,
+    kStateFieldNumber = 7,
   };
   // bytes password = 5;
   void clear_password();
@@ -208,6 +210,31 @@ class SignIn PROTOBUF_FINAL :
   const std::string& _internal_password() const;
   void _internal_set_password(const std::string& value);
   std::string* _internal_mutable_password();
+  public:
+
+  // bytes phone = 6;
+  void clear_phone();
+  const std::string& phone() const;
+  void set_phone(const std::string& value);
+  void set_phone(std::string&& value);
+  void set_phone(const char* value);
+  void set_phone(const void* value, size_t size);
+  std::string* mutable_phone();
+  std::string* release_phone();
+  void set_allocated_phone(std::string* phone);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_phone();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_phone(
+      std::string* phone);
+  private:
+  const std::string& _internal_phone() const;
+  void _internal_set_phone(const std::string& value);
+  std::string* _internal_mutable_phone();
   public:
 
   // int32 networkType = 1;
@@ -246,6 +273,15 @@ class SignIn PROTOBUF_FINAL :
   void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 state = 7;
+  void clear_state();
+  ::PROTOBUF_NAMESPACE_ID::int32 state() const;
+  void set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state() const;
+  void _internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:IM.SignIn)
  private:
   class _Internal;
@@ -254,10 +290,12 @@ class SignIn PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr phone_;
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_SignIn_2eproto;
 };
@@ -352,6 +390,87 @@ inline void SignIn::set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.SignIn.sendID)
 }
 
+// bytes phone = 6;
+inline void SignIn::clear_phone() {
+  phone_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& SignIn::phone() const {
+  // @@protoc_insertion_point(field_get:IM.SignIn.phone)
+  return _internal_phone();
+}
+inline void SignIn::set_phone(const std::string& value) {
+  _internal_set_phone(value);
+  // @@protoc_insertion_point(field_set:IM.SignIn.phone)
+}
+inline std::string* SignIn::mutable_phone() {
+  // @@protoc_insertion_point(field_mutable:IM.SignIn.phone)
+  return _internal_mutable_phone();
+}
+inline const std::string& SignIn::_internal_phone() const {
+  return phone_.Get();
+}
+inline void SignIn::_internal_set_phone(const std::string& value) {
+  
+  phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void SignIn::set_phone(std::string&& value) {
+  
+  phone_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:IM.SignIn.phone)
+}
+inline void SignIn::set_phone(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:IM.SignIn.phone)
+}
+inline void SignIn::set_phone(const void* value,
+    size_t size) {
+  
+  phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:IM.SignIn.phone)
+}
+inline std::string* SignIn::_internal_mutable_phone() {
+  
+  return phone_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* SignIn::release_phone() {
+  // @@protoc_insertion_point(field_release:IM.SignIn.phone)
+  return phone_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void SignIn::set_allocated_phone(std::string* phone) {
+  if (phone != nullptr) {
+    
+  } else {
+    
+  }
+  phone_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), phone,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:IM.SignIn.phone)
+}
+inline std::string* SignIn::unsafe_arena_release_phone() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:IM.SignIn.phone)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return phone_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void SignIn::unsafe_arena_set_allocated_phone(
+    std::string* phone) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (phone != nullptr) {
+    
+  } else {
+    
+  }
+  phone_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      phone, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.SignIn.phone)
+}
+
 // bytes password = 5;
 inline void SignIn::clear_password() {
   password_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
@@ -431,6 +550,26 @@ inline void SignIn::unsafe_arena_set_allocated_password(
   password_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       password, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.SignIn.password)
+}
+
+// int32 state = 7;
+inline void SignIn::clear_state() {
+  state_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignIn::_internal_state() const {
+  return state_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SignIn::state() const {
+  // @@protoc_insertion_point(field_get:IM.SignIn.state)
+  return _internal_state();
+}
+inline void SignIn::_internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  state_ = value;
+}
+inline void SignIn::set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:IM.SignIn.state)
 }
 
 #ifdef __GNUC__

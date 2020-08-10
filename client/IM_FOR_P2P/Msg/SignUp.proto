@@ -9,6 +9,7 @@ message SignUp
       bytes password=5;
       bytes nickname=6; //昵称
       bytes phone=7;
-      bytes desc=8;   //介绍
+	  int32 sex=8;
       bytes icon=9;   //头像
+	  int32 state=10;  //1:注册成功 2：该号码已注册 3：
 }

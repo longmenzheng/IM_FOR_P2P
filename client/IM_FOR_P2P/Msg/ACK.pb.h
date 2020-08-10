@@ -183,7 +183,6 @@ class ACK PROTOBUF_FINAL :
     kRecvIDFieldNumber = 2,
     kSendIDFieldNumber = 3,
     kMsgIDFieldNumber = 4,
-    kFlagFieldNumber = 5,
   };
   // int32 networkType = 1;
   void clear_networktype();
@@ -221,15 +220,6 @@ class ACK PROTOBUF_FINAL :
   void _internal_set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // bool flag = 5;
-  void clear_flag();
-  bool flag() const;
-  void set_flag(bool value);
-  private:
-  bool _internal_flag() const;
-  void _internal_set_flag(bool value);
-  public:
-
   // @@protoc_insertion_point(class_scope:IM.ACK)
  private:
   class _Internal;
@@ -241,7 +231,6 @@ class ACK PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
-  bool flag_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ACK_2eproto;
 };
@@ -334,26 +323,6 @@ inline void ACK::_internal_set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void ACK::set_msgid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_msgid(value);
   // @@protoc_insertion_point(field_set:IM.ACK.msgID)
-}
-
-// bool flag = 5;
-inline void ACK::clear_flag() {
-  flag_ = false;
-}
-inline bool ACK::_internal_flag() const {
-  return flag_;
-}
-inline bool ACK::flag() const {
-  // @@protoc_insertion_point(field_get:IM.ACK.flag)
-  return _internal_flag();
-}
-inline void ACK::_internal_set_flag(bool value) {
-  
-  flag_ = value;
-}
-inline void ACK::set_flag(bool value) {
-  _internal_set_flag(value);
-  // @@protoc_insertion_point(field_set:IM.ACK.flag)
 }
 
 #ifdef __GNUC__

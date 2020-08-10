@@ -1,10 +1,15 @@
 INPUT(
 ./debug\ACK.pb.o
+./debug\ApplyAgree.pb.o
 ./debug\BuildP2P.pb.o
 ./debug\ChatMsg.pb.o
 ./debug\Connect.pb.o
+./debug\ModifyInfo.pb.o
+./debug\OfflineMsg.pb.o
+./debug\RelationManage.pb.o
 ./debug\SignIn.pb.o
 ./debug\SignUp.pb.o
+./debug\SystemMsg.pb.o
 ./debug\ackhandler.o
 ./debug\distributethread.o
 ./debug\netobserver.o
@@ -22,6 +27,7 @@ INPUT(
 ./debug\mainwindow.o
 ./debug\signin.o
 ./debug\signup.o
+./debug\qrc_Res.o
 ./debug\moc_nettest.o
 ./debug\moc_nettest2.o
 ./debug\moc_chatmanager.o

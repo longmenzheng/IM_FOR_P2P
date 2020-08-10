@@ -17,11 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Msg/ACK.pb.cc \
+    Msg/ApplyAgree.pb.cc \
     Msg/BuildP2P.pb.cc \
     Msg/ChatMsg.pb.cc \
     Msg/Connect.pb.cc \
+    Msg/ModifyInfo.pb.cc \
+    Msg/OfflineMsg.pb.cc \
+    Msg/RelationManage.pb.cc \
     Msg/SignIn.pb.cc \
     Msg/SignUp.pb.cc \
+    Msg/SystemMsg.pb.cc \
     Net/ackhandler.cpp \
     Net/distributethread.cpp \
     Net/netobserver.cpp \
@@ -42,11 +47,16 @@ SOURCES += \
 
 HEADERS += \
     Msg/ACK.pb.h \
+    Msg/ApplyAgree.pb.h \
     Msg/BuildP2P.pb.h \
     Msg/ChatMsg.pb.h \
     Msg/Connect.pb.h \
+    Msg/ModifyInfo.pb.h \
+    Msg/OfflineMsg.pb.h \
+    Msg/RelationManage.pb.h \
     Msg/SignIn.pb.h \
     Msg/SignUp.pb.h \
+    Msg/SystemMsg.pb.h \
     Net/ackhandler.h \
     Net/distributethread.h \
     Net/netobserver.h \
@@ -82,3 +92,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 INCLUDEPATH += $$PWD/Protobuf/include $$PWD/Net $$PWD/Msg
 
 LIBS += -L$$PWD/Protobuf/lib -lprotobuf
+
+RESOURCES += \
+    Res.qrc

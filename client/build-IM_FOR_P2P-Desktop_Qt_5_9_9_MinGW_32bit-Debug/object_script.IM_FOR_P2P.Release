@@ -1,10 +1,15 @@
 INPUT(
 ./release\ACK.pb.o
+./release\ApplyAgree.pb.o
 ./release\BuildP2P.pb.o
 ./release\ChatMsg.pb.o
 ./release\Connect.pb.o
+./release\ModifyInfo.pb.o
+./release\OfflineMsg.pb.o
+./release\RelationManage.pb.o
 ./release\SignIn.pb.o
 ./release\SignUp.pb.o
+./release\SystemMsg.pb.o
 ./release\ackhandler.o
 ./release\distributethread.o
 ./release\netobserver.o
@@ -22,6 +27,7 @@ INPUT(
 ./release\mainwindow.o
 ./release\signin.o
 ./release\signup.o
+./release\qrc_Res.o
 ./release\moc_nettest.o
 ./release\moc_nettest2.o
 ./release\moc_chatmanager.o

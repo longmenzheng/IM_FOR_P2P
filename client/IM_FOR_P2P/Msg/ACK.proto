@@ -6,5 +6,4 @@ message ACK
 	  int32 recvID=2;
 	  int32 sendID=3;
       int32 msgID=4;  
-      bool flag=5;
 }

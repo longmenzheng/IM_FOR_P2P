@@ -1,5 +1,17 @@
 #include "clientmanager.h"
 
+
+ClientManager* ClientManager::clientManager=nullptr;
+
+ClientManager * ClientManager::getInstance()
+{
+    if(clientManager==nullptr)
+    {
+        clientManager=new ClientManager();
+    }
+    return clientManager;
+}
+
 ClientManager::ClientManager():
         m_signIn(new SignIn(this)),
         m_signUp(new SignUp(this)),

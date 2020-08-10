@@ -4,6 +4,7 @@
 //#include "ACK.pb.h"
 #include <thread>
 #include <exception>
+#include "ackhandler.h"
 
 
 Network* Network::m_instance=nullptr;
@@ -26,10 +27,15 @@ Network::Network():
     pRecvThread->start();         //启动接收线程
     pDistributeThread->start();   //启动分发线程
 
-    m_timeout=new QTimer(this);
-    m_timeout->start(5000);
-    connect(m_timeout,&QTimer::timeout,this,&Network::keepConnectWithServer);
+    //启动ack处理者
+    ACKHandler *ackhandler=new ACKHandler(m_sendMap,m_time);
+    addObserver(ackhandler);
 
+    /*
+    m_timeout=new QTimer(this);
+    m_timeout->start(50000);
+    connect(m_timeout,&QTimer::timeout,this,&Network::keepConnectWithServer);
+    */
     //下面为测试代码
 
     NetworkAddr tmp;

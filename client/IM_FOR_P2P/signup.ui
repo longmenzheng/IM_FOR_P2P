@@ -2,22 +2,35 @@
 <ui version="4.0">
  <class>SignUp</class>
  <widget class="QWidget" name="SignUp">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>321</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>注册</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Res.qrc">
+    <normaloff>:/Resource/Images/signUpF_Icon.png</normaloff>:/Resource/Images/signUpF_Icon.png</iconset>
   </property>
   <widget class="QPushButton" name="signIn">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>210</y>
+     <x>100</x>
+     <y>270</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -25,12 +38,16 @@
    <property name="text">
     <string>登录</string>
    </property>
+   <property name="icon">
+    <iconset resource="Res.qrc">
+     <normaloff>:/Resource/Images/signIn.png</normaloff>:/Resource/Images/signIn.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="signUp">
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>210</y>
+     <y>270</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -38,48 +55,173 @@
    <property name="text">
     <string>注册</string>
    </property>
+   <property name="icon">
+    <iconset resource="Res.qrc">
+     <normaloff>:/Resource/Images/signUp.png</normaloff>:/Resource/Images/signUp.png</iconset>
+   </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="nickname">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>30</y>
-     <width>191</width>
+     <x>100</x>
+     <y>80</y>
+     <width>125</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>昵称</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passwdTow">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>200</y>
+     <width>200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>密码</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passwdOne">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>160</y>
+     <width>200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>密码</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>230</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Image">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>10</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="Res.qrc">:/Resource/Images/userIcon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>80</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>性别</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Res.qrc">
+      <normaloff>:/Resource/Images/sex.png</normaloff>:/Resource/Images/sex.png</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>男</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Res.qrc">
+      <normaloff>:/Resource/Images/sexM.png</normaloff>:/Resource/Images/sexM.png</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>女</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Res.qrc">
+      <normaloff>:/Resource/Images/sexF.png</normaloff>:/Resource/Images/sexF.png</iconset>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLineEdit" name="phone">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>120</y>
+     <width>200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Normal</enum>
+   </property>
+   <property name="placeholderText">
+    <string>手机号</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="protolabel">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>230</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>我已阅读并接受注册协议 &gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="note">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>250</y>
+     <width>401</width>
      <height>20</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>70</y>
-     <width>191</width>
-     <height>20</height>
-    </rect>
+   <property name="text">
+    <string/>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>150</y>
-     <width>191</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>110</y>
-     <width>191</width>
-     <height>20</height>
-    </rect>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Res.qrc"/>
+ </resources>
  <connections/>
 </ui>

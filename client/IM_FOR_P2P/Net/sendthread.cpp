@@ -35,7 +35,10 @@ void SendThread::run()
     {
         //do
         if(m_sendQueue->empty())
+        {
+            QThread::msleep(500);   //500ms
             continue;
+        }
         const char *msg=m_sendQueue->front();
         //格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
         int recvID=-1;
@@ -51,7 +54,7 @@ void SendThread::run()
                                              //recvID不存在
             recvAddr=m_netInfo->at(0);       //发送给服务器
         }
-        qDebug()<<sizeof(*msg)<<"strlen："<<strlen(msg);
+        //qDebug()<<sizeof(*msg)<<"strlen："<<strlen(msg);
         m_udpSocket->writeDatagram(msg,strlen(msg),recvAddr.ip,recvAddr.port);
         m_sendQueue->pop();                  //从待发队列出队
 

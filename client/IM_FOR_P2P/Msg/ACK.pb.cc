@@ -48,7 +48,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ACK_2eproto::offsets[] PROTOBU
   PROTOBUF_FIELD_OFFSET(::IM::ACK, recvid_),
   PROTOBUF_FIELD_OFFSET(::IM::ACK, sendid_),
   PROTOBUF_FIELD_OFFSET(::IM::ACK, msgid_),
-  PROTOBUF_FIELD_OFFSET(::IM::ACK, flag_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::IM::ACK)},
@@ -59,9 +58,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ACK_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\tACK.proto\022\002IM\"W\n\003ACK\022\023\n\013networkType\030\001 "
+  "\n\tACK.proto\022\002IM\"I\n\003ACK\022\023\n\013networkType\030\001 "
   "\001(\005\022\016\n\006recvID\030\002 \001(\005\022\016\n\006sendID\030\003 \001(\005\022\r\n\005m"
-  "sgID\030\004 \001(\005\022\014\n\004flag\030\005 \001(\010b\006proto3"
+  "sgID\030\004 \001(\005b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ACK_2eproto_deps[1] = {
 };
@@ -70,7 +69,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ACK
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ACK_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ACK_2eproto = {
-  false, false, descriptor_table_protodef_ACK_2eproto, "ACK.proto", 112,
+  false, false, descriptor_table_protodef_ACK_2eproto, "ACK.proto", 98,
   &descriptor_table_ACK_2eproto_once, descriptor_table_ACK_2eproto_sccs, descriptor_table_ACK_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ACK_2eproto::offsets,
   file_level_metadata_ACK_2eproto, 1, file_level_enum_descriptors_ACK_2eproto, file_level_service_descriptors_ACK_2eproto,
@@ -98,15 +97,15 @@ ACK::ACK(const ACK& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&flag_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(flag_));
+    static_cast<size_t>(reinterpret_cast<char*>(&msgid_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(msgid_));
   // @@protoc_insertion_point(copy_constructor:IM.ACK)
 }
 
 void ACK::SharedCtor() {
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&flag_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(flag_));
+      reinterpret_cast<char*>(&msgid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(msgid_));
 }
 
 ACK::~ACK() {
@@ -141,8 +140,8 @@ void ACK::Clear() {
   (void) cached_has_bits;
 
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&flag_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(flag_));
+      reinterpret_cast<char*>(&msgid_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(msgid_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -179,13 +178,6 @@ const char* ACK::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::intern
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           msgid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // bool flag = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          flag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -241,12 +233,6 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_msgid(), target);
   }
 
-  // bool flag = 5;
-  if (this->flag() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_flag(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -289,11 +275,6 @@ size_t ACK::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_msgid());
-  }
-
-  // bool flag = 5;
-  if (this->flag() != 0) {
-    total_size += 1 + 1;
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -339,9 +320,6 @@ void ACK::MergeFrom(const ACK& from) {
   if (from.msgid() != 0) {
     _internal_set_msgid(from._internal_msgid());
   }
-  if (from.flag() != 0) {
-    _internal_set_flag(from._internal_flag());
-  }
 }
 
 void ACK::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -366,8 +344,8 @@ void ACK::InternalSwap(ACK* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ACK, flag_)
-      + sizeof(ACK::flag_)
+      PROTOBUF_FIELD_OFFSET(ACK, msgid_)
+      + sizeof(ACK::msgid_)
       - PROTOBUF_FIELD_OFFSET(ACK, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

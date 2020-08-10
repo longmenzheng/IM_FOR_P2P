@@ -6,5 +6,7 @@ message SignIn
       int32 msgID=2;         //每条消息的标识
       int32 recvID=3;
       int32 sendID=4;
+	  bytes phone=6;
       bytes password=5;
+	  int32 state=7;
 }
