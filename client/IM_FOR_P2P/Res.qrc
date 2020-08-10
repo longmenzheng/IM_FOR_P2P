@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Resource">
+        <file>Images/sex.png</file>
+        <file>Images/sexF.png</file>
+        <file>Images/sexM.png</file>
+        <file>Images/signIn.png</file>
+        <file>Images/signUp.png</file>
+        <file>Images/signInF_Icon.png</file>
+        <file>Images/signUpF_Icon.png</file>
+        <file>Images/userIcon.png</file>
+    </qresource>
+</RCC>

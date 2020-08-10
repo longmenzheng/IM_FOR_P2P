@@ -1,0 +1,10 @@
+D:/secondBuildProtobuf/CMakeFiles/list_install_components.dir
+D:/secondBuildProtobuf/CMakeFiles/libprotobuf-lite.dir
+D:/secondBuildProtobuf/CMakeFiles/protoc.dir
+D:/secondBuildProtobuf/CMakeFiles/libprotoc.dir
+D:/secondBuildProtobuf/CMakeFiles/libprotobuf.dir
+D:/secondBuildProtobuf/CMakeFiles/install.dir
+D:/secondBuildProtobuf/CMakeFiles/edit_cache.dir
+D:/secondBuildProtobuf/CMakeFiles/rebuild_cache.dir
+D:/secondBuildProtobuf/CMakeFiles/install/local.dir
+D:/secondBuildProtobuf/CMakeFiles/install/strip.dir

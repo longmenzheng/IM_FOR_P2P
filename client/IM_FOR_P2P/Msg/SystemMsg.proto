@@ -1,0 +1,11 @@
+syntax="proto3";
+package IM;
+
+message SystemMsg
+{
+int32 networkType=1;
+int32 recvID=2;//消息接收者
+int32 msgID=3;//每条消息的标识
+string pronounceTime=4;
+bytes content=5;
+}
