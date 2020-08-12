@@ -1,0 +1,12 @@
+syntax="proto3";
+package IM;
+
+message ApplyAgree
+{
+int32 networkType=1;
+int32 msgID=2;//每条消息的标识
+int32 recvID=3;//消息接收者
+int32 sendId=6;
+int32 applyerID=4;
+int32 peerID=5;
+}

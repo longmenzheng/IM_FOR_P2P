@@ -1,0 +1,7 @@
+obj=ServerManager.o Network.o ServerFactory.o WorkStudio.o ServerWorker.o DoWorkWithDB.o DoWorkNoDB.o
+target=server
+$(target):$(obj)
+	g++ $(obj) -o $(target)
+
+%.o:%.cpp
+	g++ -c $< -o $@
