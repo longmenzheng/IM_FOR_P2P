@@ -19,6 +19,8 @@ FriendManager::FriendManager(ClientManager *manager,QWidget *parent) :
 
 bool FriendManager::init()
 {
+    /*
+
     //发送信号
     connect(ui->msgButton,&QPushButton::released,this,&FriendManager::clickMsg);
     connect(ui->groupButton,&QPushButton::released,this,&FriendManager::clickGroup);
@@ -31,7 +33,7 @@ bool FriendManager::init()
         this->show();
     });
 
-
+*/
 
     return true;
 }

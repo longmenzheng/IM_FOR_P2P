@@ -19,12 +19,15 @@ INPUT(
 ./release\recvthread.o
 ./release\resendthread.o
 ./release\sendthread.o
+./release\getinfo.o
+./release\userinfo.o
 ./release\chatmanager.o
 ./release\clientmanager.o
 ./release\friendmanager.o
 ./release\groupmanager.o
 ./release\main.o
 ./release\mainwindow.o
+./release\showuserinfo.o
 ./release\signin.o
 ./release\signup.o
 ./release\qrc_Res.o
@@ -34,6 +37,7 @@ INPUT(
 ./release\moc_friendmanager.o
 ./release\moc_groupmanager.o
 ./release\moc_mainwindow.o
+./release\moc_showuserinfo.o
 ./release\moc_signin.o
 ./release\moc_signup.o
 );

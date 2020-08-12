@@ -36,14 +36,17 @@ SOURCES += \
     Net/recvthread.cpp \
     Net/resendthread.cpp \
     Net/sendthread.cpp \
+    SecondClasses/getinfo.cpp \
+    SecondClasses/userinfo.cpp \
     chatmanager.cpp \
     clientmanager.cpp \
     friendmanager.cpp \
     groupmanager.cpp \
     main.cpp \
     mainwindow.cpp \
+    showuserinfo.cpp \
     signin.cpp \
-    signup.cpp
+    signup.cpp \
 
 HEADERS += \
     Msg/ACK.pb.h \
@@ -66,13 +69,16 @@ HEADERS += \
     Net/recvthread.h \
     Net/resendthread.h \
     Net/sendthread.h \
+    SecondClasses/getinfo.h \
+    SecondClasses/userinfo.h \
     chatmanager.h \
     clientmanager.h \
     friendmanager.h \
     groupmanager.h \
     mainwindow.h \
+    showuserinfo.h \
     signin.h \
-    signup.h
+    signup.h \
 
 FORMS += \
     Net/nettest.ui \
@@ -81,6 +87,7 @@ FORMS += \
     friendmanager.ui \
     groupmanager.ui \
     mainwindow.ui \
+    showuserinfo.ui \
     signin.ui \
     signup.ui
 
@@ -89,7 +96,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-INCLUDEPATH += $$PWD/Protobuf/include $$PWD/Net $$PWD/Msg
+INCLUDEPATH += $$PWD/Protobuf/include $$PWD/Net $$PWD/Msg $$PWD/SecondClass
 
 LIBS += -L$$PWD/Protobuf/lib -lprotobuf
 

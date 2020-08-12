@@ -5,8 +5,25 @@
         <file>Images/sexM.png</file>
         <file>Images/signIn.png</file>
         <file>Images/signUp.png</file>
-        <file>Images/signInF_Icon.png</file>
-        <file>Images/signUpF_Icon.png</file>
         <file>Images/userIcon.png</file>
+        <file>Images/chatNO.png</file>
+        <file>Images/chatYES.png</file>
+        <file>Images/friendNO.png</file>
+        <file>Images/friendYES.png</file>
+        <file>Images/groupNO.png</file>
+        <file>Images/groupYES.png</file>
+        <file>Images/userIconF.png</file>
+        <file>Images/searchIcon .png</file>
+        <file>Images/imageIcon.png</file>
+        <file>Images/settingNO.png</file>
+        <file>Images/settingYES.png</file>
+        <file>Images/quitNO.png</file>
+        <file>Images/quitYES.png</file>
+        <file>Images/APPIcon.png</file>
+        <file>Images/phoneInfo.png</file>
+        <file>Images/remarkInfo.png</file>
+        <file>Images/signInfo.png</file>
+        <file>Images/userIdInfo.png</file>
+        <file>Images/userNameInfo.png</file>
     </qresource>
 </RCC>

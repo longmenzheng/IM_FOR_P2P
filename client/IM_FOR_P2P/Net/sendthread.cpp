@@ -36,7 +36,7 @@ void SendThread::run()
         //do
         if(m_sendQueue->empty())
         {
-            QThread::msleep(500);   //500ms
+            //QThread::msleep(500);   //500ms
             continue;
         }
         const char *msg=m_sendQueue->front();

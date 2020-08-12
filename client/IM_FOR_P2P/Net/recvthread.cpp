@@ -29,7 +29,7 @@ void RecvThread::run(){
     {
         if(!m_udpSocket->hasPendingDatagrams())
         {
-            msleep(250);
+            //msleep(250);
             continue;
         }
         QHostAddress sendIP;

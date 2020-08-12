@@ -25,9 +25,6 @@ QT_BEGIN_NAMESPACE
 class Ui_GroupManager
 {
 public:
-    QPushButton *msgButton;
-    QPushButton *friendButton;
-    QPushButton *groupButton;
     QToolBox *GroupManager_2;
     QWidget *page;
     QPushButton *pushButton;
@@ -41,19 +38,10 @@ public:
     {
         if (GroupManager->objectName().isEmpty())
             GroupManager->setObjectName(QStringLiteral("GroupManager"));
-        GroupManager->resize(800, 600);
-        msgButton = new QPushButton(GroupManager);
-        msgButton->setObjectName(QStringLiteral("msgButton"));
-        msgButton->setGeometry(QRect(0, 60, 50, 50));
-        friendButton = new QPushButton(GroupManager);
-        friendButton->setObjectName(QStringLiteral("friendButton"));
-        friendButton->setGeometry(QRect(0, 120, 50, 50));
-        groupButton = new QPushButton(GroupManager);
-        groupButton->setObjectName(QStringLiteral("groupButton"));
-        groupButton->setGeometry(QRect(0, 180, 50, 50));
+        GroupManager->resize(740, 600);
         GroupManager_2 = new QToolBox(GroupManager);
         GroupManager_2->setObjectName(QStringLiteral("GroupManager_2"));
-        GroupManager_2->setGeometry(QRect(50, 60, 200, 540));
+        GroupManager_2->setGeometry(QRect(10, 60, 200, 540));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
         page->setGeometry(QRect(0, 0, 200, 488));
@@ -73,10 +61,13 @@ public:
         GroupManager_2->addItem(page_3, QStringLiteral("Page 2"));
         searchBar = new QLineEdit(GroupManager);
         searchBar->setObjectName(QStringLiteral("searchBar"));
-        searchBar->setGeometry(QRect(50, 20, 151, 20));
+        searchBar->setGeometry(QRect(10, 20, 150, 20));
         pushButton_4 = new QPushButton(GroupManager);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(210, 20, 41, 23));
+        pushButton_4->setGeometry(QRect(160, 20, 50, 20));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/Resource/Images/searchIcon .png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_4->setIcon(icon);
 
         retranslateUi(GroupManager);
 
@@ -89,9 +80,6 @@ public:
     void retranslateUi(QWidget *GroupManager)
     {
         GroupManager->setWindowTitle(QApplication::translate("GroupManager", "Form", Q_NULLPTR));
-        msgButton->setText(QApplication::translate("GroupManager", "\346\266\210\346\201\257", Q_NULLPTR));
-        friendButton->setText(QApplication::translate("GroupManager", "\345\245\275\345\217\213", Q_NULLPTR));
-        groupButton->setText(QApplication::translate("GroupManager", "\347\276\244", Q_NULLPTR));
         pushButton->setText(QApplication::translate("GroupManager", "\347\276\2441", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("GroupManager", "\347\276\2442", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("GroupManager", "\347\276\2443", Q_NULLPTR));

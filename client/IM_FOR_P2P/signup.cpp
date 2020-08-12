@@ -22,6 +22,7 @@ SignUp::SignUp(ClientManager *manager,QWidget *parent):
 
 bool SignUp::init()
 {
+
     //监听登录界面发出的clickSignUpSignal信号
     connect(clientManager->getSignIn(),&SignIn::clickSignUpSignal,[=](){
         this->show();

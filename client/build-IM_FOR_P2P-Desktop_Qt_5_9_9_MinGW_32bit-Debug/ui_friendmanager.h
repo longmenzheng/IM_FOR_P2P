@@ -25,9 +25,6 @@ QT_BEGIN_NAMESPACE
 class Ui_FriendManager
 {
 public:
-    QPushButton *msgButton;
-    QPushButton *friendButton;
-    QPushButton *groupButton;
     QToolBox *FriendManager_2;
     QWidget *page_1;
     QPushButton *pushButton_2;
@@ -41,19 +38,10 @@ public:
     {
         if (FriendManager->objectName().isEmpty())
             FriendManager->setObjectName(QStringLiteral("FriendManager"));
-        FriendManager->resize(800, 600);
-        msgButton = new QPushButton(FriendManager);
-        msgButton->setObjectName(QStringLiteral("msgButton"));
-        msgButton->setGeometry(QRect(0, 60, 50, 50));
-        friendButton = new QPushButton(FriendManager);
-        friendButton->setObjectName(QStringLiteral("friendButton"));
-        friendButton->setGeometry(QRect(0, 120, 50, 50));
-        groupButton = new QPushButton(FriendManager);
-        groupButton->setObjectName(QStringLiteral("groupButton"));
-        groupButton->setGeometry(QRect(0, 180, 50, 50));
+        FriendManager->resize(740, 600);
         FriendManager_2 = new QToolBox(FriendManager);
         FriendManager_2->setObjectName(QStringLiteral("FriendManager_2"));
-        FriendManager_2->setGeometry(QRect(50, 60, 200, 540));
+        FriendManager_2->setGeometry(QRect(10, 60, 200, 540));
         page_1 = new QWidget();
         page_1->setObjectName(QStringLiteral("page_1"));
         page_1->setGeometry(QRect(0, 0, 200, 488));
@@ -73,10 +61,13 @@ public:
         FriendManager_2->addItem(page_2, QStringLiteral("Page 2"));
         searchBar = new QLineEdit(FriendManager);
         searchBar->setObjectName(QStringLiteral("searchBar"));
-        searchBar->setGeometry(QRect(50, 20, 151, 20));
+        searchBar->setGeometry(QRect(10, 20, 150, 20));
         searchButton = new QPushButton(FriendManager);
         searchButton->setObjectName(QStringLiteral("searchButton"));
-        searchButton->setGeometry(QRect(210, 20, 41, 23));
+        searchButton->setGeometry(QRect(160, 20, 50, 20));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/Resource/Images/searchIcon .png"), QSize(), QIcon::Normal, QIcon::Off);
+        searchButton->setIcon(icon);
 
         retranslateUi(FriendManager);
 
@@ -89,9 +80,6 @@ public:
     void retranslateUi(QWidget *FriendManager)
     {
         FriendManager->setWindowTitle(QApplication::translate("FriendManager", "Form", Q_NULLPTR));
-        msgButton->setText(QApplication::translate("FriendManager", "\346\266\210\346\201\257", Q_NULLPTR));
-        friendButton->setText(QApplication::translate("FriendManager", "\345\245\275\345\217\213", Q_NULLPTR));
-        groupButton->setText(QApplication::translate("FriendManager", "\347\276\244", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("FriendManager", "\345\245\275\345\217\2131", Q_NULLPTR));
         pushButton->setText(QApplication::translate("FriendManager", "\345\245\275\345\217\2132", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("FriendManager", "\345\245\275\345\217\2133", Q_NULLPTR));

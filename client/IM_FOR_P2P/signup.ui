@@ -24,7 +24,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="Res.qrc">
-    <normaloff>:/Resource/Images/signUpF_Icon.png</normaloff>:/Resource/Images/signUpF_Icon.png</iconset>
+    <normaloff>:/Resource/Images/APPIcon.png</normaloff>:/Resource/Images/APPIcon.png</iconset>
   </property>
   <widget class="QPushButton" name="signIn">
    <property name="geometry">

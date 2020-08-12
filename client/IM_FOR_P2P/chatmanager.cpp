@@ -1,5 +1,6 @@
 #include "chatmanager.h"
 #include "ui_chatmanager.h"
+#include <QDebug>
 
 
 ChatManager::ChatManager(QWidget *parent) :
@@ -19,6 +20,10 @@ ChatManager::ChatManager(ClientManager * manager,QWidget *parent) :
 
 bool ChatManager::init()
 {
+    connect(ui->searchButton,&QPushButton::released,[=](){
+        qDebug()<<"fffjj";
+    });
+/*
     //connect(ui->msgButton,&QPushButton::released,this,&ChatManager::clickMsg);
     connect(ui->friendButton,&QPushButton::released,this,&ChatManager::clickFriend);
     connect(ui->groupButton,&QPushButton::released,this,&ChatManager::clickGroup);
@@ -35,6 +40,8 @@ bool ChatManager::init()
     connect(clientManager->getFriendManager(),&FriendManager::clickMsgSignal,[=](){
         this->show();
     });
+    */
+    return true;
 }
 
 

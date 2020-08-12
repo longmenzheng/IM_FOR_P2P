@@ -18,6 +18,7 @@ GroupManager::GroupManager(ClientManager * manager,QWidget *parent) :
 
 bool GroupManager::init()
 {
+/*
     //发送信号
     connect(ui->msgButton,&QPushButton::released,this,&GroupManager::clickMsg);
     connect(ui->friendButton,&QPushButton::released,this,&GroupManager::clickFriend);
@@ -29,7 +30,7 @@ bool GroupManager::init()
     connect(clientManager->getFriendManager(),&FriendManager::clickGroupSignal,[=](){
         this->show();
     });
-
+*/
     return true;
 }
 

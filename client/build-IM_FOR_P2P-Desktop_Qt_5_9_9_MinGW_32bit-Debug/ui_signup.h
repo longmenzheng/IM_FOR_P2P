@@ -50,7 +50,7 @@ public:
         sizePolicy.setHeightForWidth(SignUp->sizePolicy().hasHeightForWidth());
         SignUp->setSizePolicy(sizePolicy);
         QIcon icon;
-        icon.addFile(QStringLiteral(":/Resource/Images/signUpF_Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/Resource/Images/APPIcon.png"), QSize(), QIcon::Normal, QIcon::Off);
         SignUp->setWindowIcon(icon);
         signIn = new QPushButton(SignUp);
         signIn->setObjectName(QStringLiteral("signIn"));

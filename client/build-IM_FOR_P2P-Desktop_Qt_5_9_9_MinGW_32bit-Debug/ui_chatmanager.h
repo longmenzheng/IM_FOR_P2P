@@ -24,38 +24,30 @@ QT_BEGIN_NAMESPACE
 class Ui_ChatManager
 {
 public:
-    QPushButton *friendButton;
-    QPushButton *groupButton;
-    QPushButton *msgButton;
     QListWidget *ChatManager_2;
-    QLineEdit *searchBar;
-    QPushButton *pushButton_4;
+    QLineEdit *searchEdit;
+    QPushButton *searchButton;
 
     void setupUi(QWidget *ChatManager)
     {
         if (ChatManager->objectName().isEmpty())
             ChatManager->setObjectName(QStringLiteral("ChatManager"));
-        ChatManager->resize(800, 600);
-        friendButton = new QPushButton(ChatManager);
-        friendButton->setObjectName(QStringLiteral("friendButton"));
-        friendButton->setGeometry(QRect(0, 120, 50, 50));
-        groupButton = new QPushButton(ChatManager);
-        groupButton->setObjectName(QStringLiteral("groupButton"));
-        groupButton->setGeometry(QRect(0, 180, 50, 50));
-        msgButton = new QPushButton(ChatManager);
-        msgButton->setObjectName(QStringLiteral("msgButton"));
-        msgButton->setGeometry(QRect(0, 60, 50, 50));
+        ChatManager->resize(740, 600);
         ChatManager_2 = new QListWidget(ChatManager);
         new QListWidgetItem(ChatManager_2);
         new QListWidgetItem(ChatManager_2);
         ChatManager_2->setObjectName(QStringLiteral("ChatManager_2"));
-        ChatManager_2->setGeometry(QRect(50, 60, 200, 540));
-        searchBar = new QLineEdit(ChatManager);
-        searchBar->setObjectName(QStringLiteral("searchBar"));
-        searchBar->setGeometry(QRect(50, 20, 151, 20));
-        pushButton_4 = new QPushButton(ChatManager);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(210, 20, 41, 23));
+        ChatManager_2->setGeometry(QRect(10, 60, 200, 540));
+        searchEdit = new QLineEdit(ChatManager);
+        searchEdit->setObjectName(QStringLiteral("searchEdit"));
+        searchEdit->setGeometry(QRect(10, 20, 150, 20));
+        searchButton = new QPushButton(ChatManager);
+        searchButton->setObjectName(QStringLiteral("searchButton"));
+        searchButton->setGeometry(QRect(160, 20, 50, 20));
+        searchButton->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/Resource/Images/searchIcon .png"), QSize(), QIcon::Normal, QIcon::Off);
+        searchButton->setIcon(icon);
 
         retranslateUi(ChatManager);
 
@@ -65,9 +57,6 @@ public:
     void retranslateUi(QWidget *ChatManager)
     {
         ChatManager->setWindowTitle(QApplication::translate("ChatManager", "Form", Q_NULLPTR));
-        friendButton->setText(QApplication::translate("ChatManager", "\345\245\275\345\217\213", Q_NULLPTR));
-        groupButton->setText(QApplication::translate("ChatManager", "\347\276\244", Q_NULLPTR));
-        msgButton->setText(QApplication::translate("ChatManager", "\346\266\210\346\201\257", Q_NULLPTR));
 
         const bool __sortingEnabled = ChatManager_2->isSortingEnabled();
         ChatManager_2->setSortingEnabled(false);
@@ -77,7 +66,7 @@ public:
         ___qlistwidgetitem1->setText(QApplication::translate("ChatManager", "\351\234\200\350\246\201\350\207\252\345\256\232\344\271\211\350\201\212\345\244\251\346\230\276\347\244\272\346\216\247\344\273\2662", Q_NULLPTR));
         ChatManager_2->setSortingEnabled(__sortingEnabled);
 
-        pushButton_4->setText(QApplication::translate("ChatManager", "\346\220\234\347\264\242", Q_NULLPTR));
+        searchButton->setText(QApplication::translate("ChatManager", "\346\220\234\347\264\242", Q_NULLPTR));
     } // retranslateUi
 
 };

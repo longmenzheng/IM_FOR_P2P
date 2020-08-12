@@ -2,20 +2,49 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStackedWidget>
+#include <QPushButton>
+#include "friendmanager.h"
+#include "groupmanager.h"
+#include "chatmanager.h"
+#include "showuserinfo.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class ClientManager;
+class ChatManager;
+class FriendManager;
+class GroupManager;
+class ShowUserInfo;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(ClientManager* m_clientManager,QWidget *parent = nullptr);
     ~MainWindow();
+    void init();
 
 private:
     Ui::MainWindow *ui;
+    ClientManager* m_clientManager;
+    QStackedWidget *m_stackedWidget;
+    ChatManager* m_chatManager;
+    FriendManager* m_friendManager;
+    GroupManager* m_groupManager;
+    ShowUserInfo* m_showUserInfo;
+    QPushButton* m_currentButton;   //当前被点击按钮
+
+    //槽函数
+    void inMainWindow();  //进入主窗口槽
+    void clickShowInfo();
+    void clickChatButton();
+    void clickFriendButton();
+    void clickGroupButton();
+    void clickSettingButton();
+    void clickQuitButton();
 };
 #endif // MAINWINDOW_H

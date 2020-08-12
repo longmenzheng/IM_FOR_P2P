@@ -3,6 +3,8 @@
 #include "ui_signin.h"
 #include "network.h"
 #include "Msg/SignIn.pb.h"
+#include "clientmanager.h"
+#include "SecondClasses/getinfo.h"
 #include <QString>
 #include <QDebug>
 
@@ -24,6 +26,7 @@ SignIn::SignIn(ClientManager *manager,QWidget *parent):
 
 bool SignIn::init()
 {
+
     //this->setWindowTitle(QString("登录"));
     connect(ui->signIn,&QPushButton::released,this,&SignIn::clickSignIn);   //登录按钮被点击时发送信号clickSignInSignal
     connect(ui->signUp,&QPushButton::released,this,&SignIn::clickSignUp);   //注册按钮被点击时发送信号clickSignUpSignal
@@ -110,14 +113,29 @@ void SignIn::clickSignIn()
     Network::getInstance()->addObserver(this);
     Network::getInstance()->addMsg<IM::SignIn>(signIn);
     //...
+    clock_t start=clock();
     while (1) {
         if(state==1)
         {
             //登录成功
-            ui->userID->setText("");
-            ui->password->setText("");
             ui->note->setText(QString("登录成功"));
             ui->note->setStyleSheet("color:green;");
+            //设置用户信息
+
+            if(idOrPhone.length()==11)
+                ClientManager::getInstance()->getUserInfo()->phoneNum=idOrPhone.toStdString();
+            else
+                ClientManager::getInstance()->getUserInfo()->userID=idOrPhone.toInt();
+
+            //拉取用户信息
+            if(!GetInfo::getInstance()->getInfo(ClientManager::getInstance()->getUserInfo()))
+            {
+                ui->note->setText(QString("加载用户数据失败！"));
+                ui->note->setStyleSheet("color:red;");
+                return;
+            }
+
+
             this->hide();                //隐藏自己并发送登录被按下信号
             emit clickSignInSignal();
             break;
@@ -128,6 +146,13 @@ void SignIn::clickSignIn()
             ui->note->setStyleSheet("color:red;");
             break;
         }
+        if(clock()-start>3000)
+        {
+            ui->note->setText(QString("登录超时！"));
+            ui->note->setStyleSheet("color:red;");
+            break;
+        }
+
     }
 
 }

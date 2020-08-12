@@ -23,7 +23,7 @@ void ReSendThread::run()
     while (!m_toStop) {
         if(m_time->empty())
         {
-            msleep(500);
+            //msleep(500);
             continue;
         }
         for(auto i:*m_time)
