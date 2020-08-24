@@ -7,6 +7,7 @@
 
 class NetworkAddr;
 
+
 class RecvThread:public QThread
 {
 protected:

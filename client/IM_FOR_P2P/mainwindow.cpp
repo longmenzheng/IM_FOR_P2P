@@ -14,9 +14,11 @@ MainWindow::MainWindow(ClientManager *clientManager,QWidget *parent)
     ,m_chatManager(new ChatManager(m_clientManager))
     ,m_friendManager(new FriendManager(m_clientManager))
     ,m_groupManager(new GroupManager(m_clientManager))
-    ,m_showUserInfo(new ShowUserInfo(m_clientManager))
+    ,m_showUserInfo(new ShowUserInfo())
 {
     ui->setupUi(this);
+    m_showUserInfo->setGeometry(0,0,740,580);
+    m_showUserInfo->getSubWidget()->setGeometry(170,140,390,310);
 
 }
 
@@ -49,6 +51,10 @@ void MainWindow::init()
     m_stackedWidget->raise();    //将窗口放到顶层 不然无法获取任何焦点
     //((ChatManager*)m_stackedWidget->currentWidget())->init();
     this->setWindowTitle(QString("个人信息"));
+
+
+
+
 
     //信号与槽绑定
     //---1.从登录界面进入主界面
@@ -129,8 +135,16 @@ void MainWindow::clickChatButton()
     }
 
 }
+
+bool tmp=true;
 void MainWindow::clickFriendButton()
 {
+    if(tmp)
+    {
+        qDebug()<<"---------------------clickSettingButton----------------";
+        m_friendManager->initListWidget();
+        tmp=false;
+    }
     //切换按钮显示效果
     if(m_currentButton!=ui->friendButton)
     {
@@ -155,8 +169,11 @@ void MainWindow::clickGroupButton()
         this->setWindowTitle(QString("群组"));
     }
 }
+
 void MainWindow::clickSettingButton()
 {
+
+    //if(ui->listWidget->count()==3) initListWidget();
     //切换按钮显示效果
     if(m_currentButton!=ui->setting)
     {
@@ -187,6 +204,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//将按钮换回没被选择图片
 void changeIconNO(Ui::MainWindow* ui,QPushButton* button)
 {
     if(button==ui->userIcon)
@@ -221,6 +239,7 @@ void changeIconNO(Ui::MainWindow* ui,QPushButton* button)
 
 }
 
+//将按钮设置位选择图片
 void changeIconYES(Ui::MainWindow* ui,QPushButton* button)
 {
     if(button==ui->userIcon)

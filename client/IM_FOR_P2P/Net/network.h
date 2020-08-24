@@ -9,12 +9,14 @@
 #include "sendthread.h"
 #include "recvthread.h"
 #include "distributethread.h"
+#include "buildp2p.h"
 #include <QDebug>
 #include <QTimer>
 
 class SendThread;
 class RecvThread;
 class DistributeThread;
+class BuildP2P;
 
 
 enum MsgType
@@ -37,7 +39,8 @@ enum MsgType
     CHAT=15,
     AGREEADDFRIEND=16,
     AGREEADDGROUP=17,
-    ACK=18
+    ACK=18,
+    LOADFRIENDINFO=19
 };
 
 
@@ -75,6 +78,7 @@ public:
     void addMsg(T& msg);
     //void addMsg(void *msg);
     //void addMsg(MsgType msgType,std::string &msg);
+    friend class BuildP2P;
     void addObserver(NetObserver* netObserver);    //需要接收网络消息的对象，应该调用此函数订阅网络消息
     void eraseObserver(NetObserver* netObserver);  //取消订阅
     static Network* getInstance();   //调用这个函数获取实例

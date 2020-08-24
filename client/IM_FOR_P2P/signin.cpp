@@ -85,6 +85,9 @@ void SignIn::recvMsg(const char *msg)
 
 void SignIn::clickSignIn()
 {
+    if(this->signButtonState) return;
+    this->signButtonState=true;
+
     ui->note->setText("");
     //输入校验
     QString idOrPhone=ui->userID->text();
@@ -115,7 +118,7 @@ void SignIn::clickSignIn()
     //...
     clock_t start=clock();
     while (1) {
-        if(state==1)
+        if(this->state==1)
         {
             //登录成功
             ui->note->setText(QString("登录成功"));
@@ -139,13 +142,15 @@ void SignIn::clickSignIn()
             this->hide();                //隐藏自己并发送登录被按下信号
             emit clickSignInSignal();
             break;
-        }else if(state==2)
+        }else if(this->state==2)
         {
             //登录失败
             ui->note->setText(QString("用户名或密码错误！"));
             ui->note->setStyleSheet("color:red;");
             break;
         }
+
+
         if(clock()-start>3000)
         {
             ui->note->setText(QString("登录超时！"));
@@ -154,7 +159,11 @@ void SignIn::clickSignIn()
         }
 
     }
+    this->signButtonState=false;
 
+    //初始化子窗口
+    ClientManager::getInstance()->getMainWindow()->getFriendManager()->init();
+    ClientManager::getInstance()->getMainWindow()->getChatManager()->init();
 }
 void SignIn::clickSignUp()
 {

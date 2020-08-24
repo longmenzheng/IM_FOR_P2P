@@ -25,11 +25,6 @@ void ClientManager::run()
     m_signIn->init();
     m_signUp->init();
     m_mainWindow->init();
-    /*
-    m_chatManager->init();
-    m_friendManager->init();
-    m_groupManager->init();
-    */
     m_signIn->show();
 }
 

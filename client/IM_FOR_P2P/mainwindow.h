@@ -27,6 +27,10 @@ public:
     MainWindow(ClientManager* m_clientManager,QWidget *parent = nullptr);
     ~MainWindow();
     void init();
+    FriendManager* getFriendManager(){return m_friendManager;}
+    ShowUserInfo* getShowuserInfo(){return m_showUserInfo;}
+    ChatManager* getChatManager(){return m_chatManager;}
+    GroupManager* getGroupManager(){return m_groupManager;}
 
 private:
     Ui::MainWindow *ui;
@@ -37,7 +41,7 @@ private:
     GroupManager* m_groupManager;
     ShowUserInfo* m_showUserInfo;
     QPushButton* m_currentButton;   //当前被点击按钮
-
+public:
     //槽函数
     void inMainWindow();  //进入主窗口槽
     void clickShowInfo();

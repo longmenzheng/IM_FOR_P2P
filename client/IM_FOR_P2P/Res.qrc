@@ -25,5 +25,16 @@
         <file>Images/signInfo.png</file>
         <file>Images/userIdInfo.png</file>
         <file>Images/userNameInfo.png</file>
+        <file>Images/sendNO.png</file>
+        <file>Images/sendYES.png</file>
+        <file>Images/chatRecordNO.png</file>
+        <file>Images/chatRecordYES.png</file>
+        <file>Images/faceNO.png</file>
+        <file>Images/faceYES.png</file>
+        <file>Images/addfriend.png</file>
+        <file>Images/apply.png</file>
+        <file>Images/agree.png</file>
+        <file>Images/disagree.png</file>
+        <file>Images/redYuan.png</file>
     </qresource>
 </RCC>

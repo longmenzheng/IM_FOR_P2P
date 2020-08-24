@@ -25,6 +25,7 @@ GetInfo* GetInfo::getInstance()
 
 bool GetInfo::getInfo(UserInfo* userInfo)
 {
+    m_state=0;
     m_userInfo=userInfo;
 
     IM::ModifyInfo transinfo;
@@ -59,6 +60,7 @@ bool GetInfo::getInfo(UserInfo* userInfo)
     }
     if(m_state==1)
     {
+        qDebug()<<"-------getInfo---return true----";
         return true;
     }
 
@@ -73,6 +75,7 @@ void GetInfo::recvMsg(const char *msg)
     sscanf(msg,"%*d\n%*d\n%d\n%d\n",&msgID,&msgType);  //获取消息ID 消息类型
     if(MsgType::MODIFYUAERINFO==msgType)
     {
+        qDebug()<<"---------getInfo---------"<<msg;
         int msgType=-1;
         int msgID=-1;
         int sendID=-1;
@@ -90,33 +93,30 @@ void GetInfo::recvMsg(const char *msg)
         memcpy(tmp,p,contentLen);
         IM::ModifyInfo res;
         res.ParseFromArray((void*)tmp,contentLen);
-        if(m_serveID > 10000000000)  //电话号吗
+        if(m_serveID !=std::atoll(res.phone().c_str())&&m_serveID!=res.userid())                //电话号吗
         {
-            if(m_serveID!=std::atoll(res.phone().c_str()))
+            //if(m_serveID!=std::atoll(res.phone().c_str()))
                 return;
-        }else if(m_serveID!=res.userid())
-        {
-            return;
         }
-        //qDebug()<<"-------获取的用户ID: "<<res.userid();
+        qDebug()<<"-------获取的用户ID: "<<res.userid();
         m_userInfo->sex=res.sex();
-        //qDebug()<<"-------信息获取状态: 1";
+        qDebug()<<"-------信息获取状态: 1";
         m_userInfo->userID=res.userid();
-        //qDebug()<<"-------信息获取状态: 2";
+        qDebug()<<"-------信息获取状态: 2";
         char* icon=(char*)malloc(res.icon().length());
         memcpy(icon,res.icon().c_str(),res.icon().length());
         m_userInfo->icon=icon;
-        //qDebug()<<"-------信息获取状态: 3";
+        qDebug()<<"-------信息获取状态: 3";
         m_userInfo->nickName=res.nickname();
-        //qDebug()<<"-------信息获取状态: 4";
+        qDebug()<<"-------信息获取状态: 4";
         m_userInfo->passwd=res.password();
-        //qDebug()<<"-------信息获取状态: 5";
+        qDebug()<<"-------信息获取状态: 5"<<QString::fromStdString(res.phone());
         m_userInfo->phoneNum=res.phone();
-        //qDebug()<<"-------信息获取状态: 6";
+        qDebug()<<"-------信息获取状态: 6";
         m_userInfo->userSign=res.desc();
-        //qDebug()<<"-------信息获取状态: 7";
+        qDebug()<<"-------信息获取状态: 7";
         m_state=res.state();
-        //qDebug()<<"-------信息获取状态: "<<m_state;
+        qDebug()<<"-------信息获取状态: "<<m_state;
     }
 
 }

@@ -34,6 +34,7 @@ signals:
 
 private:
     Ui::SignUp *ui;
+    bool signUpButtonState=false;
 };
 
 #endif // SIGNUP_H

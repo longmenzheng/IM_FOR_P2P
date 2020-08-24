@@ -50,8 +50,10 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_RelationManage_2eproto::offset
   PROTOBUF_FIELD_OFFSET(::IM::RelationManage, sendid_),
   PROTOBUF_FIELD_OFFSET(::IM::RelationManage, applyerid_),
   PROTOBUF_FIELD_OFFSET(::IM::RelationManage, peerid_),
-  PROTOBUF_FIELD_OFFSET(::IM::RelationManage, friendnickname_),
+  PROTOBUF_FIELD_OFFSET(::IM::RelationManage, applyernickname_),
   PROTOBUF_FIELD_OFFSET(::IM::RelationManage, sign_),
+  PROTOBUF_FIELD_OFFSET(::IM::RelationManage, state_),
+  PROTOBUF_FIELD_OFFSET(::IM::RelationManage, peernickname_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::IM::RelationManage)},
@@ -62,11 +64,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_RelationManage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024RelationManage.proto\022\002IM\"\235\001\n\016RelationM"
+  "\n\024RelationManage.proto\022\002IM\"\303\001\n\016RelationM"
   "anage\022\023\n\013networkType\030\001 \001(\005\022\r\n\005msgID\030\002 \001("
   "\005\022\016\n\006recvID\030\003 \001(\005\022\016\n\006sendID\030\004 \001(\005\022\021\n\tapp"
-  "lyerID\030\005 \001(\005\022\016\n\006peerID\030\006 \001(\005\022\026\n\016friendNi"
-  "ckName\030\007 \001(\014\022\014\n\004sign\030\010 \001(\014b\006proto3"
+  "lyerID\030\005 \001(\005\022\016\n\006peerID\030\006 \001(\005\022\027\n\017applyerN"
+  "ickName\030\007 \001(\014\022\014\n\004sign\030\010 \001(\014\022\r\n\005state\030\t \001"
+  "(\005\022\024\n\014peerNickName\030\n \001(\014b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_RelationManage_2eproto_deps[1] = {
 };
@@ -75,7 +78,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Rel
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_RelationManage_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_RelationManage_2eproto = {
-  false, false, descriptor_table_protodef_RelationManage_2eproto, "RelationManage.proto", 194,
+  false, false, descriptor_table_protodef_RelationManage_2eproto, "RelationManage.proto", 232,
   &descriptor_table_RelationManage_2eproto_once, descriptor_table_RelationManage_2eproto_sccs, descriptor_table_RelationManage_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_RelationManage_2eproto::offsets,
   file_level_metadata_RelationManage_2eproto, 1, file_level_enum_descriptors_RelationManage_2eproto, file_level_service_descriptors_RelationManage_2eproto,
@@ -102,9 +105,9 @@ RelationManage::RelationManage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 RelationManage::RelationManage(const RelationManage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  friendnickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_friendnickname().empty()) {
-    friendnickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_friendnickname(),
+  applyernickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_applyernickname().empty()) {
+    applyernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_applyernickname(),
       GetArena());
   }
   sign_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -112,19 +115,25 @@ RelationManage::RelationManage(const RelationManage& from)
     sign_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_sign(),
       GetArena());
   }
+  peernickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_peernickname().empty()) {
+    peernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_peernickname(),
+      GetArena());
+  }
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&peerid_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(peerid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
   // @@protoc_insertion_point(copy_constructor:IM.RelationManage)
 }
 
 void RelationManage::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RelationManage_RelationManage_2eproto.base);
-  friendnickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  applyernickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   sign_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  peernickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&peerid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(peerid_));
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
 }
 
 RelationManage::~RelationManage() {
@@ -135,8 +144,9 @@ RelationManage::~RelationManage() {
 
 void RelationManage::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  friendnickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  applyernickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   sign_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  peernickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void RelationManage::ArenaDtor(void* object) {
@@ -160,11 +170,12 @@ void RelationManage::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  friendnickname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  applyernickname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   sign_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  peernickname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&peerid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(peerid_));
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -218,10 +229,10 @@ const char* RelationManage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bytes friendNickName = 7;
+      // bytes applyerNickName = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
-          auto str = _internal_mutable_friendnickname();
+          auto str = _internal_mutable_applyernickname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -230,6 +241,21 @@ const char* RelationManage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
           auto str = _internal_mutable_sign();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 state = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+          state_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bytes peerNickName = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
+          auto str = _internal_mutable_peernickname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -298,16 +324,28 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_peerid(), target);
   }
 
-  // bytes friendNickName = 7;
-  if (this->friendnickname().size() > 0) {
+  // bytes applyerNickName = 7;
+  if (this->applyernickname().size() > 0) {
     target = stream->WriteBytesMaybeAliased(
-        7, this->_internal_friendnickname(), target);
+        7, this->_internal_applyernickname(), target);
   }
 
   // bytes sign = 8;
   if (this->sign().size() > 0) {
     target = stream->WriteBytesMaybeAliased(
         8, this->_internal_sign(), target);
+  }
+
+  // int32 state = 9;
+  if (this->state() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->_internal_state(), target);
+  }
+
+  // bytes peerNickName = 10;
+  if (this->peernickname().size() > 0) {
+    target = stream->WriteBytesMaybeAliased(
+        10, this->_internal_peernickname(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -326,11 +364,11 @@ size_t RelationManage::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes friendNickName = 7;
-  if (this->friendnickname().size() > 0) {
+  // bytes applyerNickName = 7;
+  if (this->applyernickname().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_friendnickname());
+        this->_internal_applyernickname());
   }
 
   // bytes sign = 8;
@@ -338,6 +376,13 @@ size_t RelationManage::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_sign());
+  }
+
+  // bytes peerNickName = 10;
+  if (this->peernickname().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_peernickname());
   }
 
   // int32 networkType = 1;
@@ -382,6 +427,13 @@ size_t RelationManage::ByteSizeLong() const {
         this->_internal_peerid());
   }
 
+  // int32 state = 9;
+  if (this->state() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_state());
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -413,11 +465,14 @@ void RelationManage::MergeFrom(const RelationManage& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.friendnickname().size() > 0) {
-    _internal_set_friendnickname(from._internal_friendnickname());
+  if (from.applyernickname().size() > 0) {
+    _internal_set_applyernickname(from._internal_applyernickname());
   }
   if (from.sign().size() > 0) {
     _internal_set_sign(from._internal_sign());
+  }
+  if (from.peernickname().size() > 0) {
+    _internal_set_peernickname(from._internal_peernickname());
   }
   if (from.networktype() != 0) {
     _internal_set_networktype(from._internal_networktype());
@@ -436,6 +491,9 @@ void RelationManage::MergeFrom(const RelationManage& from) {
   }
   if (from.peerid() != 0) {
     _internal_set_peerid(from._internal_peerid());
+  }
+  if (from.state() != 0) {
+    _internal_set_state(from._internal_state());
   }
 }
 
@@ -460,11 +518,12 @@ bool RelationManage::IsInitialized() const {
 void RelationManage::InternalSwap(RelationManage* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  friendnickname_.Swap(&other->friendnickname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  applyernickname_.Swap(&other->applyernickname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   sign_.Swap(&other->sign_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  peernickname_.Swap(&other->peernickname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RelationManage, peerid_)
-      + sizeof(RelationManage::peerid_)
+      PROTOBUF_FIELD_OFFSET(RelationManage, state_)
+      + sizeof(RelationManage::state_)
       - PROTOBUF_FIELD_OFFSET(RelationManage, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

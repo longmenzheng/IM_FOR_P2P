@@ -18,6 +18,7 @@ class SignIn : public QWidget,public NetObserver
 private:
     ClientManager *clientManager;
     int state=-1;
+    bool signButtonState=false;   //登录按钮按下状态 防止在请求数据期间多次被按下
 public:
     explicit SignIn(QWidget *parent = nullptr);
     SignIn(ClientManager *manager,QWidget *parent = nullptr);

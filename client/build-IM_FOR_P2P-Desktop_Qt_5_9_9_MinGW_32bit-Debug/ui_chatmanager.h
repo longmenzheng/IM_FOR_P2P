@@ -14,9 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,20 +26,24 @@ QT_BEGIN_NAMESPACE
 class Ui_ChatManager
 {
 public:
-    QListWidget *ChatManager_2;
+    QListWidget *listWidget;
     QLineEdit *searchEdit;
     QPushButton *searchButton;
+    QPushButton *sendButton;
+    QTextEdit *textEdit;
+    QPushButton *smallface;
+    QPushButton *chatRecord;
+    QListWidget *listWidget_chat;
+    QLabel *headInfo;
 
     void setupUi(QWidget *ChatManager)
     {
         if (ChatManager->objectName().isEmpty())
             ChatManager->setObjectName(QStringLiteral("ChatManager"));
         ChatManager->resize(740, 600);
-        ChatManager_2 = new QListWidget(ChatManager);
-        new QListWidgetItem(ChatManager_2);
-        new QListWidgetItem(ChatManager_2);
-        ChatManager_2->setObjectName(QStringLiteral("ChatManager_2"));
-        ChatManager_2->setGeometry(QRect(10, 60, 200, 540));
+        listWidget = new QListWidget(ChatManager);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
+        listWidget->setGeometry(QRect(10, 60, 200, 540));
         searchEdit = new QLineEdit(ChatManager);
         searchEdit->setObjectName(QStringLiteral("searchEdit"));
         searchEdit->setGeometry(QRect(10, 20, 150, 20));
@@ -48,6 +54,52 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral(":/Resource/Images/searchIcon .png"), QSize(), QIcon::Normal, QIcon::Off);
         searchButton->setIcon(icon);
+        searchButton->setIconSize(QSize(16, 16));
+        sendButton = new QPushButton(ChatManager);
+        sendButton->setObjectName(QStringLiteral("sendButton"));
+        sendButton->setGeometry(QRect(670, 570, 50, 25));
+        sendButton->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/Resource/Images/sendNO.png"), QSize(), QIcon::Normal, QIcon::Off);
+        sendButton->setIcon(icon1);
+        textEdit = new QTextEdit(ChatManager);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(230, 480, 491, 91));
+        smallface = new QPushButton(ChatManager);
+        smallface->setObjectName(QStringLiteral("smallface"));
+        smallface->setGeometry(QRect(230, 450, 30, 30));
+        smallface->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/Resource/Images/faceNO.png"), QSize(), QIcon::Normal, QIcon::Off);
+        smallface->setIcon(icon2);
+        smallface->setIconSize(QSize(20, 20));
+        smallface->setFlat(true);
+        chatRecord = new QPushButton(ChatManager);
+        chatRecord->setObjectName(QStringLiteral("chatRecord"));
+        chatRecord->setGeometry(QRect(280, 450, 30, 30));
+        chatRecord->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/Resource/Images/chatRecordNO.png"), QSize(), QIcon::Normal, QIcon::Off);
+        chatRecord->setIcon(icon3);
+        chatRecord->setIconSize(QSize(20, 20));
+        chatRecord->setFlat(true);
+        listWidget_chat = new QListWidget(ChatManager);
+        listWidget_chat->setObjectName(QStringLiteral("listWidget_chat"));
+        listWidget_chat->setGeometry(QRect(210, 60, 531, 390));
+        headInfo = new QLabel(ChatManager);
+        headInfo->setObjectName(QStringLiteral("headInfo"));
+        headInfo->setGeometry(QRect(210, 20, 531, 41));
+        headInfo->setStyleSheet(QStringLiteral(""));
+        headInfo->setAlignment(Qt::AlignCenter);
+        headInfo->raise();
+        listWidget->raise();
+        searchButton->raise();
+        textEdit->raise();
+        searchEdit->raise();
+        sendButton->raise();
+        smallface->raise();
+        chatRecord->raise();
+        listWidget_chat->raise();
 
         retranslateUi(ChatManager);
 
@@ -57,16 +109,11 @@ public:
     void retranslateUi(QWidget *ChatManager)
     {
         ChatManager->setWindowTitle(QApplication::translate("ChatManager", "Form", Q_NULLPTR));
-
-        const bool __sortingEnabled = ChatManager_2->isSortingEnabled();
-        ChatManager_2->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = ChatManager_2->item(0);
-        ___qlistwidgetitem->setText(QApplication::translate("ChatManager", "\351\234\200\350\246\201\350\207\252\345\256\232\344\271\211\350\201\212\345\244\251\346\230\276\347\244\272\346\216\247\344\273\2661", Q_NULLPTR));
-        QListWidgetItem *___qlistwidgetitem1 = ChatManager_2->item(1);
-        ___qlistwidgetitem1->setText(QApplication::translate("ChatManager", "\351\234\200\350\246\201\350\207\252\345\256\232\344\271\211\350\201\212\345\244\251\346\230\276\347\244\272\346\216\247\344\273\2662", Q_NULLPTR));
-        ChatManager_2->setSortingEnabled(__sortingEnabled);
-
         searchButton->setText(QApplication::translate("ChatManager", "\346\220\234\347\264\242", Q_NULLPTR));
+        sendButton->setText(QApplication::translate("ChatManager", "\345\217\221\351\200\201", Q_NULLPTR));
+        smallface->setText(QString());
+        chatRecord->setText(QString());
+        headInfo->setText(QString());
     } // retranslateUi
 
 };

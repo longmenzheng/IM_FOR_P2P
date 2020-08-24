@@ -9,6 +9,8 @@ int32 recvID=3;//消息接收者,
 int32 sendID=4;
 int32 applyerID=5; //发出消息申请的人ID
 int32 peerID=6; //被修改的朋友ID
-bytes friendNickName=7;//朋友昵称，添加好友时通过该字段获取，需改朋友备注时通过该字段发送
+bytes applyerNickName=7;//朋友昵称，添加好友时通过该字段获取，需改朋友备注时通过该字段发送
 bytes sign=8;//好友个人描述
+int32 state=9;//标记好友关系状态
+bytes peerNickName=10;
 }

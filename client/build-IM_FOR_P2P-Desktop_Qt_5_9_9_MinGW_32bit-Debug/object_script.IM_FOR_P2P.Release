@@ -4,6 +4,7 @@ INPUT(
 ./release\BuildP2P.pb.o
 ./release\ChatMsg.pb.o
 ./release\Connect.pb.o
+./release\LoadFriendInfo.pb.o
 ./release\ModifyInfo.pb.o
 ./release\OfflineMsg.pb.o
 ./release\RelationManage.pb.o
@@ -11,6 +12,7 @@ INPUT(
 ./release\SignUp.pb.o
 ./release\SystemMsg.pb.o
 ./release\ackhandler.o
+./release\buildp2p.o
 ./release\distributethread.o
 ./release\netobserver.o
 ./release\nettest.o
@@ -19,6 +21,9 @@ INPUT(
 ./release\recvthread.o
 ./release\resendthread.o
 ./release\sendthread.o
+./release\chatcontentround.o
+./release\chatshowitem.o
+./release\frienditem.o
 ./release\getinfo.o
 ./release\userinfo.o
 ./release\chatmanager.o
@@ -33,6 +38,9 @@ INPUT(
 ./release\qrc_Res.o
 ./release\moc_nettest.o
 ./release\moc_nettest2.o
+./release\moc_chatcontentround.o
+./release\moc_chatshowitem.o
+./release\moc_frienditem.o
 ./release\moc_chatmanager.o
 ./release\moc_friendmanager.o
 ./release\moc_groupmanager.o

@@ -182,9 +182,10 @@ class ApplyAgree PROTOBUF_FINAL :
     kNetworkTypeFieldNumber = 1,
     kMsgIDFieldNumber = 2,
     kRecvIDFieldNumber = 3,
-    kApplyerIDFieldNumber = 4,
-    kPeerIDFieldNumber = 5,
-    kSendIdFieldNumber = 6,
+    kSendIDFieldNumber = 4,
+    kApplyerIDFieldNumber = 5,
+    kPeerIDFieldNumber = 6,
+    kStateFieldNumber = 7,
   };
   // int32 networkType = 1;
   void clear_networktype();
@@ -213,7 +214,16 @@ class ApplyAgree PROTOBUF_FINAL :
   void _internal_set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 applyerID = 4;
+  // int32 sendID = 4;
+  void clear_sendid();
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid() const;
+  void set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sendid() const;
+  void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 applyerID = 5;
   void clear_applyerid();
   ::PROTOBUF_NAMESPACE_ID::int32 applyerid() const;
   void set_applyerid(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -222,7 +232,7 @@ class ApplyAgree PROTOBUF_FINAL :
   void _internal_set_applyerid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 peerID = 5;
+  // int32 peerID = 6;
   void clear_peerid();
   ::PROTOBUF_NAMESPACE_ID::int32 peerid() const;
   void set_peerid(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -231,13 +241,13 @@ class ApplyAgree PROTOBUF_FINAL :
   void _internal_set_peerid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 sendId = 6;
-  void clear_sendid();
-  ::PROTOBUF_NAMESPACE_ID::int32 sendid() const;
-  void set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 state = 7;
+  void clear_state();
+  ::PROTOBUF_NAMESPACE_ID::int32 state() const;
+  void set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sendid() const;
-  void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state() const;
+  void _internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:IM.ApplyAgree)
@@ -250,9 +260,10 @@ class ApplyAgree PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
   ::PROTOBUF_NAMESPACE_ID::int32 applyerid_;
   ::PROTOBUF_NAMESPACE_ID::int32 peerid_;
-  ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ApplyAgree_2eproto;
 };
@@ -327,7 +338,7 @@ inline void ApplyAgree::set_recvid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.ApplyAgree.recvID)
 }
 
-// int32 sendId = 6;
+// int32 sendID = 4;
 inline void ApplyAgree::clear_sendid() {
   sendid_ = 0;
 }
@@ -335,7 +346,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 ApplyAgree::_internal_sendid() const {
   return sendid_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 ApplyAgree::sendid() const {
-  // @@protoc_insertion_point(field_get:IM.ApplyAgree.sendId)
+  // @@protoc_insertion_point(field_get:IM.ApplyAgree.sendID)
   return _internal_sendid();
 }
 inline void ApplyAgree::_internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -344,10 +355,10 @@ inline void ApplyAgree::_internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 valu
 }
 inline void ApplyAgree::set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_sendid(value);
-  // @@protoc_insertion_point(field_set:IM.ApplyAgree.sendId)
+  // @@protoc_insertion_point(field_set:IM.ApplyAgree.sendID)
 }
 
-// int32 applyerID = 4;
+// int32 applyerID = 5;
 inline void ApplyAgree::clear_applyerid() {
   applyerid_ = 0;
 }
@@ -367,7 +378,7 @@ inline void ApplyAgree::set_applyerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.ApplyAgree.applyerID)
 }
 
-// int32 peerID = 5;
+// int32 peerID = 6;
 inline void ApplyAgree::clear_peerid() {
   peerid_ = 0;
 }
@@ -385,6 +396,26 @@ inline void ApplyAgree::_internal_set_peerid(::PROTOBUF_NAMESPACE_ID::int32 valu
 inline void ApplyAgree::set_peerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_peerid(value);
   // @@protoc_insertion_point(field_set:IM.ApplyAgree.peerID)
+}
+
+// int32 state = 7;
+inline void ApplyAgree::clear_state() {
+  state_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ApplyAgree::_internal_state() const {
+  return state_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ApplyAgree::state() const {
+  // @@protoc_insertion_point(field_get:IM.ApplyAgree.state)
+  return _internal_state();
+}
+inline void ApplyAgree::_internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  state_ = value;
+}
+inline void ApplyAgree::set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:IM.ApplyAgree.state)
 }
 
 #ifdef __GNUC__

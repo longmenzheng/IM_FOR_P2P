@@ -21,6 +21,7 @@ SOURCES += \
     Msg/BuildP2P.pb.cc \
     Msg/ChatMsg.pb.cc \
     Msg/Connect.pb.cc \
+    Msg/LoadFriendInfo.pb.cc \
     Msg/ModifyInfo.pb.cc \
     Msg/OfflineMsg.pb.cc \
     Msg/RelationManage.pb.cc \
@@ -28,6 +29,7 @@ SOURCES += \
     Msg/SignUp.pb.cc \
     Msg/SystemMsg.pb.cc \
     Net/ackhandler.cpp \
+    Net/buildp2p.cpp \
     Net/distributethread.cpp \
     Net/netobserver.cpp \
     Net/nettest.cpp \
@@ -36,6 +38,9 @@ SOURCES += \
     Net/recvthread.cpp \
     Net/resendthread.cpp \
     Net/sendthread.cpp \
+    SecondClasses/chatcontentround.cpp \
+    SecondClasses/chatshowitem.cpp \
+    SecondClasses/frienditem.cpp \
     SecondClasses/getinfo.cpp \
     SecondClasses/userinfo.cpp \
     chatmanager.cpp \
@@ -54,6 +59,7 @@ HEADERS += \
     Msg/BuildP2P.pb.h \
     Msg/ChatMsg.pb.h \
     Msg/Connect.pb.h \
+    Msg/LoadFriendInfo.pb.h \
     Msg/ModifyInfo.pb.h \
     Msg/OfflineMsg.pb.h \
     Msg/RelationManage.pb.h \
@@ -61,6 +67,7 @@ HEADERS += \
     Msg/SignUp.pb.h \
     Msg/SystemMsg.pb.h \
     Net/ackhandler.h \
+    Net/buildp2p.h \
     Net/distributethread.h \
     Net/netobserver.h \
     Net/nettest.h \
@@ -69,7 +76,12 @@ HEADERS += \
     Net/recvthread.h \
     Net/resendthread.h \
     Net/sendthread.h \
+    SecondClasses/chatcontentround.h \
+    SecondClasses/chatshowitem.h \
+    SecondClasses/frienditem.h \
     SecondClasses/getinfo.h \
+    SecondClasses/relationmanage.h \
+    SecondClasses/userchatcontentinterface.h \
     SecondClasses/userinfo.h \
     chatmanager.h \
     clientmanager.h \
@@ -83,6 +95,9 @@ HEADERS += \
 FORMS += \
     Net/nettest.ui \
     Net/nettest2.ui \
+    SecondClasses/chatbubble.ui \
+    SecondClasses/chatshowitem.ui \
+    SecondClasses/frienditem.ui \
     chatmanager.ui \
     friendmanager.ui \
     groupmanager.ui \

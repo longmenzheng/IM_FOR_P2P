@@ -179,38 +179,40 @@ class RelationManage PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kFriendNickNameFieldNumber = 7,
+    kApplyerNickNameFieldNumber = 7,
     kSignFieldNumber = 8,
+    kPeerNickNameFieldNumber = 10,
     kNetworkTypeFieldNumber = 1,
     kMsgIDFieldNumber = 2,
     kRecvIDFieldNumber = 3,
     kSendIDFieldNumber = 4,
     kApplyerIDFieldNumber = 5,
     kPeerIDFieldNumber = 6,
+    kStateFieldNumber = 9,
   };
-  // bytes friendNickName = 7;
-  void clear_friendnickname();
-  const std::string& friendnickname() const;
-  void set_friendnickname(const std::string& value);
-  void set_friendnickname(std::string&& value);
-  void set_friendnickname(const char* value);
-  void set_friendnickname(const void* value, size_t size);
-  std::string* mutable_friendnickname();
-  std::string* release_friendnickname();
-  void set_allocated_friendnickname(std::string* friendnickname);
+  // bytes applyerNickName = 7;
+  void clear_applyernickname();
+  const std::string& applyernickname() const;
+  void set_applyernickname(const std::string& value);
+  void set_applyernickname(std::string&& value);
+  void set_applyernickname(const char* value);
+  void set_applyernickname(const void* value, size_t size);
+  std::string* mutable_applyernickname();
+  std::string* release_applyernickname();
+  void set_allocated_applyernickname(std::string* applyernickname);
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  std::string* unsafe_arena_release_friendnickname();
+  std::string* unsafe_arena_release_applyernickname();
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  void unsafe_arena_set_allocated_friendnickname(
-      std::string* friendnickname);
+  void unsafe_arena_set_allocated_applyernickname(
+      std::string* applyernickname);
   private:
-  const std::string& _internal_friendnickname() const;
-  void _internal_set_friendnickname(const std::string& value);
-  std::string* _internal_mutable_friendnickname();
+  const std::string& _internal_applyernickname() const;
+  void _internal_set_applyernickname(const std::string& value);
+  std::string* _internal_mutable_applyernickname();
   public:
 
   // bytes sign = 8;
@@ -236,6 +238,31 @@ class RelationManage PROTOBUF_FINAL :
   const std::string& _internal_sign() const;
   void _internal_set_sign(const std::string& value);
   std::string* _internal_mutable_sign();
+  public:
+
+  // bytes peerNickName = 10;
+  void clear_peernickname();
+  const std::string& peernickname() const;
+  void set_peernickname(const std::string& value);
+  void set_peernickname(std::string&& value);
+  void set_peernickname(const char* value);
+  void set_peernickname(const void* value, size_t size);
+  std::string* mutable_peernickname();
+  std::string* release_peernickname();
+  void set_allocated_peernickname(std::string* peernickname);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_peernickname();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_peernickname(
+      std::string* peernickname);
+  private:
+  const std::string& _internal_peernickname() const;
+  void _internal_set_peernickname(const std::string& value);
+  std::string* _internal_mutable_peernickname();
   public:
 
   // int32 networkType = 1;
@@ -292,6 +319,15 @@ class RelationManage PROTOBUF_FINAL :
   void _internal_set_peerid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 state = 9;
+  void clear_state();
+  ::PROTOBUF_NAMESPACE_ID::int32 state() const;
+  void set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state() const;
+  void _internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:IM.RelationManage)
  private:
   class _Internal;
@@ -299,14 +335,16 @@ class RelationManage PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr friendnickname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr applyernickname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sign_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr peernickname_;
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
   ::PROTOBUF_NAMESPACE_ID::int32 applyerid_;
   ::PROTOBUF_NAMESPACE_ID::int32 peerid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_RelationManage_2eproto;
 };
@@ -441,85 +479,85 @@ inline void RelationManage::set_peerid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.RelationManage.peerID)
 }
 
-// bytes friendNickName = 7;
-inline void RelationManage::clear_friendnickname() {
-  friendnickname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+// bytes applyerNickName = 7;
+inline void RelationManage::clear_applyernickname() {
+  applyernickname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline const std::string& RelationManage::friendnickname() const {
-  // @@protoc_insertion_point(field_get:IM.RelationManage.friendNickName)
-  return _internal_friendnickname();
+inline const std::string& RelationManage::applyernickname() const {
+  // @@protoc_insertion_point(field_get:IM.RelationManage.applyerNickName)
+  return _internal_applyernickname();
 }
-inline void RelationManage::set_friendnickname(const std::string& value) {
-  _internal_set_friendnickname(value);
-  // @@protoc_insertion_point(field_set:IM.RelationManage.friendNickName)
+inline void RelationManage::set_applyernickname(const std::string& value) {
+  _internal_set_applyernickname(value);
+  // @@protoc_insertion_point(field_set:IM.RelationManage.applyerNickName)
 }
-inline std::string* RelationManage::mutable_friendnickname() {
-  // @@protoc_insertion_point(field_mutable:IM.RelationManage.friendNickName)
-  return _internal_mutable_friendnickname();
+inline std::string* RelationManage::mutable_applyernickname() {
+  // @@protoc_insertion_point(field_mutable:IM.RelationManage.applyerNickName)
+  return _internal_mutable_applyernickname();
 }
-inline const std::string& RelationManage::_internal_friendnickname() const {
-  return friendnickname_.Get();
+inline const std::string& RelationManage::_internal_applyernickname() const {
+  return applyernickname_.Get();
 }
-inline void RelationManage::_internal_set_friendnickname(const std::string& value) {
+inline void RelationManage::_internal_set_applyernickname(const std::string& value) {
   
-  friendnickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+  applyernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
-inline void RelationManage::set_friendnickname(std::string&& value) {
+inline void RelationManage::set_applyernickname(std::string&& value) {
   
-  friendnickname_.Set(
+  applyernickname_.Set(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:IM.RelationManage.friendNickName)
+  // @@protoc_insertion_point(field_set_rvalue:IM.RelationManage.applyerNickName)
 }
-inline void RelationManage::set_friendnickname(const char* value) {
+inline void RelationManage::set_applyernickname(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  friendnickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+  applyernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArena());
-  // @@protoc_insertion_point(field_set_char:IM.RelationManage.friendNickName)
+  // @@protoc_insertion_point(field_set_char:IM.RelationManage.applyerNickName)
 }
-inline void RelationManage::set_friendnickname(const void* value,
+inline void RelationManage::set_applyernickname(const void* value,
     size_t size) {
   
-  friendnickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+  applyernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:IM.RelationManage.friendNickName)
+  // @@protoc_insertion_point(field_set_pointer:IM.RelationManage.applyerNickName)
 }
-inline std::string* RelationManage::_internal_mutable_friendnickname() {
+inline std::string* RelationManage::_internal_mutable_applyernickname() {
   
-  return friendnickname_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  return applyernickname_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline std::string* RelationManage::release_friendnickname() {
-  // @@protoc_insertion_point(field_release:IM.RelationManage.friendNickName)
-  return friendnickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+inline std::string* RelationManage::release_applyernickname() {
+  // @@protoc_insertion_point(field_release:IM.RelationManage.applyerNickName)
+  return applyernickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void RelationManage::set_allocated_friendnickname(std::string* friendnickname) {
-  if (friendnickname != nullptr) {
+inline void RelationManage::set_allocated_applyernickname(std::string* applyernickname) {
+  if (applyernickname != nullptr) {
     
   } else {
     
   }
-  friendnickname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), friendnickname,
+  applyernickname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), applyernickname,
       GetArena());
-  // @@protoc_insertion_point(field_set_allocated:IM.RelationManage.friendNickName)
+  // @@protoc_insertion_point(field_set_allocated:IM.RelationManage.applyerNickName)
 }
-inline std::string* RelationManage::unsafe_arena_release_friendnickname() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:IM.RelationManage.friendNickName)
+inline std::string* RelationManage::unsafe_arena_release_applyernickname() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:IM.RelationManage.applyerNickName)
   GOOGLE_DCHECK(GetArena() != nullptr);
   
-  return friendnickname_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  return applyernickname_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       GetArena());
 }
-inline void RelationManage::unsafe_arena_set_allocated_friendnickname(
-    std::string* friendnickname) {
+inline void RelationManage::unsafe_arena_set_allocated_applyernickname(
+    std::string* applyernickname) {
   GOOGLE_DCHECK(GetArena() != nullptr);
-  if (friendnickname != nullptr) {
+  if (applyernickname != nullptr) {
     
   } else {
     
   }
-  friendnickname_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      friendnickname, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.RelationManage.friendNickName)
+  applyernickname_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      applyernickname, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.RelationManage.applyerNickName)
 }
 
 // bytes sign = 8;
@@ -601,6 +639,107 @@ inline void RelationManage::unsafe_arena_set_allocated_sign(
   sign_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       sign, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.RelationManage.sign)
+}
+
+// int32 state = 9;
+inline void RelationManage::clear_state() {
+  state_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RelationManage::_internal_state() const {
+  return state_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RelationManage::state() const {
+  // @@protoc_insertion_point(field_get:IM.RelationManage.state)
+  return _internal_state();
+}
+inline void RelationManage::_internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  state_ = value;
+}
+inline void RelationManage::set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:IM.RelationManage.state)
+}
+
+// bytes peerNickName = 10;
+inline void RelationManage::clear_peernickname() {
+  peernickname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& RelationManage::peernickname() const {
+  // @@protoc_insertion_point(field_get:IM.RelationManage.peerNickName)
+  return _internal_peernickname();
+}
+inline void RelationManage::set_peernickname(const std::string& value) {
+  _internal_set_peernickname(value);
+  // @@protoc_insertion_point(field_set:IM.RelationManage.peerNickName)
+}
+inline std::string* RelationManage::mutable_peernickname() {
+  // @@protoc_insertion_point(field_mutable:IM.RelationManage.peerNickName)
+  return _internal_mutable_peernickname();
+}
+inline const std::string& RelationManage::_internal_peernickname() const {
+  return peernickname_.Get();
+}
+inline void RelationManage::_internal_set_peernickname(const std::string& value) {
+  
+  peernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void RelationManage::set_peernickname(std::string&& value) {
+  
+  peernickname_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:IM.RelationManage.peerNickName)
+}
+inline void RelationManage::set_peernickname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  peernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:IM.RelationManage.peerNickName)
+}
+inline void RelationManage::set_peernickname(const void* value,
+    size_t size) {
+  
+  peernickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:IM.RelationManage.peerNickName)
+}
+inline std::string* RelationManage::_internal_mutable_peernickname() {
+  
+  return peernickname_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* RelationManage::release_peernickname() {
+  // @@protoc_insertion_point(field_release:IM.RelationManage.peerNickName)
+  return peernickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void RelationManage::set_allocated_peernickname(std::string* peernickname) {
+  if (peernickname != nullptr) {
+    
+  } else {
+    
+  }
+  peernickname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), peernickname,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:IM.RelationManage.peerNickName)
+}
+inline std::string* RelationManage::unsafe_arena_release_peernickname() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:IM.RelationManage.peerNickName)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return peernickname_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void RelationManage::unsafe_arena_set_allocated_peernickname(
+    std::string* peernickname) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (peernickname != nullptr) {
+    
+  } else {
+    
+  }
+  peernickname_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      peernickname, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.RelationManage.peerNickName)
 }
 
 #ifdef __GNUC__

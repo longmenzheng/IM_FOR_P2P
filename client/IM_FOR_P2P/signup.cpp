@@ -55,6 +55,7 @@ void SignUp::clickSignUp()
         //太长
         ui->note->setText(QString("用户名为空或太长了！"));
         ui->note->setStyleSheet("color:red;");
+
         return;
     }
     //判断性别是否选择
@@ -88,6 +89,10 @@ void SignUp::clickSignUp()
         ui->note->setStyleSheet("color:red;");
         return;
     }
+
+    if(this->signUpButtonState) return;
+    this->signUpButtonState=true;
+
     IM::SignUp signupData;
     signupData.set_networktype(MsgType::SIGNUP);
     signupData.set_recvid(0);//服务器接收
@@ -101,6 +106,7 @@ void SignUp::clickSignUp()
     Network::getInstance()->addObserver(this);
     Network::getInstance()->addMsg<IM::SignUp>(signupData);
 
+    clock_t start=clock();
     while(1)
     {
         if(state==1)
@@ -122,7 +128,14 @@ void SignUp::clickSignUp()
             ui->note->setStyleSheet("color:red;");
             break;
         }
+        if(clock()-start>3000)
+        {
+            ui->note->setText(QString("请求超时！"));
+            ui->note->setStyleSheet("color:red;");
+            break;
+        }
     }
+    this->signUpButtonState=false;
 
 
 }
