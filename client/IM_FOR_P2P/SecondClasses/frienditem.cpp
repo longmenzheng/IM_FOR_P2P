@@ -34,6 +34,22 @@ FriendItem::FriendItem(FriendManager* friendManager,UserInfo* friendInfo,QWidget
 
 
 }
+void FriendItem::setOnline()
+{
+    ui->flag->setText(QString("[---]"));
+    ui->flag->setStyleSheet("color:gray");
+    if(m_online==1)
+    {
+        ui->flag->setText(QString("[在线]"));
+        ui->flag->setStyleSheet("color:green");
+    }else if(m_online==0)
+    {
+        ui->flag->setText(QString("[离线]"));
+        ui->flag->setStyleSheet("color:gray");
+
+    }
+    qDebug()<<"+++++++++++m_online="<<m_online<<"++++++++++++++";
+}
 
 void FriendItem::mousePressEvent(QMouseEvent *)
 {

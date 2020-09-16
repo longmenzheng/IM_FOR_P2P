@@ -148,7 +148,7 @@ void ChatManager::setCurItem(ChatShowItem* curItem)
     ui->textEdit->show();
     ui->headInfo->show();
 
-    BuildP2P::getInstance()->sendMsg(m_curItem->getChaterID());
+    //BuildP2P::getInstance()->sendMsg(m_curItem->getChaterID());
 }
 
 

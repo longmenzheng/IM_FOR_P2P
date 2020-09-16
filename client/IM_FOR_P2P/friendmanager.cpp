@@ -9,6 +9,7 @@
 #include <QListWidgetItem>
 #include <QDebug>
 #include <exception>
+#include "buildp2p.h"
 
 FriendManager::FriendManager(QWidget *parent) :
     QWidget(parent),
@@ -114,16 +115,16 @@ void FriendManager::initListWidget()
             UserInfo* userInfo=new UserInfo();
             userInfo->userID=i->userid();
             userInfo->sex=i->u_sex();
-            qDebug()<<"--------initlistwidget----"<<i->friendid();
+           // qDebug()<<"--------initlistwidget----"<<i->friendid();
             userInfo->nickName=i->userremarkname();
-            qDebug()<<"--------initlistwidget----0";
+            //qDebug()<<"--------initlistwidget----0";
             FriendItem* tmp=new FriendItem(this,userInfo);
             tmp->setItemTyep(2);  //别人请求加你
             tmp->setShowUserInfo(m_showUserInfo);
 
             this->m_peerAddMap[userInfo->userID]=tmp;
 
-            qDebug()<<"--------initlistwidget----1";
+            //qDebug()<<"--------initlistwidget----1";
 
             QListWidgetItem *item=new QListWidgetItem();
             this->m_itemMap[userInfo->userID]=item;
@@ -142,16 +143,22 @@ void FriendManager::initListWidget()
             UserInfo* userInfo=new UserInfo();
             userInfo->userID=i->userid()==ClientManager::getInstance()->getUserInfo()->userID?i->friendid():i->userid();
             userInfo->sex=i->userid()==ClientManager::getInstance()->getUserInfo()->userID?i->f_sex():i->u_sex();
-            qDebug()<<"--------initlistwidget----"<<i->friendid();
+
+
+            //qDebug()<<"--------initlistwidget----"<<i->friendid();
             userInfo->nickName=i->userid()==ClientManager::getInstance()->getUserInfo()->userID?i->friendremarkname():i->userremarkname();
-            qDebug()<<"--------initlistwidget----0";
+            //qDebug()<<"--------initlistwidget----0";
             FriendItem* tmp=new FriendItem(this,userInfo);
             tmp->setItemTyep(3);  //已是好友关系
             tmp->setShowUserInfo(m_showUserInfo);
 
             this->m_friendsMap[userInfo->userID]=tmp;
 
+            //如果好友在线 与好友建立P2P连接
+            BuildP2P::getInstance()->sendMsg(userInfo->userID);//向服务器请求好友网络信息
+
             qDebug()<<"--------initlistwidget----1";
+
 
             QListWidgetItem *item=new QListWidgetItem();
             this->m_itemMap[userInfo->userID]=item;
@@ -159,6 +166,11 @@ void FriendManager::initListWidget()
             ui->listWidget->insertItem(index3++,item);
             qDebug()<<"--------initlistwidget----2";
             ui->listWidget->setItemWidget(item,m_friendsMap[userInfo->userID]);
+
+            //等待网络消息
+            QThread::msleep(100);
+            //tmp->setOnline();
+
         }
 
     }

@@ -25,6 +25,8 @@ public:
     int getItemType()const{return m_itemType;}
     void setShowUserInfo(ShowUserInfo* showuserInfo){m_showUserInfo=showuserInfo;}
     ShowUserInfo* getShowUserInfo(){return m_showUserInfo;}
+    void setOnline(int& is){m_online=is;}
+    void setOnline();
 protected:
     virtual void mousePressEvent(QMouseEvent *) override;
 signals:
@@ -36,6 +38,7 @@ private:
     ShowUserInfo* m_showUserInfo;
     int m_itemType;  //类型
     FriendManager* m_friendManager;
+    int m_online;    //标识是否在线
 };
 
 #endif // FRIENDITEM_H

@@ -24,6 +24,7 @@ class Ui_FriendItem
 public:
     QLabel *userIcon;
     QLabel *nickname;
+    QLabel *flag;
 
     void setupUi(QWidget *FriendItem)
     {
@@ -36,6 +37,9 @@ public:
         nickname = new QLabel(FriendItem);
         nickname->setObjectName(QStringLiteral("nickname"));
         nickname->setGeometry(QRect(50, 15, 140, 20));
+        flag = new QLabel(FriendItem);
+        flag->setObjectName(QStringLiteral("flag"));
+        flag->setGeometry(QRect(153, 20, 41, 16));
 
         retranslateUi(FriendItem);
 
@@ -47,6 +51,7 @@ public:
         FriendItem->setWindowTitle(QApplication::translate("FriendItem", "Form", Q_NULLPTR));
         userIcon->setText(QString());
         nickname->setText(QString());
+        flag->setText(QString());
     } // retranslateUi
 
 };

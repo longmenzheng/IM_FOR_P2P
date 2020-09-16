@@ -2,7 +2,6 @@
 #include "Msg/BuildP2P.pb.h"
 #include "network.h"
 #include "clientmanager.h"
-#include <QUdpSocket>
 
 BuildP2P* BuildP2P::m_instance=nullptr;
 
@@ -21,8 +20,11 @@ BuildP2P* BuildP2P::getInstance()
     return m_instance;
 }
 
+
+//需要建立P2P连接的人的ID
 void BuildP2P::sendMsg(const int& peerID)
 {
+    //this->peerid=peerID;
     IM::BuildP2P data;
     data.set_networktype(MsgType::BUILDP2P);
     data.set_recvid(0);
@@ -45,6 +47,7 @@ void BuildP2P::recvMsg(const char *msg)
         int sendID=-1;
         int contentLen=-1;
         char tmp[1024]={0};
+        int is=0;
 
         //格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
         sscanf(msg,"%*d\n%d\n%d\n%d\n%d\n",&sendID,&msgID,&msgType,&contentLen);  //获取消息ID 消息类型
@@ -68,14 +71,27 @@ void BuildP2P::recvMsg(const char *msg)
             res.set_recvid(res.peerid());
             Network::getInstance()->addMsg<IM::BuildP2P>(res);
 
+            is=1;
+            int tmp=res.peerid();
+            ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
+
             return;
         }
-        if(res.flag()==2)
+        if(res.flag()==0)
         {
-            qDebug()<<"---------建立成功---------";
+            qDebug()<<"---------对方不在线---------";
+            is=0;
+            int tmp=res.peerid();
+            ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
+
             return;
         }
 
+        if(res.flag()==2)
+        {
+            //这是朋友发送的
+
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QThread>
 
 #include <QDebug>
 
@@ -155,6 +156,12 @@ void MainWindow::clickFriendButton()
         m_stackedWidget->setCurrentWidget(m_friendManager);
         this->setWindowTitle(QString("好友"));
     }
+    //QThread::msleep(50);
+    for(auto i:*m_friendManager->getFriendsMap())
+    {
+        i.second->setOnline();
+    }
+
 }
 void MainWindow::clickGroupButton()
 {

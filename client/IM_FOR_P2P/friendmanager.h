@@ -43,6 +43,14 @@ public:
     void recvMsg(const char *msg) override;
     void initListWidget();
     void selectedItem(int);
+    FriendItem* getFriendItem(int& id)
+    {
+        try {
+            return m_friendsMap.at(id);
+        } catch (std::out_of_range e) {
+            return nullptr;
+        }
+    }
 
 
 
