@@ -106,6 +106,7 @@ void MainWindow::inMainWindow()
     m_currentButton=ui->userIcon;
     this->show();
 
+
 }
 
 
@@ -138,14 +139,17 @@ void MainWindow::clickChatButton()
 }
 
 bool tmp=true;
+int flag=1;
 void MainWindow::clickFriendButton()
 {
+
     if(tmp)
     {
         qDebug()<<"---------------------clickSettingButton----------------";
         m_friendManager->initListWidget();
         tmp=false;
     }
+
     //切换按钮显示效果
     if(m_currentButton!=ui->friendButton)
     {
@@ -156,7 +160,11 @@ void MainWindow::clickFriendButton()
         m_stackedWidget->setCurrentWidget(m_friendManager);
         this->setWindowTitle(QString("好友"));
     }
-    //QThread::msleep(50);
+    if(flag==1)
+    {
+        QThread::msleep(1000);
+        flag=0;
+    }
     for(auto i:*m_friendManager->getFriendsMap())
     {
         i.second->setOnline();

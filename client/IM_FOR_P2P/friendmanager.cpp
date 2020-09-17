@@ -50,6 +50,11 @@ bool FriendManager::init()
     connect(m_showUserInfo->getAgree(),&QPushButton::clicked,this,&FriendManager::toAgree);
     connect(m_showUserInfo->getDisagree(),&QPushButton::clicked,this,&FriendManager::toDisagree);
 
+    connect(this,&FriendManager::peerOnline,[=](int id){
+        m_friendsMap.at(id)->setOnline();
+    });
+
+
     //加载数据
     qDebug()<<"---------加载数据-----------";
     IM::LoadFriendInfo data;

@@ -36,6 +36,7 @@ void BuildP2P::sendMsg(const int& peerID)
 
 void BuildP2P::recvMsg(const char *msg)
 {
+    qDebug()<<"--------------------BuildP2P::recvMsg------------------";
     int msgType=-1;
     int msgID=-1;
     //格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
@@ -70,11 +71,11 @@ void BuildP2P::recvMsg(const char *msg)
             res.set_sendid(res.recvid());
             res.set_recvid(res.peerid());
             Network::getInstance()->addMsg<IM::BuildP2P>(res);
-
+            qDebug()<<"--------------@@@@----------------";
             is=1;
             int tmp=res.peerid();
-            ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
-
+            //ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
+            ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
             return;
         }
         if(res.flag()==0)

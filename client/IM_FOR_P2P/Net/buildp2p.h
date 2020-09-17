@@ -9,7 +9,7 @@ private:
     BuildP2P(BuildP2P&);
     
     static BuildP2P* m_instance;
-    int peerid;
+    //int peerid;
 public:
     static BuildP2P* getInstance();
     void sendMsg(const int&);  

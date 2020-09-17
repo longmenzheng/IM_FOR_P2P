@@ -52,6 +52,8 @@ public:
         }
     }
 
+    void emitPeerOnlineSignal(int& id){emit peerOnline(id);}
+
 
 
 signals:
@@ -60,6 +62,7 @@ signals:
     void clickGroupSignal();
     void agreeAdd(int);
     void disagreeAdd(int);
+    void peerOnline(int); //好友上线信号
 
 
 private:
