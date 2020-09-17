@@ -49,11 +49,11 @@ bool FriendManager::init()
     //是否同意添加好友请求
     connect(m_showUserInfo->getAgree(),&QPushButton::clicked,this,&FriendManager::toAgree);
     connect(m_showUserInfo->getDisagree(),&QPushButton::clicked,this,&FriendManager::toDisagree);
-
+/*
     connect(this,&FriendManager::peerOnline,[=](int id){
         m_friendsMap.at(id)->setOnline();
     });
-
+*/
 
     //加载数据
     qDebug()<<"---------加载数据-----------";

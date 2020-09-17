@@ -69,13 +69,15 @@ void BuildP2P::recvMsg(const char *msg)
             (*Network::getInstance()->m_netInfo)[res.peerid()].port=res.peerposrt();
             res.set_flag(2);//不需要处理 发送给对端 打通隧道
             res.set_sendid(res.recvid());
+            qDebug()<<"--1---"<<res.recvid()<<"-----";
             res.set_recvid(res.peerid());
+            qDebug()<<"--2---"<<res.peerid()<<"-----";
             Network::getInstance()->addMsg<IM::BuildP2P>(res);
             qDebug()<<"--------------@@@@----------------";
             is=1;
             int tmp=res.peerid();
-            //ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
-            ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
+            ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
+            //ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
             return;
         }
         if(res.flag()==0)
