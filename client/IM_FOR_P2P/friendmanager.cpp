@@ -49,11 +49,11 @@ bool FriendManager::init()
     //是否同意添加好友请求
     connect(m_showUserInfo->getAgree(),&QPushButton::clicked,this,&FriendManager::toAgree);
     connect(m_showUserInfo->getDisagree(),&QPushButton::clicked,this,&FriendManager::toDisagree);
-/*
-    connect(this,&FriendManager::peerOnline,[=](int id){
+
+    connect(this,&FriendManager::peerOnline,this,[=](int id){
         m_friendsMap.at(id)->setOnline();
-    });
-*/
+    },Qt::QueuedConnection);
+
 
     //加载数据
     qDebug()<<"---------加载数据-----------";
@@ -173,7 +173,7 @@ void FriendManager::initListWidget()
             ui->listWidget->setItemWidget(item,m_friendsMap[userInfo->userID]);
 
             //等待网络消息
-            QThread::msleep(100);
+            //QThread::msleep(100);
             //tmp->setOnline();
 
         }

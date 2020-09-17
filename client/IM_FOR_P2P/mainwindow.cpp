@@ -160,15 +160,18 @@ void MainWindow::clickFriendButton()
         m_stackedWidget->setCurrentWidget(m_friendManager);
         this->setWindowTitle(QString("好友"));
     }
+    /*
     if(flag==1)
     {
         QThread::msleep(1000);
         flag=0;
     }
+
     for(auto i:*m_friendManager->getFriendsMap())
     {
         i.second->setOnline();
     }
+    */
 
 }
 void MainWindow::clickGroupButton()

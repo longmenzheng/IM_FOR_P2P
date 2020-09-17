@@ -36,13 +36,14 @@ void BuildP2P::sendMsg(const int& peerID)
 
 void BuildP2P::recvMsg(const char *msg)
 {
-    qDebug()<<"--------------------BuildP2P::recvMsg------------------";
+
     int msgType=-1;
     int msgID=-1;
     //格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
     sscanf(msg,"%*d\n%*d\n%d\n%d\n",&msgID,&msgType);  //获取消息ID 消息类型
     if(MsgType::BUILDP2P==msgType)
     {
+        qDebug()<<"--------------------BuildP2P::recvMsg------------------";
         int msgType=-1;
         int msgID=-1;
         int sendID=-1;
@@ -67,17 +68,18 @@ void BuildP2P::recvMsg(const char *msg)
 
             (*Network::getInstance()->m_netInfo)[res.peerid()].ip=QHostAddress(QString::fromStdString(res.peerip()));
             (*Network::getInstance()->m_netInfo)[res.peerid()].port=res.peerposrt();
+            qDebug()<<"------peerIP:"<<(*Network::getInstance()->m_netInfo).at(res.peerid()).ip<<":"<<(*Network::getInstance()->m_netInfo).at(res.peerid()).port;
             res.set_flag(2);//不需要处理 发送给对端 打通隧道
             res.set_sendid(res.recvid());
-            qDebug()<<"--1---"<<res.recvid()<<"-----";
+            qDebug()<<"--1-recvid--"<<res.recvid()<<"-----";
             res.set_recvid(res.peerid());
-            qDebug()<<"--2---"<<res.peerid()<<"-----";
+            qDebug()<<"--2-peerid--"<<res.peerid()<<"-----";
             Network::getInstance()->addMsg<IM::BuildP2P>(res);
             qDebug()<<"--------------@@@@----------------";
             is=1;
             int tmp=res.peerid();
             ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
-            //ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
+            ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
             return;
         }
         if(res.flag()==0)
@@ -86,7 +88,7 @@ void BuildP2P::recvMsg(const char *msg)
             is=0;
             int tmp=res.peerid();
             ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
-
+            ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
             return;
         }
 

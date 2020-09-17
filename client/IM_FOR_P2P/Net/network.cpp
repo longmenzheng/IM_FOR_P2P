@@ -31,11 +31,11 @@ Network::Network():
     ACKHandler *ackhandler=new ACKHandler(m_sendMap,m_time);
     addObserver(ackhandler);
 
-    /*
+
     m_timeout=new QTimer(this);
     m_timeout->start(50000);
     connect(m_timeout,&QTimer::timeout,this,&Network::keepConnectWithServer);
-    */
+
     //下面为测试代码
 
     NetworkAddr tmp;
