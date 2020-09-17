@@ -101,6 +101,7 @@ QListWidget* ChatManager::getChatListWidget()
 
 void ChatManager::addItem(ChatShowItem* showWidget)
 {
+    //如果要添加的意见存在 显示它即可
     if(m_itemMap.count(showWidget->getChaterID()))
     {
        m_chatShowItemMap.at(showWidget->getChaterID())->mouseClick();
@@ -152,6 +153,7 @@ void ChatManager::setCurItem(ChatShowItem* curItem)
 }
 
 
+
 void ChatManager::recvMsg(const char *msg)
 {
     int msgType=-1;
@@ -178,19 +180,58 @@ void ChatManager::recvMsg(const char *msg)
         IM::ChatMsg *res=new IM::ChatMsg();
         res->ParseFromArray((void*)tmp,contentLen);
         emit msgSignal(res);
+        //emit ClientManager::getInstance()->getMainWindow()->unReadMsg(1);
     }
 }
 
 void ChatManager::handleMsg(IM::ChatMsg* msg)
 {
     qDebug()<<"-------------handleMsg-------------";
+
+    ChatShowItem* curChatItem;
+    try {
+        curChatItem=m_chatShowItemMap.at(msg->sendid());
+    } catch (std::out_of_range e) {
+        //该朋友还不在聊天列表中 创建一个
+        qDebug()<<"-------------out_of_range-------------";
+        UserInfo* userInfo=ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendsMap()->at(msg->sendid())->getFriendInfo();
+        //qDebug()<<"---"<<userInfo->userID;
+        //qDebug()<<"---"<<userInfo->sex;
+        QString icon;
+        if(userInfo->sex==1)
+            icon=QString(":/Resource/Images/userIcon.png");
+        else
+            icon=QString(":/Resource/Images/userIconF.png");
+
+        //std::string tmp=userInfo->icon;
+        //QString icon(QString::fromStdString(tmp));
+        //qDebug()<<"---"<<icon;
+
+        QString nickname=QString::fromStdString(userInfo->nickName);
+        //qDebug()<<"---"<<nickname;
+        curChatItem=new ChatShowItem(userInfo->userID,icon,nickname,this);
+        curChatItem->run();
+        QListWidgetItem* item=new QListWidgetItem(ui->listWidget);
+        item->setSizeHint(curChatItem->size());
+        ui->listWidget->setItemWidget(item,curChatItem);
+
+        this->m_itemMap[curChatItem->getChaterID()]=item;
+        this->m_chatShowItemMap[curChatItem->getChaterID()]=curChatItem;
+
+    }
+
+
     One_Msg data;
+    data.m_icon=curChatItem->getIcon();
     data.m_msgType=show_type_enum::SHOW_TYPE_LEFT;
     data.m_content=QString::fromStdString(msg->content());
     data.m_talktime=QDateTime::fromString(QString::fromStdString(msg->sendtime()),"yyyy-MM-dd HH:mm:ss");
     msg->sendid();
-    qDebug()<<"-------------sendid-------------"<<msg->sendid();
-    m_chatShowItemMap.at(msg->sendid())->addOneMsg(data);
+    //qDebug()<<"-------------sendid-------------"<<msg->sendid();
+    //qDebug()<<"-------------content-------------"<<QString::fromStdString( msg->content());
+
+
+    curChatItem->addOneMsg(data);
 }
 
 ChatManager::~ChatManager()

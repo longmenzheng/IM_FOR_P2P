@@ -5,6 +5,7 @@
 #include <thread>
 #include <exception>
 #include "ackhandler.h"
+#include "clientmanager.h"
 
 
 Network* Network::m_instance=nullptr;
@@ -33,7 +34,7 @@ Network::Network():
 
 
     m_timeout=new QTimer(this);
-    m_timeout->start(50000);
+    //m_timeout->start(50000);
     connect(m_timeout,&QTimer::timeout,this,&Network::keepConnectWithServer);
 
     //下面为测试代码
@@ -58,7 +59,7 @@ void Network::keepConnectWithServer()
     IM::Connect con;
     con.set_msgid(++NetMsgID);
     con.set_recvid(0);
-    con.set_sendid(45);
+    con.set_sendid(ClientManager::getInstance()->getUserInfo()->userID);
     con.set_networktype(MsgType::CONNECT);
     Network::getInstance()->addMsg(con);
 }

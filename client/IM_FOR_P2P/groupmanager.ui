@@ -13,84 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QToolBox" name="GroupManager_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>200</width>
-     <height>540</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="page">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>200</width>
-      <height>488</height>
-     </rect>
-    </property>
-    <attribute name="label">
-     <string>Page 1</string>
-    </attribute>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>60</y>
-       <width>71</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>群1</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>120</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>群2</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_3">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>180</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>群3</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_3">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>200</width>
-      <height>488</height>
-     </rect>
-    </property>
-    <attribute name="label">
-     <string>Page 2</string>
-    </attribute>
-   </widget>
-  </widget>
   <widget class="QLineEdit" name="searchBar">
    <property name="geometry">
     <rect>
@@ -116,6 +38,16 @@
    <property name="icon">
     <iconset resource="Res.qrc">
      <normaloff>:/Resource/Images/searchIcon .png</normaloff>:/Resource/Images/searchIcon .png</iconset>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>200</width>
+     <height>531</height>
+    </rect>
    </property>
   </widget>
  </widget>

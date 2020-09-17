@@ -31,6 +31,7 @@ public:
         if (FriendItem->objectName().isEmpty())
             FriendItem->setObjectName(QStringLiteral("FriendItem"));
         FriendItem->resize(200, 50);
+        FriendItem->setCursor(QCursor(Qt::PointingHandCursor));
         userIcon = new QLabel(FriendItem);
         userIcon->setObjectName(QStringLiteral("userIcon"));
         userIcon->setGeometry(QRect(10, 10, 30, 30));

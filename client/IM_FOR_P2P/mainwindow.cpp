@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QThread>
-
+#include "network.h"
 #include <QDebug>
 
 void changeIconNO(Ui::MainWindow* ui,QPushButton* button); //将图标切换到未点击状态
@@ -43,6 +43,12 @@ void MainWindow::init()
     ui->quit->setIcon(QIcon(":/Resource/Images/quitNO.png"));
     ui->quit->setIconSize(QSize(32,32));
 
+    ui->unRead->setStyleSheet(QString("border-image:url(:/Resource/Images/redYuan.png);"));
+    ui->unRead->hide();
+
+    ui->label->setStyleSheet(QString("QLabel{color:rgb(255,255,255);font-size:16px;font-weight:Bold;}"));
+    ui->label->hide();
+
     m_stackedWidget->setGeometry(60,0,740,600);
     m_stackedWidget->addWidget(m_showUserInfo);
     m_stackedWidget->addWidget(m_chatManager);
@@ -79,8 +85,15 @@ void MainWindow::init()
     //---7.点击退出按钮
     connect(ui->quit,&QPushButton::pressed,this,&MainWindow::clickQuitButton);
 
+    //---8.未读消息显示
+    connect(this,&MainWindow::unReadMsg,this,&MainWindow::showUnReadMsg,Qt::QueuedConnection);
 
+    //---9.加载朋友数据
+    //connect(this,&MainWindow::loadData,this,&MainWindow::loadFriendDate);
 }
+
+
+
 
 void MainWindow::inMainWindow()
 {
@@ -106,6 +119,11 @@ void MainWindow::inMainWindow()
     m_currentButton=ui->userIcon;
     this->show();
 
+    //开始向服务器发送心跳 保持连接
+    Network::getInstance()->startTimeout();
+
+    //QThread::msleep(4000);
+    //m_friendManager->initListWidget();
 
 }
 
@@ -125,6 +143,7 @@ void MainWindow::clickShowInfo()
 }
 void MainWindow::clickChatButton()
 {
+
     //切换按钮显示效果
     if(m_currentButton!=ui->msgButton)
     {
@@ -138,16 +157,18 @@ void MainWindow::clickChatButton()
 
 }
 
-bool tmp=true;
-int flag=1;
+void MainWindow::loadFriendDate()
+{
+    m_friendManager->initListWidget();
+}
+
 void MainWindow::clickFriendButton()
 {
-
-    if(tmp)
+    qDebug()<<"---------------------clickSettingButton----------------";
+    if(!initFriend)
     {
-        qDebug()<<"---------------------clickSettingButton----------------";
         m_friendManager->initListWidget();
-        tmp=false;
+        initFriend=true;
     }
 
     //切换按钮显示效果
@@ -160,18 +181,7 @@ void MainWindow::clickFriendButton()
         m_stackedWidget->setCurrentWidget(m_friendManager);
         this->setWindowTitle(QString("好友"));
     }
-    /*
-    if(flag==1)
-    {
-        QThread::msleep(1000);
-        flag=0;
-    }
 
-    for(auto i:*m_friendManager->getFriendsMap())
-    {
-        i.second->setOnline();
-    }
-    */
 
 }
 void MainWindow::clickGroupButton()
@@ -215,6 +225,24 @@ void MainWindow::clickQuitButton()
 
         this->setWindowTitle(QString("退出"));
     }
+}
+
+void MainWindow::showUnReadMsg(int un)
+{
+
+    qDebug()<<"=================="<<un<<"================";
+    m_unReadMsgCount=m_unReadMsgCount+un;
+    if(m_unReadMsgCount<=0)
+    {
+        m_unReadMsgCount=0;
+        ui->unRead->hide();
+        ui->label->hide();
+        return;
+    }
+
+    ui->label->setText(QString::fromStdString(std::to_string(m_unReadMsgCount)));
+    ui->unRead->show();
+    ui->label->show();
 }
 
 MainWindow::~MainWindow()
@@ -290,5 +318,7 @@ void changeIconYES(Ui::MainWindow* ui,QPushButton* button)
         return;
     }
 }
+
+
 
 

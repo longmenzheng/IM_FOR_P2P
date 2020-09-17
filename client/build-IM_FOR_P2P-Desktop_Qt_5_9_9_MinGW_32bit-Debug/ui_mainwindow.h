@@ -32,6 +32,8 @@ public:
     QPushButton *groupButton;
     QPushButton *setting;
     QPushButton *quit;
+    QLabel *unRead;
+    QLabel *label;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -82,6 +84,13 @@ public:
         quit->setCursor(QCursor(Qt::PointingHandCursor));
         quit->setIconSize(QSize(16, 16));
         quit->setFlat(true);
+        unRead = new QLabel(centralwidget);
+        unRead->setObjectName(QStringLiteral("unRead"));
+        unRead->setGeometry(QRect(30, 70, 30, 30));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(30, 70, 30, 30));
+        label->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -99,6 +108,8 @@ public:
         groupButton->setText(QString());
         setting->setText(QString());
         quit->setText(QString());
+        unRead->setText(QString());
+        label->setText(QString());
     } // retranslateUi
 
 };

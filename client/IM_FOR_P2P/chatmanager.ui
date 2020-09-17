@@ -19,7 +19,7 @@
      <x>10</x>
      <y>60</y>
      <width>200</width>
-     <height>540</height>
+     <height>531</height>
     </rect>
    </property>
   </widget>
@@ -121,7 +121,7 @@
   <widget class="QPushButton" name="chatRecord">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>270</x>
      <y>450</y>
      <width>30</width>
      <height>30</height>

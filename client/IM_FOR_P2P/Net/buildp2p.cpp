@@ -95,7 +95,7 @@ void BuildP2P::recvMsg(const char *msg)
         if(res.flag()==2)
         {
             //这是朋友发送的
-
+            qDebug()<<"---------P2P建立成功---------";
         }
     }
 

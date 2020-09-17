@@ -32,6 +32,7 @@ public:
     ChatManager* getChatManager(){return m_chatManager;}
     GroupManager* getGroupManager(){return m_groupManager;}
 
+
 private:
     Ui::MainWindow *ui;
     ClientManager* m_clientManager;
@@ -41,6 +42,8 @@ private:
     GroupManager* m_groupManager;
     ShowUserInfo* m_showUserInfo;
     QPushButton* m_currentButton;   //当前被点击按钮
+    int m_unReadMsgCount=0;
+    bool initFriend=false;
 public:
     //槽函数
     void inMainWindow();  //进入主窗口槽
@@ -50,5 +53,10 @@ public:
     void clickGroupButton();
     void clickSettingButton();
     void clickQuitButton();
+    void showUnReadMsg(int);
+    void loadFriendDate();
+signals:
+    void unReadMsg(int);
+    void loadData();
 };
 #endif // MAINWINDOW_H

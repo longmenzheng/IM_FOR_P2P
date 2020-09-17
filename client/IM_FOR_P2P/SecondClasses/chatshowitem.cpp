@@ -23,8 +23,18 @@ ChatShowItem::ChatShowItem(int chatId,QString& icon,QString& userNickname,ChatMa
 {
     ui->setupUi(this);
     ui->delChat->hide();
+
+    ui->unRead->setStyleSheet(QString("border-image:url(:/Resource/Images/redYuan.png);"));
+    ui->unRead->hide();
+
+    ui->label->setStyleSheet(QString("QLabel{color:rgb(255,255,255);font-size:12px;font-weight:Bold;}"));
+    ui->label->hide();
+
     //聊天删除
     connect(ui->delChat,&QPushButton::clicked,this,&ChatShowItem::clickDelChatButton);
+
+    //未读消息
+    connect(this,&ChatShowItem::unReadMsg,this,&ChatShowItem::showUnReadMsg);
 }
 
 
@@ -64,12 +74,38 @@ void ChatShowItem::mousePressEvent(QMouseEvent *event)
         item->setSizeHint(msgWidget->size());
         m_chatManager->getChatListWidget()->setItemWidget(item,msgWidget);
     }
+
+    //发送一个已读消息数量
+    ClientManager::getInstance()->getMainWindow()->unReadMsg(-m_unReadMsgCount);
+
+    //将未读消息 改为已读
+    emit unReadMsg(m_unReadMsgCount=0);
+
+}
+void ChatShowItem::showUnReadMsg(int un)
+{
+
+    m_unReadMsgCount+=un;
+    if(m_unReadMsgCount<=0)
+    {
+        m_unReadMsgCount=0;
+        ui->unRead->hide();
+        ui->label->hide();
+        return;
+    }
+
+    ui->label->setText(QString::fromStdString(std::to_string(m_unReadMsgCount)));
+    ui->unRead->show();
+    ui->label->show();
 }
 
 void ChatShowItem::clickDelChatButton()
 {
     //qDebug()<<"-------------chatShowItem_click----------";
     emit m_chatManager->delitem(m_chaterID); //触发chatManager的delitem信号
+    //发送一个已读消息数量
+
+    ClientManager::getInstance()->getMainWindow()->unReadMsg(-m_unReadMsgCount);
 }
 
 void ChatShowItem::run()
@@ -128,7 +164,15 @@ void ChatShowItem::addOneMsg(One_Msg& msg)
         QListWidgetItem* item=new QListWidgetItem(m_chatManager->getChatListWidget());
         item->setSizeHint(msgWidget->size());
         m_chatManager->getChatListWidget()->setItemWidget(item,msgWidget);
+    }else
+    {
+
+        //产生一个未读消息
+        emit unReadMsg(1);
+        emit ClientManager::getInstance()->getMainWindow()->unReadMsg(1);
     }
+
+
 
 }
 

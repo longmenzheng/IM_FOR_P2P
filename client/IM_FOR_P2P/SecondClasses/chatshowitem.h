@@ -43,6 +43,9 @@ public:
     void run();                 //将值赋值到相应控件上，绘制整个item
     void addOneMsg(One_Msg&);   //添加一条消息
     void mouseClick();
+    void showUnReadMsg(int);
+signals:
+    void unReadMsg(int);
 protected:
     //鼠标移入、移出、点击事件
     void enterEvent(QEvent *event) override;
@@ -57,7 +60,7 @@ private:
     QString m_userNickname;
     ChatManager *m_chatManager;
     std::list<One_Msg*> m_msgList;
-
+    int m_unReadMsgCount=0;
 
 };
 

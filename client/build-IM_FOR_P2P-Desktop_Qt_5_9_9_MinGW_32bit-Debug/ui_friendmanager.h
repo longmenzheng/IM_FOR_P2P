@@ -49,7 +49,7 @@ public:
         showWidget->setGeometry(QRect(210, 20, 530, 580));
         listWidget = new QListWidget(FriendManager);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(10, 60, 200, 540));
+        listWidget->setGeometry(QRect(10, 60, 200, 531));
 
         retranslateUi(FriendManager);
 

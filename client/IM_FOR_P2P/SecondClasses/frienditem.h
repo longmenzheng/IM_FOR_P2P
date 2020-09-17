@@ -23,6 +23,7 @@ public:
     ~FriendItem();
     void setItemTyep(int type){m_itemType=type;}
     int getItemType()const{return m_itemType;}
+    UserInfo* getFriendInfo(){return m_friendInfo;}
     void setShowUserInfo(ShowUserInfo* showuserInfo){m_showUserInfo=showuserInfo;}
     ShowUserInfo* getShowUserInfo(){return m_showUserInfo;}
     void setOnline(int& is){m_online=is;}

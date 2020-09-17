@@ -82,6 +82,7 @@ public:
     void addObserver(NetObserver* netObserver);    //需要接收网络消息的对象，应该调用此函数订阅网络消息
     void eraseObserver(NetObserver* netObserver);  //取消订阅
     static Network* getInstance();   //调用这个函数获取实例
+    void startTimeout(){m_timeout->start(50000);}
 };
 
 template<class T>

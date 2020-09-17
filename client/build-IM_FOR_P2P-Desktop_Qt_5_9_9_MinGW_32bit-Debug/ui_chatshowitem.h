@@ -26,13 +26,15 @@ public:
     QLabel *userIcon;
     QLabel *nickname;
     QPushButton *delChat;
-    QLabel *unreadMsg;
+    QLabel *label;
+    QLabel *unRead;
 
     void setupUi(QWidget *ChatShowItem)
     {
         if (ChatShowItem->objectName().isEmpty())
             ChatShowItem->setObjectName(QStringLiteral("ChatShowItem"));
         ChatShowItem->resize(185, 50);
+        ChatShowItem->setCursor(QCursor(Qt::PointingHandCursor));
         userIcon = new QLabel(ChatShowItem);
         userIcon->setObjectName(QStringLiteral("userIcon"));
         userIcon->setGeometry(QRect(10, 10, 30, 30));
@@ -47,9 +49,18 @@ public:
         delChat->setIcon(icon);
         delChat->setIconSize(QSize(20, 20));
         delChat->setFlat(true);
-        unreadMsg = new QLabel(ChatShowItem);
-        unreadMsg->setObjectName(QStringLiteral("unreadMsg"));
-        unreadMsg->setGeometry(QRect(30, 0, 23, 23));
+        label = new QLabel(ChatShowItem);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(30, 0, 23, 23));
+        label->setAlignment(Qt::AlignCenter);
+        unRead = new QLabel(ChatShowItem);
+        unRead->setObjectName(QStringLiteral("unRead"));
+        unRead->setGeometry(QRect(30, 0, 23, 23));
+        userIcon->raise();
+        nickname->raise();
+        delChat->raise();
+        unRead->raise();
+        label->raise();
 
         retranslateUi(ChatShowItem);
 
@@ -62,7 +73,8 @@ public:
         userIcon->setText(QString());
         nickname->setText(QString());
         delChat->setText(QString());
-        unreadMsg->setText(QString());
+        label->setText(QString());
+        unRead->setText(QString());
     } // retranslateUi
 
 };

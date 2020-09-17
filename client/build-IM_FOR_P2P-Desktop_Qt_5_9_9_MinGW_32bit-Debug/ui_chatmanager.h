@@ -43,7 +43,7 @@ public:
         ChatManager->resize(740, 600);
         listWidget = new QListWidget(ChatManager);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(10, 60, 200, 540));
+        listWidget->setGeometry(QRect(10, 60, 200, 531));
         searchEdit = new QLineEdit(ChatManager);
         searchEdit->setObjectName(QStringLiteral("searchEdit"));
         searchEdit->setGeometry(QRect(10, 20, 150, 20));
@@ -76,7 +76,7 @@ public:
         smallface->setFlat(true);
         chatRecord = new QPushButton(ChatManager);
         chatRecord->setObjectName(QStringLiteral("chatRecord"));
-        chatRecord->setGeometry(QRect(280, 450, 30, 30));
+        chatRecord->setGeometry(QRect(270, 450, 30, 30));
         chatRecord->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon3;
         icon3.addFile(QStringLiteral(":/Resource/Images/chatRecordNO.png"), QSize(), QIcon::Normal, QIcon::Off);
