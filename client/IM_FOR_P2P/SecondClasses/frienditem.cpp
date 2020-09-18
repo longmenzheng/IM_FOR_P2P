@@ -64,7 +64,7 @@ void FriendItem::mousePressEvent(QMouseEvent *)
         m_showUserInfo->getAgree()->hide();
         m_showUserInfo->getDisagree()->hide();
     }
-    if(2==m_itemType)  //别人添加你等待同意
+    if(2==m_itemType)  //别人添加你,等待同意
     {
         m_showUserInfo->getAddORChat()->hide();
         m_showUserInfo->getAgree()->show();

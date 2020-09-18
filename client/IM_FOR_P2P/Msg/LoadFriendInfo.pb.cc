@@ -56,6 +56,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_LoadFriendInfo_2eproto::offset
   PROTOBUF_FIELD_OFFSET(::IM::LoadFriendInfo, u_sex_),
   PROTOBUF_FIELD_OFFSET(::IM::LoadFriendInfo, f_sex_),
   PROTOBUF_FIELD_OFFSET(::IM::LoadFriendInfo, friendremarkname_),
+  PROTOBUF_FIELD_OFFSET(::IM::LoadFriendInfo, online_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::IM::LoadFriendInfo)},
@@ -66,13 +67,14 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_LoadFriendInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024LoadFriendInfo.proto\022\002IM\"\346\001\n\016LoadFrien"
+  "\n\024LoadFriendInfo.proto\022\002IM\"\366\001\n\016LoadFrien"
   "dInfo\022\023\n\013networkType\030\001 \001(\005\022\r\n\005msgID\030\002 \001("
   "\005\022\016\n\006recvID\030\003 \001(\005\022\016\n\006sendId\030\004 \001(\005\022\016\n\006use"
   "rID\030\005 \001(\005\022\020\n\010friendID\030\006 \001(\005\022\026\n\016userRemar"
   "kName\030\007 \001(\014\022\r\n\005state\030\010 \001(\005\022\017\n\007f_group\030\t "
   "\001(\014\022\r\n\005u_sex\030\n \001(\005\022\r\n\005f_sex\030\013 \001(\005\022\030\n\020fri"
-  "endRemarkName\030\014 \001(\014b\006proto3"
+  "endRemarkName\030\014 \001(\014\022\016\n\006online\030\r \001(\005b\006pro"
+  "to3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_LoadFriendInfo_2eproto_deps[1] = {
 };
@@ -81,7 +83,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Loa
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_LoadFriendInfo_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_LoadFriendInfo_2eproto = {
-  false, false, descriptor_table_protodef_LoadFriendInfo_2eproto, "LoadFriendInfo.proto", 267,
+  false, false, descriptor_table_protodef_LoadFriendInfo_2eproto, "LoadFriendInfo.proto", 283,
   &descriptor_table_LoadFriendInfo_2eproto_once, descriptor_table_LoadFriendInfo_2eproto_sccs, descriptor_table_LoadFriendInfo_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_LoadFriendInfo_2eproto::offsets,
   file_level_metadata_LoadFriendInfo_2eproto, 1, file_level_enum_descriptors_LoadFriendInfo_2eproto, file_level_service_descriptors_LoadFriendInfo_2eproto,
@@ -124,8 +126,8 @@ LoadFriendInfo::LoadFriendInfo(const LoadFriendInfo& from)
       GetArena());
   }
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&f_sex_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(f_sex_));
+    static_cast<size_t>(reinterpret_cast<char*>(&online_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(online_));
   // @@protoc_insertion_point(copy_constructor:IM.LoadFriendInfo)
 }
 
@@ -135,8 +137,8 @@ void LoadFriendInfo::SharedCtor() {
   f_group_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   friendremarkname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&f_sex_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(f_sex_));
+      reinterpret_cast<char*>(&online_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(online_));
 }
 
 LoadFriendInfo::~LoadFriendInfo() {
@@ -177,8 +179,8 @@ void LoadFriendInfo::Clear() {
   f_group_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   friendremarkname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&f_sex_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(f_sex_));
+      reinterpret_cast<char*>(&online_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(online_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -274,6 +276,13 @@ const char* LoadFriendInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
           auto str = _internal_mutable_friendremarkname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 online = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 104)) {
+          online_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -377,6 +386,12 @@ failure:
         12, this->_internal_friendremarkname(), target);
   }
 
+  // int32 online = 13;
+  if (this->online() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(13, this->_internal_online(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -477,6 +492,13 @@ size_t LoadFriendInfo::ByteSizeLong() const {
         this->_internal_f_sex());
   }
 
+  // int32 online = 13;
+  if (this->online() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_online());
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -544,6 +566,9 @@ void LoadFriendInfo::MergeFrom(const LoadFriendInfo& from) {
   if (from.f_sex() != 0) {
     _internal_set_f_sex(from._internal_f_sex());
   }
+  if (from.online() != 0) {
+    _internal_set_online(from._internal_online());
+  }
 }
 
 void LoadFriendInfo::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -571,8 +596,8 @@ void LoadFriendInfo::InternalSwap(LoadFriendInfo* other) {
   f_group_.Swap(&other->f_group_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   friendremarkname_.Swap(&other->friendremarkname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(LoadFriendInfo, f_sex_)
-      + sizeof(LoadFriendInfo::f_sex_)
+      PROTOBUF_FIELD_OFFSET(LoadFriendInfo, online_)
+      + sizeof(LoadFriendInfo::online_)
       - PROTOBUF_FIELD_OFFSET(LoadFriendInfo, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

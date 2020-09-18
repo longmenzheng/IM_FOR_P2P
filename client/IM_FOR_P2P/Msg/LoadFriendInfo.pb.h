@@ -191,6 +191,7 @@ class LoadFriendInfo PROTOBUF_FINAL :
     kStateFieldNumber = 8,
     kUSexFieldNumber = 10,
     kFSexFieldNumber = 11,
+    kOnlineFieldNumber = 13,
   };
   // bytes userRemarkName = 7;
   void clear_userremarkname();
@@ -348,6 +349,15 @@ class LoadFriendInfo PROTOBUF_FINAL :
   void _internal_set_f_sex(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 online = 13;
+  void clear_online();
+  ::PROTOBUF_NAMESPACE_ID::int32 online() const;
+  void set_online(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_online() const;
+  void _internal_set_online(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:IM.LoadFriendInfo)
  private:
   class _Internal;
@@ -367,6 +377,7 @@ class LoadFriendInfo PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 state_;
   ::PROTOBUF_NAMESPACE_ID::int32 u_sex_;
   ::PROTOBUF_NAMESPACE_ID::int32 f_sex_;
+  ::PROTOBUF_NAMESPACE_ID::int32 online_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_LoadFriendInfo_2eproto;
 };
@@ -802,6 +813,26 @@ inline void LoadFriendInfo::unsafe_arena_set_allocated_friendremarkname(
   friendremarkname_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       friendremarkname, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.LoadFriendInfo.friendRemarkName)
+}
+
+// int32 online = 13;
+inline void LoadFriendInfo::clear_online() {
+  online_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LoadFriendInfo::_internal_online() const {
+  return online_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LoadFriendInfo::online() const {
+  // @@protoc_insertion_point(field_get:IM.LoadFriendInfo.online)
+  return _internal_online();
+}
+inline void LoadFriendInfo::_internal_set_online(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  online_ = value;
+}
+inline void LoadFriendInfo::set_online(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_online(value);
+  // @@protoc_insertion_point(field_set:IM.LoadFriendInfo.online)
 }
 
 #ifdef __GNUC__

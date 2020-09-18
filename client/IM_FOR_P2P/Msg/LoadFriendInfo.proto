@@ -15,4 +15,5 @@ bytes f_group=9;
 int32 u_sex=10;
 int32 f_sex=11;
 bytes friendRemarkName=12;
+int32 online=13;
 }

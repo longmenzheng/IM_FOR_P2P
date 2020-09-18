@@ -40,17 +40,15 @@ public:
     void toChat(int&);
     void toAgree();
     void toDisagree();
+    void finshAgree(int);
+    void finshDisagree(int);
+    void finshPeerAgree(int);
+    void finshPeerDisagree(int);
     void recvMsg(const char *msg) override;
     void initListWidget();
     void selectedItem(int);
-    FriendItem* getFriendItem(int& id)
-    {
-        try {
-            return m_friendsMap.at(id);
-        } catch (std::out_of_range e) {
-            return nullptr;
-        }
-    }
+    FriendItem* getFriendItem(int& id);
+    void insertItem(IM::LoadFriendInfo*);
 
     void emitPeerOnlineSignal(int& id){emit peerOnline(id);}
 
@@ -63,6 +61,8 @@ signals:
     void agreeAdd(int);
     void disagreeAdd(int);
     void peerOnline(int); //好友上线信号
+    void peerAgreeAdd(int); //对方同意添加好友
+    void peerDisagreeAdd(int);
 
 
 private:

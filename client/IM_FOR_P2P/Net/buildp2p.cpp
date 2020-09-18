@@ -79,7 +79,9 @@ void BuildP2P::recvMsg(const char *msg)
             is=1;
             int tmp=res.peerid();
             ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
+            qDebug()<<"--------------@++++@----------------";
             ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
+            qDebug()<<"--------------++@@++----------------";
             return;
         }
         if(res.flag()==0)
