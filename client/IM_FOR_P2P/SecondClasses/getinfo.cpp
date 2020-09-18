@@ -2,6 +2,7 @@
 #include "Msg/ModifyInfo.pb.h"
 #include "network.h"
 #include <QString>
+#include "clientmanager.h"
 
 UserInfo* GetInfo::m_userInfo=nullptr;
 GetInfo* GetInfo::m_instance=nullptr;
@@ -41,7 +42,7 @@ bool GetInfo::getInfo(UserInfo* userInfo)
     {
         m_serveID=userInfo->userID;
         transinfo.set_userid(userInfo->userID);
-        transinfo.set_sendid(userInfo->userID);
+        transinfo.set_sendid(ClientManager::getInstance()->getUserInfo()->userID);
     }
     transinfo.set_networktype(MsgType::MODIFYUAERINFO);
     transinfo.set_recvid(0);

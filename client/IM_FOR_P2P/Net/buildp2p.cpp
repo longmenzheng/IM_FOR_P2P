@@ -70,6 +70,7 @@ void BuildP2P::recvMsg(const char *msg)
             (*Network::getInstance()->m_netInfo)[res.peerid()].port=res.peerposrt();
             qDebug()<<"------peerIP:"<<(*Network::getInstance()->m_netInfo).at(res.peerid()).ip<<":"<<(*Network::getInstance()->m_netInfo).at(res.peerid()).port;
             res.set_flag(2);//不需要处理 发送给对端 打通隧道
+            qDebug()<<"--------------set_flag----------------"<<res.flag();
             res.set_sendid(res.recvid());
             qDebug()<<"--1-recvid--"<<res.recvid()<<"-----";
             res.set_recvid(res.peerid());
