@@ -99,6 +99,7 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
     //qDebug()<<"===============m_addPeerMap="<<m_addPeerMap.size()<<"==========";
     if(i->state()==1&&i->userid()==ClientManager::getInstance()->getUserInfo()->userID)
     {//你加别人
+
         UserInfo* userInfo=new UserInfo();
         userInfo->userID=i->friendid();
         userInfo->sex=i->f_sex();
@@ -110,13 +111,14 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
         tmp->setShowUserInfo(m_showUserInfo);
 
         m_addPeerMap[userInfo->userID]=tmp;
+        index1=m_addPeerMap.size();
 
         //qDebug()<<"--------initlistwidget----1";
 
         QListWidgetItem *item=new QListWidgetItem();
         this->m_itemMap[userInfo->userID]=item;
         item->setSizeHint(QSize(185,50));
-        ui->listWidget->insertItem(index1++,item);
+        ui->listWidget->insertItem(index1,item);
         //qDebug()<<"--------initlistwidget----2";
         ui->listWidget->setItemWidget(item,tmp);
         return;
@@ -131,7 +133,7 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
     if(i->state()==1&&i->friendid()==ClientManager::getInstance()->getUserInfo()->userID)
     {//别人加你
         //加载申请列表
-        index2+=m_addPeerMap.size();
+        //index2+=m_addPeerMap.size();
         UserInfo* userInfo=new UserInfo();
         userInfo->userID=i->userid();
         userInfo->sex=i->u_sex();
@@ -143,13 +145,14 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
         tmp->setShowUserInfo(m_showUserInfo);
 
         this->m_peerAddMap[userInfo->userID]=tmp;
+        index2=1+m_addPeerMap.size()+m_peerAddMap.size();
 
         //qDebug()<<"--------initlistwidget----1";
 
         QListWidgetItem *item=new QListWidgetItem();
         this->m_itemMap[userInfo->userID]=item;
         item->setSizeHint(QSize(185,50));
-        ui->listWidget->insertItem(index2++,item);
+        ui->listWidget->insertItem(index2,item);
         qDebug()<<"--------initlistwidget----2";
         ui->listWidget->setItemWidget(item,m_peerAddMap[userInfo->userID]);
         return;
@@ -161,7 +164,7 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
     if(i->state()==2)
     {//好友
         //加载好友列表
-        index3+=m_addPeerMap.size()+m_peerAddMap.size();
+        //index3=m_addPeerMap.size()+m_peerAddMap.size();
         UserInfo* userInfo=new UserInfo();
         userInfo->userID=i->userid()==ClientManager::getInstance()->getUserInfo()->userID?i->friendid():i->userid();
         userInfo->sex=i->userid()==ClientManager::getInstance()->getUserInfo()->userID?i->f_sex():i->u_sex();
@@ -175,6 +178,7 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
         tmp->setShowUserInfo(m_showUserInfo);
 
         this->m_friendsMap[userInfo->userID]=tmp;
+        index3=m_addPeerMap.size()+m_peerAddMap.size()+m_friendsMap.size()+2;
 
         //如果好友在线 与好友建立P2P连接
         BuildP2P::getInstance()->sendMsg(userInfo->userID);//向服务器请求好友网络信息
@@ -185,7 +189,7 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
         QListWidgetItem *item=new QListWidgetItem();
         this->m_itemMap[userInfo->userID]=item;
         item->setSizeHint(QSize(185,50));
-        ui->listWidget->insertItem(index3++,item);
+        ui->listWidget->insertItem(index3,item);
         qDebug()<<"--------initlistwidget----2";
         ui->listWidget->setItemWidget(item,m_friendsMap[userInfo->userID]);
         return;
@@ -288,9 +292,9 @@ void FriendManager::finshAgree(int id)
     qDebug()<<"=====================更新界面===============";
     QListWidgetItem* item=ui->listWidget->takeItem(ui->listWidget->row(this->m_itemMap.at(id)));
 
-    --index3;
+    index3=m_addPeerMap.size()+m_peerAddMap.size()+m_friendsMap.size()+2;
     qDebug()<<"=====================index3==============="<<index3;
-    ui->listWidget->insertItem(index3++,item);
+    ui->listWidget->insertItem(index3,item);
     ui->listWidget->setItemWidget(item,tmp);
 
 
@@ -350,9 +354,9 @@ void FriendManager::finshPeerAgree(int id)
 
 
     QListWidgetItem* item=ui->listWidget->takeItem(ui->listWidget->row(this->m_itemMap.at(id)));
-    --index3;
+    index3=m_addPeerMap.size()+m_peerAddMap.size()+m_friendsMap.size()+2;
     qDebug()<<"=====================index3==============="<<index3;
-    ui->listWidget->insertItem(index3++,item);
+    ui->listWidget->insertItem(index3,item);
     ui->listWidget->setItemWidget(item,tmp);
 
 

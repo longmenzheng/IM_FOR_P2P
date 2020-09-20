@@ -8,6 +8,8 @@
 #include "groupmanager.h"
 #include "chatmanager.h"
 #include "showuserinfo.h"
+#include <QCloseEvent>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +33,9 @@ public:
     ShowUserInfo* getShowuserInfo(){return m_showUserInfo;}
     ChatManager* getChatManager(){return m_chatManager;}
     GroupManager* getGroupManager(){return m_groupManager;}
+    bool curButton_Msg();
+    bool curButton_Friend();
+    bool curButton_Group();
 
 
 private:
@@ -44,6 +49,12 @@ private:
     QPushButton* m_currentButton;   //当前被点击按钮
     int m_unReadMsgCount=0;
     bool initFriend=false;
+    QTimer *m_timeout;
+
+protected:
+    //程序关闭之后做的事情
+    void closeEvent(QCloseEvent* event);
+
 public:
     //槽函数
     void inMainWindow();  //进入主窗口槽

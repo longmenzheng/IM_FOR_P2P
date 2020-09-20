@@ -44,6 +44,7 @@ public:
     void addOneMsg(One_Msg&);   //添加一条消息
     void mouseClick();
     void showUnReadMsg(int);
+    int& getUnReadMsgCount(){return m_unReadMsgCount;}
 signals:
     void unReadMsg(int);
 protected:

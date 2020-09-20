@@ -26,6 +26,7 @@ void BuildP2P::sendMsg(const int& peerID)
 {
     //this->peerid=peerID;
     IM::BuildP2P data;
+    data.set_flag(1);//表示请求
     data.set_networktype(MsgType::BUILDP2P);
     data.set_recvid(0);
     data.set_sendid(ClientManager::getInstance()->getUserInfo()->userID);
@@ -92,6 +93,11 @@ void BuildP2P::recvMsg(const char *msg)
             int tmp=res.peerid();
             ClientManager::getInstance()->getMainWindow()->getFriendManager()->getFriendItem(tmp)->setOnline(is);
             ClientManager::getInstance()->getMainWindow()->getFriendManager()->emitPeerOnlineSignal(tmp);
+            try {
+                Network::getInstance()->m_netInfo->erase(res.peerid());
+            } catch (std::out_of_range e) {
+
+            }
             return;
         }
 

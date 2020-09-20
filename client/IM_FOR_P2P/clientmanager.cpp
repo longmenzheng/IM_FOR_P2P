@@ -32,6 +32,7 @@ void ClientManager::run()
 
 ClientManager::~ClientManager()
 {
+
     delete m_signIn;
     delete m_signUp;
     delete m_mainWindow;

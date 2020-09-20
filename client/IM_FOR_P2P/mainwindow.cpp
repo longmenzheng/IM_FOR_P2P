@@ -93,7 +93,18 @@ void MainWindow::init()
 }
 
 
-
+bool MainWindow::curButton_Msg()
+{
+    return m_currentButton==ui->msgButton;
+}
+bool MainWindow::curButton_Friend()
+{
+    return m_currentButton==ui->friendButton;
+}
+bool MainWindow::curButton_Group()
+{
+    return m_currentButton==ui->groupButton;
+}
 
 void MainWindow::inMainWindow()
 {
@@ -125,6 +136,29 @@ void MainWindow::inMainWindow()
     //QThread::msleep(4000);
     //m_friendManager->initListWidget();
 
+
+    //如果用户没有点击朋友界面 4秒后初始化朋友列表
+    m_timeout=new QTimer(this);
+    m_timeout->start(4000);
+    connect(m_timeout,&QTimer::timeout,this,[=](){
+        if(!initFriend)
+        {
+            m_friendManager->initListWidget();
+            initFriend=true;
+        }
+        m_timeout->stop();
+    });
+
+}
+
+
+
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+    if(Network::getInstance()->appClose())
+        event->accept();
+    else
+        event->ignore();
 }
 
 
@@ -155,6 +189,13 @@ void MainWindow::clickChatButton()
         this->setWindowTitle(QString("聊天"));
     }
 
+    ChatShowItem* tmp=m_chatManager->getCurItem();
+    if(tmp!=nullptr)
+    {
+        //前后关系不能变
+        emit unReadMsg(0-tmp->getUnReadMsgCount());
+        emit tmp->unReadMsg(0-tmp->getUnReadMsgCount());
+    }
 }
 
 void MainWindow::loadFriendDate()

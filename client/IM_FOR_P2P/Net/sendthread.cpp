@@ -1,6 +1,7 @@
 #include "sendthread.h"
 #include <QDebug>
 #include "ChatMsg.pb.h"
+#include "network.h"
 
 SendThread::SendThread()
 {
@@ -37,6 +38,7 @@ void SendThread::run()
         if(m_sendQueue->empty())
         {
             //QThread::msleep(500);   //500ms
+            Network::getInstance()->setSendFinsh(true);
             continue;
         }
         const char *msg=m_sendQueue->front();

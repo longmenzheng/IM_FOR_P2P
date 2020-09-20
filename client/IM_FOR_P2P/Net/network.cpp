@@ -6,6 +6,7 @@
 #include <exception>
 #include "ackhandler.h"
 #include "clientmanager.h"
+#include "Msg/BuildP2P.pb.h"
 
 
 Network* Network::m_instance=nullptr;
@@ -37,7 +38,7 @@ Network::Network():
     //m_timeout->start(50000);
     connect(m_timeout,&QTimer::timeout,this,&Network::keepConnectWithServer);
 
-    //下面为测试代码
+    //设置服务器网络信息
 
     NetworkAddr tmp;
     tmp.ip=QHostAddress("116.62.46.162");
@@ -56,12 +57,29 @@ Network::Network(Network&)
 
 void Network::keepConnectWithServer()
 {
-    IM::Connect con;
-    con.set_msgid(++NetMsgID);
-    con.set_recvid(0);
-    con.set_sendid(ClientManager::getInstance()->getUserInfo()->userID);
-    con.set_networktype(MsgType::CONNECT);
-    Network::getInstance()->addMsg(con);
+    int userID=ClientManager::getInstance()->getUserInfo()->userID;
+    for(auto i:*m_netInfo)
+    {
+        if(0==i.first)
+        {
+            IM::Connect con;
+            //con.set_msgid(++NetMsgID);
+            con.set_recvid(0);
+            con.set_sendid(userID);
+            con.set_networktype(MsgType::CONNECT);
+            Network::getInstance()->addMsg<IM::Connect>(con);
+        }else
+        {
+            IM::BuildP2P con;
+            con.set_networktype(MsgType::BUILDP2P);
+            con.set_flag(2);
+            con.set_recvid(i.first);
+            con.set_sendid(userID);
+            Network::getInstance()->addMsg<IM::BuildP2P>(con);
+
+        }
+    }
+
 }
 
 
@@ -82,4 +100,22 @@ Network* Network::getInstance()
         m_instance=new Network();
     }
     return m_instance;
+}
+
+bool Network::appClose()
+{
+    int sendId=ClientManager::getInstance()->getUserInfo()->userID;
+    for(auto i:*m_netInfo)
+    {
+
+        IM::BuildP2P msg;
+        msg.set_networktype(MsgType::BUILDP2P);
+        msg.set_flag(0);
+        msg.set_peerid(i.first);
+        msg.set_sendid(sendId);
+    }
+    while (!m_sendFinsh) {
+        //消息如果没有发送完毕 一直循环
+    }
+    return true;
 }

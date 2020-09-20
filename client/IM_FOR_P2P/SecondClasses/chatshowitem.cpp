@@ -164,7 +164,8 @@ void ChatShowItem::addOneMsg(One_Msg& msg)
         QListWidgetItem* item=new QListWidgetItem(m_chatManager->getChatListWidget());
         item->setSizeHint(msgWidget->size());
         m_chatManager->getChatListWidget()->setItemWidget(item,msgWidget);
-    }else
+    }
+    if(m_chatManager->getCurItem()!=this||!ClientManager::getInstance()->getMainWindow()->curButton_Msg())
     {
 
         //产生一个未读消息

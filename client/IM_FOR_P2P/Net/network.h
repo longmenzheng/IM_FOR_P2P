@@ -68,6 +68,7 @@ private:
     SendThread *pSendThread;
     RecvThread *pRecvThread;
     DistributeThread *pDistributeThread;
+    bool m_sendFinsh=true;  //消息是否发送完毕标识
 private:
     Network();
     Network(Network&);
@@ -83,6 +84,8 @@ public:
     void eraseObserver(NetObserver* netObserver);  //取消订阅
     static Network* getInstance();   //调用这个函数获取实例
     void startTimeout(){m_timeout->start(50000);}
+    bool appClose();
+    void setSendFinsh(bool boo){m_sendFinsh=boo;}
 };
 
 template<class T>
@@ -119,6 +122,7 @@ void Network::addMsg(T& msg)
     qDebug()<<queueElement;
 
     m_sendQueue->push(queueElement);       //放入待发队列当中
+    m_sendFinsh=false;
     if(msgType==MsgType::ACK)              //ACK消息不需要重发，不插入m_sendMap中
         return;
     m_sendMap->insert(std::pair<int,char*>(msgID,queueElement));  //插入未确认表

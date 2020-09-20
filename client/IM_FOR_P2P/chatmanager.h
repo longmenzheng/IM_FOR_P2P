@@ -44,7 +44,7 @@ signals:
 
 private:
     Ui::ChatManager *ui;
-    ChatShowItem* m_curItem;  //当前正在聊天的对象
+    ChatShowItem* m_curItem=nullptr;  //当前正在聊天的对象
     std::map<int,QListWidgetItem*> m_itemMap;
     std::map<int,ChatShowItem*> m_chatShowItemMap;
 
