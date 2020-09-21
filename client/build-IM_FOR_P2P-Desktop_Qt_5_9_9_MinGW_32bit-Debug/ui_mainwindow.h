@@ -34,6 +34,8 @@ public:
     QPushButton *quit;
     QLabel *unRead;
     QLabel *label;
+    QLabel *unRead_2;
+    QLabel *label_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -91,6 +93,13 @@ public:
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(30, 70, 30, 30));
         label->setAlignment(Qt::AlignCenter);
+        unRead_2 = new QLabel(centralwidget);
+        unRead_2->setObjectName(QStringLiteral("unRead_2"));
+        unRead_2->setGeometry(QRect(30, 130, 30, 30));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(30, 130, 30, 30));
+        label_2->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -110,6 +119,8 @@ public:
         quit->setText(QString());
         unRead->setText(QString());
         label->setText(QString());
+        unRead_2->setText(QString());
+        label_2->setText(QString());
     } // retranslateUi
 
 };

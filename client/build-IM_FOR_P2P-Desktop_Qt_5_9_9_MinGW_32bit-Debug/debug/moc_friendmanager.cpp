@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_FriendManager_t {
-    QByteArrayData data[9];
-    char stringdata0[108];
+    QByteArrayData data[10];
+    char stringdata0[118];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,12 +39,14 @@ QT_MOC_LITERAL(4, 47, 8), // "agreeAdd"
 QT_MOC_LITERAL(5, 56, 11), // "disagreeAdd"
 QT_MOC_LITERAL(6, 68, 10), // "peerOnline"
 QT_MOC_LITERAL(7, 79, 12), // "peerAgreeAdd"
-QT_MOC_LITERAL(8, 92, 15) // "peerDisagreeAdd"
+QT_MOC_LITERAL(8, 92, 15), // "peerDisagreeAdd"
+QT_MOC_LITERAL(9, 108, 9) // "peerApply"
 
     },
     "FriendManager\0clickMsgSignal\0\0"
     "clickGroupSignal\0agreeAdd\0disagreeAdd\0"
-    "peerOnline\0peerAgreeAdd\0peerDisagreeAdd"
+    "peerOnline\0peerAgreeAdd\0peerDisagreeAdd\0"
+    "peerApply"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,25 +56,27 @@ static const uint qt_meta_data_FriendManager[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       7,       // signalCount
+       8,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x06 /* Public */,
-       3,    0,   50,    2, 0x06 /* Public */,
-       4,    1,   51,    2, 0x06 /* Public */,
-       5,    1,   54,    2, 0x06 /* Public */,
-       6,    1,   57,    2, 0x06 /* Public */,
-       7,    1,   60,    2, 0x06 /* Public */,
-       8,    1,   63,    2, 0x06 /* Public */,
+       1,    0,   54,    2, 0x06 /* Public */,
+       3,    0,   55,    2, 0x06 /* Public */,
+       4,    1,   56,    2, 0x06 /* Public */,
+       5,    1,   59,    2, 0x06 /* Public */,
+       6,    1,   62,    2, 0x06 /* Public */,
+       7,    1,   65,    2, 0x06 /* Public */,
+       8,    1,   68,    2, 0x06 /* Public */,
+       9,    1,   71,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
@@ -95,6 +99,7 @@ void FriendManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 4: _t->peerOnline((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->peerAgreeAdd((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->peerDisagreeAdd((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->peerApply((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -148,6 +153,13 @@ void FriendManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
                 return;
             }
         }
+        {
+            typedef void (FriendManager::*_t)(int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&FriendManager::peerApply)) {
+                *result = 7;
+                return;
+            }
+        }
     }
 }
 
@@ -180,13 +192,13 @@ int FriendManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }
@@ -236,6 +248,13 @@ void FriendManager::peerDisagreeAdd(int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+
+// SIGNAL 7
+void FriendManager::peerApply(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

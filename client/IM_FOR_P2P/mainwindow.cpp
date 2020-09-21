@@ -49,6 +49,12 @@ void MainWindow::init()
     ui->label->setStyleSheet(QString("QLabel{color:rgb(255,255,255);font-size:16px;font-weight:Bold;}"));
     ui->label->hide();
 
+    ui->unRead_2->setStyleSheet(QString("border-image:url(:/Resource/Images/redYuan.png);"));
+    ui->unRead_2->hide();
+
+    ui->label_2->setStyleSheet(QString("QLabel{color:rgb(255,255,255);font-size:16px;font-weight:Bold;}"));
+    ui->label_2->hide();
+
     m_stackedWidget->setGeometry(60,0,740,600);
     m_stackedWidget->addWidget(m_showUserInfo);
     m_stackedWidget->addWidget(m_chatManager);
@@ -88,9 +94,10 @@ void MainWindow::init()
     //---8.未读消息显示
     connect(this,&MainWindow::unReadMsg,this,&MainWindow::showUnReadMsg,Qt::QueuedConnection);
 
-    //---9.加载朋友数据
-    //connect(this,&MainWindow::loadData,this,&MainWindow::loadFriendDate);
+    //---9.显示未处理申请
+    connect(this,&MainWindow::unHandleApply,this,&MainWindow::showUnHandleApply,Qt::QueuedConnection);
 }
+
 
 
 bool MainWindow::curButton_Msg()
@@ -268,10 +275,27 @@ void MainWindow::clickQuitButton()
     }
 }
 
+void MainWindow::showUnHandleApply(int un)
+{
+    qDebug()<<"=======showUnHandleApply==========="<<un<<"================";
+    m_applyCount=m_applyCount+un;
+    if(m_applyCount<=0)
+    {
+        m_applyCount=0;
+        ui->unRead_2->hide();
+        ui->label_2->hide();
+        return;
+    }
+
+    ui->label_2->setText(QString::fromStdString(std::to_string(m_applyCount)));
+    ui->unRead_2->show();
+    ui->label_2->show();
+}
+
 void MainWindow::showUnReadMsg(int un)
 {
 
-    qDebug()<<"=================="<<un<<"================";
+    qDebug()<<"=======UnReadMsg==========="<<un<<"================";
     m_unReadMsgCount=m_unReadMsgCount+un;
     if(m_unReadMsgCount<=0)
     {

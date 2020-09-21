@@ -60,6 +60,9 @@ bool FriendManager::init()
     connect(this,&FriendManager::peerAgreeAdd,this,&FriendManager::finshPeerAgree);
     connect(this,&FriendManager::peerDisagreeAdd,this,&FriendManager::finshDisagree);
 
+    //对方申请消息到达 做处理
+    connect(this,&FriendManager::peerApply,this,&FriendManager::handleApply);
+
     //加载数据
     qDebug()<<"---------加载数据-----------";
     IM::LoadFriendInfo data;
@@ -155,7 +158,10 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
         item->setSizeHint(QSize(185,50));
         ui->listWidget->insertItem(index2,item);
         qDebug()<<"--------initlistwidget----2";
-        ui->listWidget->setItemWidget(item,m_peerAddMap[userInfo->userID]);
+        ui->listWidget->setItemWidget(item,tmp);
+
+        //添加一条申请
+        emit ClientManager::getInstance()->getMainWindow()->unHandleApply(1);
         return;
     }
 
@@ -192,7 +198,7 @@ void FriendManager::insertItem(IM::LoadFriendInfo* i)
         item->setSizeHint(QSize(185,50));
         ui->listWidget->insertItem(index3,item);
         qDebug()<<"--------initlistwidget----2";
-        ui->listWidget->setItemWidget(item,m_friendsMap[userInfo->userID]);
+        ui->listWidget->setItemWidget(item,tmp);
         return;
     }
 }
@@ -239,31 +245,7 @@ void FriendManager::toAgree()
     Network::getInstance()->addMsg<IM::ApplyAgree>(data);
     this->m_showUserInfo->hide();
 
-/*
-    UserInfo* userInfo=new UserInfo();
-    userInfo->userID=info->userID;
-    userInfo->sex=info->sex;
-    userInfo->nickName=info->nickName;
-    qDebug()<<"--------initlistwidget----0";
-    FriendItem* tmp=new FriendItem(this,userInfo);
-    tmp->setItemTyep(3); //好友
-    tmp->setShowUserInfo(m_showUserInfo);
 
-    //添加到朋友列表
-    this->m_friendsMap[info->userID]=tmp;
-    this->m_peerAddMap.erase(info->userID);
-
-    //更新界面
-    qDebug()<<"=====================更新界面===============";
-    QListWidgetItem* item=ui->listWidget->takeItem(ui->listWidget->row(this->m_itemMap.at(this->m_showUserInfo->getUserInfo()->userID)));
-    --index3;
-    ui->listWidget->insertItem(index3++,item);
-    ui->listWidget->setItemWidget(item,tmp);
-
-
-    BuildP2P::getInstance()->sendMsg(userInfo->userID);//向服务器请求好友网络信息
-
-    */
 }
 void FriendManager::finshAgree(int id)
 {
@@ -300,6 +282,9 @@ void FriendManager::finshAgree(int id)
 
 
     BuildP2P::getInstance()->sendMsg(id);//向服务器请求好友网络信息
+
+    //减少一条申请
+    emit ClientManager::getInstance()->getMainWindow()->unHandleApply(-1);
 }
 void FriendManager::toDisagree()
 {
@@ -324,6 +309,9 @@ void FriendManager::finshDisagree(int id)
     qDebug()<<"+++++++  finshAgree  +++++++++";
     this->m_peerAddMap.erase(id);
     delete ui->listWidget->takeItem(ui->listWidget->row(this->m_itemMap.at(id)));
+
+    //减少一条申请
+    emit ClientManager::getInstance()->getMainWindow()->unHandleApply(-1);
 }
 
 void FriendManager::finshPeerAgree(int id)
@@ -389,6 +377,35 @@ void FriendManager::clickSearchButton()
 
 }
 
+
+void FriendManager::handleApply(int id)
+{
+    qDebug()<<"-------------------handleApply--------------"<<id;
+    UserInfo* applyerInfo=new UserInfo();
+    applyerInfo->userID=id;
+    if(GetInfo::getInfo(applyerInfo))
+    {
+        FriendItem* tmp=new FriendItem(this,applyerInfo);
+        tmp->setItemTyep(2);  //别人请求加你
+        tmp->setShowUserInfo(m_showUserInfo);
+
+        this->m_peerAddMap[applyerInfo->userID]=tmp;
+        index2=1+m_addPeerMap.size()+m_peerAddMap.size();
+
+        //qDebug()<<"--------initlistwidget----1";
+
+        QListWidgetItem *item=new QListWidgetItem();
+        this->m_itemMap[applyerInfo->userID]=item;
+        item->setSizeHint(QSize(185,50));
+        ui->listWidget->insertItem(index2,item);
+        qDebug()<<"--------initlistwidget----2";
+        ui->listWidget->setItemWidget(item,tmp);
+
+        //添加一条申请
+        emit ClientManager::getInstance()->getMainWindow()->unHandleApply(1);
+    }
+}
+
 void FriendManager::recvMsg(const char *msg)
 {
 
@@ -420,7 +437,12 @@ void FriendManager::recvMsg(const char *msg)
         res.ParseFromArray((void*)tmp,contentLen);//获取到Msg
         qDebug()<<"------获取消息------"<<res.state();
         m_flag=res.state();  //对接收到消息意味着成功 不成功 服务器不发送消息
-        //qDebug()<<"--recvMsg---m_flag----"<<m_flag<<&m_flag;
+        if(res.peerid()!=0)
+        {
+            //说明有人申请添加好友
+            qDebug()<<"-------------------emit peerApply-----------";
+            emit peerApply(res.peerid());
+        }
         break;
     }
     case MsgType::DELFRIEND:
@@ -541,16 +563,29 @@ void FriendManager::add(int & friendID)
 
 bool FriendManager::searchBuilded(QString& text)
 {
+    if(text.length()!=11)
+    {
+        int userid=text.toInt();
+        if(ClientManager::getInstance()->getUserInfo()->userID==userid)
+        {
+            return true;
+        }
+        try {
+            m_itemMap.at(text.toInt())->setSelected(true);
+        } catch (std::out_of_range e) {
 
+        }
+    }
 
     return false;
 }
 
 bool FriendManager::searchNoBuild(QString& text){
     qDebug()<<"____________searchNoBuild_____________";
+    //先在本地搜索
+    if(searchBuilded(text))
+        return true;
     //.........在服务器中搜索...........
-
-
     UserInfo *userInfo=new UserInfo();
     if(text.length()==11)
         userInfo->phoneNum=text.toStdString();
@@ -572,7 +607,7 @@ bool FriendManager::searchNoBuild(QString& text){
 
 
 
-    return false;
+    return true;
 
 }
 

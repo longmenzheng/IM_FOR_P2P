@@ -19,6 +19,7 @@ GetInfo* GetInfo::getInstance()
     if(m_instance==nullptr)
     {
         m_instance=new GetInfo();
+        Network::getInstance()->addObserver(m_instance);
     }
     return m_instance;
 }
@@ -48,7 +49,9 @@ bool GetInfo::getInfo(UserInfo* userInfo)
     transinfo.set_recvid(0);
     transinfo.set_requiretype(IM::ModifyInfo_RequireType::ModifyInfo_RequireType_READ);
 
-    Network::getInstance()->addObserver(m_instance);
+    //Network::getInstance()->addObserver(m_instance);
+    if(m_instance==nullptr)
+        GetInfo::getInstance();
     Network::getInstance()->addMsg<IM::ModifyInfo>(transinfo);
 
     clock_t start=clock();

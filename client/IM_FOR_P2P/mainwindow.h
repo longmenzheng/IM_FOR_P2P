@@ -48,6 +48,7 @@ private:
     ShowUserInfo* m_showUserInfo;
     QPushButton* m_currentButton;   //当前被点击按钮
     int m_unReadMsgCount=0;
+    int m_applyCount=0; //申请数量
     bool initFriend=false;
     QTimer *m_timeout;
 
@@ -66,8 +67,10 @@ public:
     void clickQuitButton();
     void showUnReadMsg(int);
     void loadFriendDate();
+    void showUnHandleApply(int);
 signals:
     void unReadMsg(int);
     void loadData();
+    void unHandleApply(int);
 };
 #endif // MAINWINDOW_H

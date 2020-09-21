@@ -28,6 +28,7 @@ public:
     ShowUserInfo* getShowUserInfo(){return m_showUserInfo;}
     void setOnline(int& is){m_online=is;}
     void setOnline();
+
 protected:
     virtual void mousePressEvent(QMouseEvent *) override;
 signals:

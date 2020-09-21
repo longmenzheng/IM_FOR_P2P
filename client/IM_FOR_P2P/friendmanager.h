@@ -44,6 +44,7 @@ public:
     void finshDisagree(int);
     void finshPeerAgree(int);
     void finshPeerDisagree(int);
+    void handleApply(int);
     void recvMsg(const char *msg) override;
     void initListWidget();
     void selectedItem(int);
@@ -63,6 +64,7 @@ signals:
     void peerOnline(int); //好友上线信号
     void peerAgreeAdd(int); //对方同意添加好友
     void peerDisagreeAdd(int);
+    void peerApply(int);//对方申请添加好友
 
 
 private:
@@ -74,6 +76,7 @@ private:
     std::map<int,FriendItem*> m_peerAddMap;    //别人申请添加自己
     ShowUserInfo *m_showUserInfo;
     int m_flag=-1;  //消息发送是否成功的标记
+
 
 
 
