@@ -24,7 +24,7 @@ FriendManager::FriendManager(ClientManager *manager,QWidget *parent) :
     ui(new Ui::FriendManager)
 {
     ui->setupUi(this);
-    Network::getInstance()->addObserver(this);
+
 
 }
 
@@ -32,6 +32,7 @@ bool FriendManager::init()
 {
 
     qDebug()<<"------------FriendManager::init--------------";
+    Network::getInstance()->addObserver(this);
     connect(ui->searchButton,&QPushButton::pressed,this,&FriendManager::clickSearchButton);
     m_showUserInfo=new ShowUserInfo(ui->showWidget);
     m_showUserInfo->hide();

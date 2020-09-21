@@ -36,11 +36,13 @@ ChatManager::ChatManager(ClientManager * manager,QWidget *parent) :
     //处理接收的消息
     connect(this,&ChatManager::msgSignal,this,&ChatManager::handleMsg);
 
-    Network::getInstance()->addObserver(this);
+
 }
 
 bool ChatManager::init()
 {
+    Network::getInstance()->addObserver(this);
+
     connect(ui->sendButton,&QPushButton::released,this,&ChatManager::clickSendButton);
 
 

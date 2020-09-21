@@ -7,6 +7,7 @@
 #include "ackhandler.h"
 #include "clientmanager.h"
 #include "Msg/BuildP2P.pb.h"
+#include <QMutex>
 
 
 Network* Network::m_instance=nullptr;
@@ -21,6 +22,7 @@ Network::Network():
     m_udpSocket(new QUdpSocket())
 {
     //m_udpSocket->bind(QHostAddress(QString("127.0.0.1")),quint16(7890));
+    qDebug()<<"--------------Network--------------";
     pSendThread=new SendThread(m_sendQueue,m_sendMap,m_netInfo,m_time,m_udpSocket);
     pRecvThread=new RecvThread(m_recvQueue,m_netInfo,m_udpSocket);
     pDistributeThread=new DistributeThread(m_recvQueue,m_observers);
@@ -93,17 +95,21 @@ void Network::eraseObserver(NetObserver* netObserver)
     m_observers->remove(netObserver);      //取消订阅，移除该订阅者
 }
 
+QMutex mutex;
 Network* Network::getInstance()
 {
+    mutex.lock();
     if(m_instance==nullptr)
     {
         m_instance=new Network();
     }
+    mutex.unlock();
     return m_instance;
 }
 
 bool Network::appClose()
 {
+    qDebug()<<"----------------appClose--------------";
     int sendId=ClientManager::getInstance()->getUserInfo()->userID;
     for(auto i:*m_netInfo)
     {
@@ -111,8 +117,10 @@ bool Network::appClose()
         IM::BuildP2P msg;
         msg.set_networktype(MsgType::BUILDP2P);
         msg.set_flag(0);
-        msg.set_peerid(i.first);
+        msg.set_recvid(i.first);
+        msg.set_peerid(sendId);
         msg.set_sendid(sendId);
+        Network::getInstance()->addMsg<IM::BuildP2P>(msg);
     }
     while (!m_sendFinsh) {
         //消息如果没有发送完毕 一直循环

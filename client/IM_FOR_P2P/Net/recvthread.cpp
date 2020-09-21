@@ -27,11 +27,13 @@ void RecvThread::run(){
     char buf[1024]={0};
     while(!m_toStop)
     {
+
         if(!m_udpSocket->hasPendingDatagrams())
         {
-            //msleep(250);
+            //msleep(32);
             continue;
         }
+
         QHostAddress sendIP;
         quint16 sendPort;
         int recvlen=m_udpSocket->readDatagram(buf,m_udpSocket->pendingDatagramSize(),&sendIP,&sendPort);
