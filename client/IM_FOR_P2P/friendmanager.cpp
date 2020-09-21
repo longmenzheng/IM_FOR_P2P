@@ -572,6 +572,7 @@ bool FriendManager::searchBuilded(QString& text)
         }
         try {
             m_itemMap.at(text.toInt())->setSelected(true);
+            return true;
         } catch (std::out_of_range e) {
 
         }
