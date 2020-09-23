@@ -2,12 +2,12 @@ syntax ="proto3";
 package IM;
 message BuildP2P
 {
-      int32 networkType=1;
-      bool flag=2;     //在线？
-      int32 msgID=3;   //每条消息的标识
-      int32 recvID=4;
-	  int32 sendID=8;
-      int32 peerID=5;
-      string peerIP=6;  //对端IP，服务器返回时赋值
-      int32 peerPosrt=7;//端口号，服务器返回时赋值
+	int32 networkType=1;
+	int32 flag=2;     //在线？
+	int32 msgID=3;   //每条消息的标识
+	int32 recvID=4;
+	int32 sendID=8;
+	int32 peerID=5;
+	string peerIP=6;  //对端IP，服务器返回时赋值
+	int32 peerPosrt=7;//端口号，服务器返回时赋值
 }

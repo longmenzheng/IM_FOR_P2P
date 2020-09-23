@@ -63,7 +63,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_BuildP2P_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\016BuildP2P.proto\022\002IM\"\217\001\n\010BuildP2P\022\023\n\013net"
-  "workType\030\001 \001(\005\022\014\n\004flag\030\002 \001(\010\022\r\n\005msgID\030\003 "
+  "workType\030\001 \001(\005\022\014\n\004flag\030\002 \001(\005\022\r\n\005msgID\030\003 "
   "\001(\005\022\016\n\006recvID\030\004 \001(\005\022\016\n\006sendID\030\010 \001(\005\022\016\n\006p"
   "eerID\030\005 \001(\005\022\016\n\006peerIP\030\006 \001(\t\022\021\n\tpeerPosrt"
   "\030\007 \001(\005b\006proto3"
@@ -175,7 +175,7 @@ const char* BuildP2P::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // bool flag = 2;
+      // int32 flag = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           flag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -260,10 +260,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_networktype(), target);
   }
 
-  // bool flag = 2;
+  // int32 flag = 2;
   if (this->flag() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_flag(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_flag(), target);
   }
 
   // int32 msgID = 3;
@@ -336,9 +336,11 @@ size_t BuildP2P::ByteSizeLong() const {
         this->_internal_networktype());
   }
 
-  // bool flag = 2;
+  // int32 flag = 2;
   if (this->flag() != 0) {
-    total_size += 1 + 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_flag());
   }
 
   // int32 msgID = 3;

@@ -50,6 +50,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ApplyAgree_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::IM::ApplyAgree, sendid_),
   PROTOBUF_FIELD_OFFSET(::IM::ApplyAgree, applyerid_),
   PROTOBUF_FIELD_OFFSET(::IM::ApplyAgree, peerid_),
+  PROTOBUF_FIELD_OFFSET(::IM::ApplyAgree, state_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::IM::ApplyAgree)},
@@ -60,10 +61,11 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ApplyAgree_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020ApplyAgree.proto\022\002IM\"s\n\nApplyAgree\022\023\n\013"
-  "networkType\030\001 \001(\005\022\r\n\005msgID\030\002 \001(\005\022\016\n\006recv"
-  "ID\030\003 \001(\005\022\016\n\006sendId\030\006 \001(\005\022\021\n\tapplyerID\030\004 "
-  "\001(\005\022\016\n\006peerID\030\005 \001(\005b\006proto3"
+  "\n\020ApplyAgree.proto\022\002IM\"\202\001\n\nApplyAgree\022\023\n"
+  "\013networkType\030\001 \001(\005\022\r\n\005msgID\030\002 \001(\005\022\016\n\006rec"
+  "vID\030\003 \001(\005\022\016\n\006sendID\030\004 \001(\005\022\021\n\tapplyerID\030\005"
+  " \001(\005\022\016\n\006peerID\030\006 \001(\005\022\r\n\005state\030\007 \001(\005b\006pro"
+  "to3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ApplyAgree_2eproto_deps[1] = {
 };
@@ -72,7 +74,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_App
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ApplyAgree_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ApplyAgree_2eproto = {
-  false, false, descriptor_table_protodef_ApplyAgree_2eproto, "ApplyAgree.proto", 147,
+  false, false, descriptor_table_protodef_ApplyAgree_2eproto, "ApplyAgree.proto", 163,
   &descriptor_table_ApplyAgree_2eproto_once, descriptor_table_ApplyAgree_2eproto_sccs, descriptor_table_ApplyAgree_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ApplyAgree_2eproto::offsets,
   file_level_metadata_ApplyAgree_2eproto, 1, file_level_enum_descriptors_ApplyAgree_2eproto, file_level_service_descriptors_ApplyAgree_2eproto,
@@ -100,15 +102,15 @@ ApplyAgree::ApplyAgree(const ApplyAgree& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&sendid_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
   // @@protoc_insertion_point(copy_constructor:IM.ApplyAgree)
 }
 
 void ApplyAgree::SharedCtor() {
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&sendid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
 }
 
 ApplyAgree::~ApplyAgree() {
@@ -143,8 +145,8 @@ void ApplyAgree::Clear() {
   (void) cached_has_bits;
 
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&sendid_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(sendid_));
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -177,24 +179,31 @@ const char* ApplyAgree::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 applyerID = 4;
+      // int32 sendID = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          sendid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 applyerID = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           applyerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 peerID = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+      // int32 peerID = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
           peerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 sendId = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          sendid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+      // int32 state = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          state_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -244,22 +253,28 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_recvid(), target);
   }
 
-  // int32 applyerID = 4;
-  if (this->applyerid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_applyerid(), target);
-  }
-
-  // int32 peerID = 5;
-  if (this->peerid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_peerid(), target);
-  }
-
-  // int32 sendId = 6;
+  // int32 sendID = 4;
   if (this->sendid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_sendid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_sendid(), target);
+  }
+
+  // int32 applyerID = 5;
+  if (this->applyerid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_applyerid(), target);
+  }
+
+  // int32 peerID = 6;
+  if (this->peerid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_peerid(), target);
+  }
+
+  // int32 state = 7;
+  if (this->state() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_state(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -299,25 +314,32 @@ size_t ApplyAgree::ByteSizeLong() const {
         this->_internal_recvid());
   }
 
-  // int32 applyerID = 4;
+  // int32 sendID = 4;
+  if (this->sendid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sendid());
+  }
+
+  // int32 applyerID = 5;
   if (this->applyerid() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_applyerid());
   }
 
-  // int32 peerID = 5;
+  // int32 peerID = 6;
   if (this->peerid() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_peerid());
   }
 
-  // int32 sendId = 6;
-  if (this->sendid() != 0) {
+  // int32 state = 7;
+  if (this->state() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_sendid());
+        this->_internal_state());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -360,14 +382,17 @@ void ApplyAgree::MergeFrom(const ApplyAgree& from) {
   if (from.recvid() != 0) {
     _internal_set_recvid(from._internal_recvid());
   }
+  if (from.sendid() != 0) {
+    _internal_set_sendid(from._internal_sendid());
+  }
   if (from.applyerid() != 0) {
     _internal_set_applyerid(from._internal_applyerid());
   }
   if (from.peerid() != 0) {
     _internal_set_peerid(from._internal_peerid());
   }
-  if (from.sendid() != 0) {
-    _internal_set_sendid(from._internal_sendid());
+  if (from.state() != 0) {
+    _internal_set_state(from._internal_state());
   }
 }
 
@@ -393,8 +418,8 @@ void ApplyAgree::InternalSwap(ApplyAgree* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ApplyAgree, sendid_)
-      + sizeof(ApplyAgree::sendid_)
+      PROTOBUF_FIELD_OFFSET(ApplyAgree, state_)
+      + sizeof(ApplyAgree::state_)
       - PROTOBUF_FIELD_OFFSET(ApplyAgree, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

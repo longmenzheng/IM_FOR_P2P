@@ -222,13 +222,13 @@ class BuildP2P PROTOBUF_FINAL :
   void _internal_set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // bool flag = 2;
+  // int32 flag = 2;
   void clear_flag();
-  bool flag() const;
-  void set_flag(bool value);
+  ::PROTOBUF_NAMESPACE_ID::int32 flag() const;
+  void set_flag(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  bool _internal_flag() const;
-  void _internal_set_flag(bool value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_flag() const;
+  void _internal_set_flag(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // int32 msgID = 3;
@@ -285,7 +285,7 @@ class BuildP2P PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr peerip_;
   ::PROTOBUF_NAMESPACE_ID::int32 networktype_;
-  bool flag_;
+  ::PROTOBUF_NAMESPACE_ID::int32 flag_;
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 peerid_;
@@ -325,22 +325,22 @@ inline void BuildP2P::set_networktype(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:IM.BuildP2P.networkType)
 }
 
-// bool flag = 2;
+// int32 flag = 2;
 inline void BuildP2P::clear_flag() {
-  flag_ = false;
+  flag_ = 0;
 }
-inline bool BuildP2P::_internal_flag() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 BuildP2P::_internal_flag() const {
   return flag_;
 }
-inline bool BuildP2P::flag() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 BuildP2P::flag() const {
   // @@protoc_insertion_point(field_get:IM.BuildP2P.flag)
   return _internal_flag();
 }
-inline void BuildP2P::_internal_set_flag(bool value) {
+inline void BuildP2P::_internal_set_flag(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   flag_ = value;
 }
-inline void BuildP2P::set_flag(bool value) {
+inline void BuildP2P::set_flag(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_flag(value);
   // @@protoc_insertion_point(field_set:IM.BuildP2P.flag)
 }

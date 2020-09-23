@@ -35,7 +35,7 @@ static void InitDefaultsscc_info_ModifyInfo_ModifyInfo_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ModifyInfo_ModifyInfo_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ModifyInfo_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_ModifyInfo_2eproto = nullptr;
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_ModifyInfo_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ModifyInfo_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ModifyInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -54,6 +54,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ModifyInfo_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::IM::ModifyInfo, desc_),
   PROTOBUF_FIELD_OFFSET(::IM::ModifyInfo, sex_),
   PROTOBUF_FIELD_OFFSET(::IM::ModifyInfo, icon_),
+  PROTOBUF_FIELD_OFFSET(::IM::ModifyInfo, requiretype_),
+  PROTOBUF_FIELD_OFFSET(::IM::ModifyInfo, userid_),
+  PROTOBUF_FIELD_OFFSET(::IM::ModifyInfo, state_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::IM::ModifyInfo)},
@@ -64,12 +67,15 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_ModifyInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020ModifyInfo.proto\022\002IM\"\254\001\n\nModifyInfo\022\023\n"
+  "\n\020ModifyInfo.proto\022\002IM\"\240\002\n\nModifyInfo\022\023\n"
   "\013networkType\030\001 \001(\005\022\r\n\005msgID\030\002 \001(\005\022\016\n\006rec"
   "vID\030\003 \001(\005\022\016\n\006sendID\030\004 \001(\005\022\020\n\010password\030\005 "
   "\001(\014\022\020\n\010nickname\030\006 \001(\014\022\r\n\005phone\030\007 \001(\014\022\014\n\004"
-  "desc\030\010 \001(\014\022\013\n\003sex\030\n \001(\005\022\014\n\004icon\030\t \001(\014b\006p"
-  "roto3"
+  "desc\030\010 \001(\014\022\013\n\003sex\030\013 \001(\005\022\014\n\004icon\030\t \001(\014\022/\n"
+  "\013requireType\030\n \001(\0162\032.IM.ModifyInfo.Requi"
+  "reType\022\016\n\006userID\030\014 \001(\005\022\r\n\005state\030\r \001(\005\"\"\n"
+  "\013RequireType\022\010\n\004READ\020\000\022\t\n\005WRITE\020\001b\006proto"
+  "3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ModifyInfo_2eproto_deps[1] = {
 };
@@ -78,7 +84,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ModifyInfo_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ModifyInfo_2eproto = {
-  false, false, descriptor_table_protodef_ModifyInfo_2eproto, "ModifyInfo.proto", 205,
+  false, false, descriptor_table_protodef_ModifyInfo_2eproto, "ModifyInfo.proto", 321,
   &descriptor_table_ModifyInfo_2eproto_once, descriptor_table_ModifyInfo_2eproto_sccs, descriptor_table_ModifyInfo_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_ModifyInfo_2eproto::offsets,
   file_level_metadata_ModifyInfo_2eproto, 1, file_level_enum_descriptors_ModifyInfo_2eproto, file_level_service_descriptors_ModifyInfo_2eproto,
@@ -87,6 +93,27 @@ const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Modify
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_ModifyInfo_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_ModifyInfo_2eproto)), true);
 namespace IM {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ModifyInfo_RequireType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_ModifyInfo_2eproto);
+  return file_level_enum_descriptors_ModifyInfo_2eproto[0];
+}
+bool ModifyInfo_RequireType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+constexpr ModifyInfo_RequireType ModifyInfo::READ;
+constexpr ModifyInfo_RequireType ModifyInfo::WRITE;
+constexpr ModifyInfo_RequireType ModifyInfo::RequireType_MIN;
+constexpr ModifyInfo_RequireType ModifyInfo::RequireType_MAX;
+constexpr int ModifyInfo::RequireType_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
 
@@ -131,8 +158,8 @@ ModifyInfo::ModifyInfo(const ModifyInfo& from)
       GetArena());
   }
   ::memcpy(&networktype_, &from.networktype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&sex_) -
-    reinterpret_cast<char*>(&networktype_)) + sizeof(sex_));
+    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
   // @@protoc_insertion_point(copy_constructor:IM.ModifyInfo)
 }
 
@@ -144,8 +171,8 @@ void ModifyInfo::SharedCtor() {
   desc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   icon_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&sex_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(sex_));
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
 }
 
 ModifyInfo::~ModifyInfo() {
@@ -190,8 +217,8 @@ void ModifyInfo::Clear() {
   desc_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   icon_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&networktype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&sex_) -
-      reinterpret_cast<char*>(&networktype_)) + sizeof(sex_));
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&networktype_)) + sizeof(state_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -271,10 +298,32 @@ const char* ModifyInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 sex = 10;
+      // .IM.ModifyInfo.RequireType requireType = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_requiretype(static_cast<::IM::ModifyInfo_RequireType>(val));
+        } else goto handle_unusual;
+        continue;
+      // int32 sex = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
           sex_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 userID = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 96)) {
+          userid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 state = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 104)) {
+          state_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -360,10 +409,29 @@ failure:
         9, this->_internal_icon(), target);
   }
 
-  // int32 sex = 10;
+  // .IM.ModifyInfo.RequireType requireType = 10;
+  if (this->requiretype() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      10, this->_internal_requiretype(), target);
+  }
+
+  // int32 sex = 11;
   if (this->sex() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(10, this->_internal_sex(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(11, this->_internal_sex(), target);
+  }
+
+  // int32 userID = 12;
+  if (this->userid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(12, this->_internal_userid(), target);
+  }
+
+  // int32 state = 13;
+  if (this->state() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(13, this->_internal_state(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -445,11 +513,31 @@ size_t ModifyInfo::ByteSizeLong() const {
         this->_internal_sendid());
   }
 
-  // int32 sex = 10;
+  // .IM.ModifyInfo.RequireType requireType = 10;
+  if (this->requiretype() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_requiretype());
+  }
+
+  // int32 sex = 11;
   if (this->sex() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_sex());
+  }
+
+  // int32 userID = 12;
+  if (this->userid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_userid());
+  }
+
+  // int32 state = 13;
+  if (this->state() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_state());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -510,8 +598,17 @@ void ModifyInfo::MergeFrom(const ModifyInfo& from) {
   if (from.sendid() != 0) {
     _internal_set_sendid(from._internal_sendid());
   }
+  if (from.requiretype() != 0) {
+    _internal_set_requiretype(from._internal_requiretype());
+  }
   if (from.sex() != 0) {
     _internal_set_sex(from._internal_sex());
+  }
+  if (from.userid() != 0) {
+    _internal_set_userid(from._internal_userid());
+  }
+  if (from.state() != 0) {
+    _internal_set_state(from._internal_state());
   }
 }
 
@@ -542,8 +639,8 @@ void ModifyInfo::InternalSwap(ModifyInfo* other) {
   desc_.Swap(&other->desc_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   icon_.Swap(&other->icon_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ModifyInfo, sex_)
-      + sizeof(ModifyInfo::sex_)
+      PROTOBUF_FIELD_OFFSET(ModifyInfo, state_)
+      + sizeof(ModifyInfo::state_)
       - PROTOBUF_FIELD_OFFSET(ModifyInfo, networktype_)>(
           reinterpret_cast<char*>(&networktype_),
           reinterpret_cast<char*>(&other->networktype_));

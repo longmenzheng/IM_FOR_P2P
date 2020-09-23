@@ -31,6 +31,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -64,6 +65,31 @@ template<> ::IM::ModifyInfo* Arena::CreateMaybeMessage<::IM::ModifyInfo>(Arena*)
 PROTOBUF_NAMESPACE_CLOSE
 namespace IM {
 
+enum ModifyInfo_RequireType : int {
+  ModifyInfo_RequireType_READ = 0,
+  ModifyInfo_RequireType_WRITE = 1,
+  ModifyInfo_RequireType_ModifyInfo_RequireType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ModifyInfo_RequireType_ModifyInfo_RequireType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool ModifyInfo_RequireType_IsValid(int value);
+constexpr ModifyInfo_RequireType ModifyInfo_RequireType_RequireType_MIN = ModifyInfo_RequireType_READ;
+constexpr ModifyInfo_RequireType ModifyInfo_RequireType_RequireType_MAX = ModifyInfo_RequireType_WRITE;
+constexpr int ModifyInfo_RequireType_RequireType_ARRAYSIZE = ModifyInfo_RequireType_RequireType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ModifyInfo_RequireType_descriptor();
+template<typename T>
+inline const std::string& ModifyInfo_RequireType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ModifyInfo_RequireType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ModifyInfo_RequireType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ModifyInfo_RequireType_descriptor(), enum_t_value);
+}
+inline bool ModifyInfo_RequireType_Parse(
+    const std::string& name, ModifyInfo_RequireType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ModifyInfo_RequireType>(
+    ModifyInfo_RequireType_descriptor(), name, value);
+}
 // ===================================================================
 
 class ModifyInfo PROTOBUF_FINAL :
@@ -176,6 +202,36 @@ class ModifyInfo PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
+  typedef ModifyInfo_RequireType RequireType;
+  static constexpr RequireType READ =
+    ModifyInfo_RequireType_READ;
+  static constexpr RequireType WRITE =
+    ModifyInfo_RequireType_WRITE;
+  static inline bool RequireType_IsValid(int value) {
+    return ModifyInfo_RequireType_IsValid(value);
+  }
+  static constexpr RequireType RequireType_MIN =
+    ModifyInfo_RequireType_RequireType_MIN;
+  static constexpr RequireType RequireType_MAX =
+    ModifyInfo_RequireType_RequireType_MAX;
+  static constexpr int RequireType_ARRAYSIZE =
+    ModifyInfo_RequireType_RequireType_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  RequireType_descriptor() {
+    return ModifyInfo_RequireType_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& RequireType_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, RequireType>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function RequireType_Name.");
+    return ModifyInfo_RequireType_Name(enum_t_value);
+  }
+  static inline bool RequireType_Parse(const std::string& name,
+      RequireType* value) {
+    return ModifyInfo_RequireType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -188,7 +244,10 @@ class ModifyInfo PROTOBUF_FINAL :
     kMsgIDFieldNumber = 2,
     kRecvIDFieldNumber = 3,
     kSendIDFieldNumber = 4,
-    kSexFieldNumber = 10,
+    kRequireTypeFieldNumber = 10,
+    kSexFieldNumber = 11,
+    kUserIDFieldNumber = 12,
+    kStateFieldNumber = 13,
   };
   // bytes password = 5;
   void clear_password();
@@ -351,13 +410,40 @@ class ModifyInfo PROTOBUF_FINAL :
   void _internal_set_sendid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 sex = 10;
+  // .IM.ModifyInfo.RequireType requireType = 10;
+  void clear_requiretype();
+  ::IM::ModifyInfo_RequireType requiretype() const;
+  void set_requiretype(::IM::ModifyInfo_RequireType value);
+  private:
+  ::IM::ModifyInfo_RequireType _internal_requiretype() const;
+  void _internal_set_requiretype(::IM::ModifyInfo_RequireType value);
+  public:
+
+  // int32 sex = 11;
   void clear_sex();
   ::PROTOBUF_NAMESPACE_ID::int32 sex() const;
   void set_sex(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
   ::PROTOBUF_NAMESPACE_ID::int32 _internal_sex() const;
   void _internal_set_sex(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 userID = 12;
+  void clear_userid();
+  ::PROTOBUF_NAMESPACE_ID::int32 userid() const;
+  void set_userid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_userid() const;
+  void _internal_set_userid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 state = 13;
+  void clear_state();
+  ::PROTOBUF_NAMESPACE_ID::int32 state() const;
+  void set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_state() const;
+  void _internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:IM.ModifyInfo)
@@ -376,7 +462,10 @@ class ModifyInfo PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 msgid_;
   ::PROTOBUF_NAMESPACE_ID::int32 recvid_;
   ::PROTOBUF_NAMESPACE_ID::int32 sendid_;
+  int requiretype_;
   ::PROTOBUF_NAMESPACE_ID::int32 sex_;
+  ::PROTOBUF_NAMESPACE_ID::int32 userid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ModifyInfo_2eproto;
 };
@@ -795,7 +884,7 @@ inline void ModifyInfo::unsafe_arena_set_allocated_desc(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.ModifyInfo.desc)
 }
 
-// int32 sex = 10;
+// int32 sex = 11;
 inline void ModifyInfo::clear_sex() {
   sex_ = 0;
 }
@@ -896,6 +985,66 @@ inline void ModifyInfo::unsafe_arena_set_allocated_icon(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:IM.ModifyInfo.icon)
 }
 
+// .IM.ModifyInfo.RequireType requireType = 10;
+inline void ModifyInfo::clear_requiretype() {
+  requiretype_ = 0;
+}
+inline ::IM::ModifyInfo_RequireType ModifyInfo::_internal_requiretype() const {
+  return static_cast< ::IM::ModifyInfo_RequireType >(requiretype_);
+}
+inline ::IM::ModifyInfo_RequireType ModifyInfo::requiretype() const {
+  // @@protoc_insertion_point(field_get:IM.ModifyInfo.requireType)
+  return _internal_requiretype();
+}
+inline void ModifyInfo::_internal_set_requiretype(::IM::ModifyInfo_RequireType value) {
+  
+  requiretype_ = value;
+}
+inline void ModifyInfo::set_requiretype(::IM::ModifyInfo_RequireType value) {
+  _internal_set_requiretype(value);
+  // @@protoc_insertion_point(field_set:IM.ModifyInfo.requireType)
+}
+
+// int32 userID = 12;
+inline void ModifyInfo::clear_userid() {
+  userid_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModifyInfo::_internal_userid() const {
+  return userid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModifyInfo::userid() const {
+  // @@protoc_insertion_point(field_get:IM.ModifyInfo.userID)
+  return _internal_userid();
+}
+inline void ModifyInfo::_internal_set_userid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  userid_ = value;
+}
+inline void ModifyInfo::set_userid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_userid(value);
+  // @@protoc_insertion_point(field_set:IM.ModifyInfo.userID)
+}
+
+// int32 state = 13;
+inline void ModifyInfo::clear_state() {
+  state_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModifyInfo::_internal_state() const {
+  return state_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModifyInfo::state() const {
+  // @@protoc_insertion_point(field_get:IM.ModifyInfo.state)
+  return _internal_state();
+}
+inline void ModifyInfo::_internal_set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  state_ = value;
+}
+inline void ModifyInfo::set_state(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:IM.ModifyInfo.state)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -903,6 +1052,16 @@ inline void ModifyInfo::unsafe_arena_set_allocated_icon(
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace IM
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::IM::ModifyInfo_RequireType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::IM::ModifyInfo_RequireType>() {
+  return ::IM::ModifyInfo_RequireType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

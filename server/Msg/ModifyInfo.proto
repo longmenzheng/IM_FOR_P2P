@@ -10,6 +10,13 @@ message ModifyInfo
 	bytes nickname=6; //昵称
 	bytes phone=7;
 	bytes desc=8;   //介绍
-	int32 sex=10;
+	int32 sex=11;
 	bytes icon=9;   //头像
+	enum RequireType{  
+		READ=0;
+		WRITE=1;
+	}
+	RequireType requireType=10;
+	int32 userID=12;
+	int32 state=13;
 }
