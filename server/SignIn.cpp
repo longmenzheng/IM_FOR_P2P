@@ -46,7 +46,7 @@ void* SignIn::dowork(void *pmysql)
 		sprintf(sql,"select *from User where password='%s' and phoneNum='%s'",protomsg.password().c_str(),protomsg.phone().c_str());
 	}else
 	{
-		sprintf(sql,"select *from User where userID=%d and phoneNum='%s'",protomsg.sendid(),protomsg.phone().c_str());
+		sprintf(sql,"select *from User where userID=%d and password='%s'",protomsg.sendid(),protomsg.password().c_str());
 
 	}
 	std::cout<<sql<<std::endl;

@@ -4,6 +4,12 @@
 #include  "MsgType.h"
 #include "SignUp.h"
 #include "SignIn.h"
+#include "ModifyInfo.h"
+#include "AddFriend.h"
+#include "LoadFriendInfo.h"
+#include "ApplyHandle.h"
+#include "Chat.h"
+#include "BuildP2P.h"
 #include <cstdio>
 
 ServerFactory::ServerFactory(std::queue<char*> *processQueue):
@@ -24,6 +30,12 @@ void ServerFactory::init()
 	//添加服务生成函数
 	m_serverCreatorMap[SignUp::getServerType()]=SignUp::createSelf;	
 	m_serverCreatorMap[SignIn::getServerType()]=SignIn::createSelf;
+	m_serverCreatorMap[ModifyInfo::getServerType()]=ModifyInfo::createSelf;
+	m_serverCreatorMap[AddFriend::getServerType()]=AddFriend::createSelf;
+	m_serverCreatorMap[LoadFriendInfo::getServerType()]=LoadFriendInfo::createSelf;
+	m_serverCreatorMap[ApplyHandle::getServerType()]=ApplyHandle::createSelf;
+	m_serverCreatorMap[Chat::getServerType()]=Chat::createSelf;
+	m_serverCreatorMap[BuildP2P::getServerType()]=BuildP2P::createSelf;
 }
 
 void ServerFactory::distributeTask()

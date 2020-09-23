@@ -9,7 +9,9 @@
 #include <cstdlib>
 #include <cstring>
 #include "Msg/ACK.pb.h"
+#include "Msg/BuildP2P.pb.h"
 #include <unistd.h>
+#include <exception>
 using namespace std;
 Network* Network::m_instance=nullptr;
 int Network::NetMsgID=-1;
@@ -72,7 +74,22 @@ void sendMsg(Network* pNetwork)
 		struct sockaddr_in c_addr;
 		//memcpy(&(*pNetwork->m_netInfoMap)[sendID],&c_addr,sizeof(c_addr));
 		//memcpy(&c_addr,&(*pNetwork->m_netInfoMap)[recvID],sizeof(c_addr));//根据接收端ID获取其网络地址
-		if(sendto(pNetwork->socketFd,msg,strlen(msg),0,(struct sockaddr*)&(*pNetwork->m_netInfoMap)[recvID],sizeof(c_addr))<0)
+		try{
+			c_addr=(*pNetwork->m_netInfoMap).at(recvID);
+			std::cout<<"----------这条消息的接受者---"<<recvID<<std::endl;
+		}catch(std::out_of_range e)
+		{
+
+			std::cout<<"---接收者不在线----"<<std::endl;
+			pNetwork->m_sendQueue->pop();
+			char *tmp = (pNetwork->m_allsendMap).at(msgID);
+			(pNetwork->m_allsendMap).erase(msgID);          //从map中移除
+			delete tmp;                       //delete移除的元素
+			std::cout<<"------消息被删除取消发送--:"<<msgID<<"----------\n";
+
+			continue;
+		}
+		if(sendto(pNetwork->socketFd,msg,strlen(msg),0,(struct sockaddr*)&c_addr,sizeof(c_addr))<0)
 		{
 			perror("sendto error:");
 		}
@@ -140,6 +157,73 @@ void recvMsg(Network* pNetwork)
 
 			continue;
 		}
+
+
+
+
+		/*
+		//-------------处理buildp2p------------
+		if(msgType==MsgType::BUILDP2P)
+		{
+		char* msg=tmp;
+		int contentLen=-1;
+		char tmp[1024]={0};
+
+		//格式：接收者ID\n发送者ID\n消息ID\n消息类型\n消息内容长度\n消息内容
+		sscanf(msg,"%*d\n%*d\n%*d\n%*d\n%d\n",&contentLen);  //获取消息ID 消息类型
+		const char *p=msg;
+		for(int i=0,flag=0;flag!=5;++i)
+		{
+		if(*p++ =='\n')
+		++flag;
+		}
+		memcpy(tmp,p,contentLen);
+		IM::BuildP2P res;
+		res.ParseFromArray((void*)tmp,contentLen);
+		try{
+		//memcpy(&(*pNetwork->m_netInfoMap)[sendID],&c_addr,sizeof(c_addr));
+		struct sockaddr_in netinfo;
+		memcpy(&netinfo,&(pNetwork->m_netInfoMap->at(res.peerid())),sizeof(netinfo));
+		char ip[16]={0};
+		int port;
+		inet_ntop(AF_INET,(void*)&netinfo.sin_addr.s_addr,ip,16);
+		std::cout<<"---id: "<<res.peerid()<<"-----ip: "<<ip;
+		port=ntohs(netinfo.sin_port);
+		std::cout<<":"<<port<<std::endl;
+		res.set_recvid(sendID);
+		res.set_sendid(0);
+		res.set_flag(1);
+		res.set_peerip(ip);
+		res.set_peerposrt(port);
+		pNetwork->addMsg<IM::BuildP2P>(res);
+
+		memcpy(&netinfo,&(pNetwork->m_netInfoMap->at(sendID)),sizeof(netinfo));
+		inet_ntop(AF_INET,(void*)&netinfo.sin_addr.s_addr,ip,16);
+		std::cout<<"--------ip: "<<ip;
+		port=ntohs(netinfo.sin_port);
+		std::cout<<":"<<port<<std::endl;
+
+		res.set_recvid(res.peerid());
+		res.set_peerip(ip);
+		res.set_peerposrt(port);
+		pNetwork->addMsg<IM::BuildP2P>(res);
+
+
+
+		}catch(std::out_of_range e)
+		{
+		std::cout<<"-----------------------不在线------------------"<<std::endl;
+		res.set_recvid(sendID);
+		res.set_sendid(0);
+		res.set_flag(0);
+		pNetwork->addMsg<IM::BuildP2P>(res);
+
+		}
+
+		}
+		*/
+
+
 		std::cout<<"--------------接收消息: "<<msgID<<" 消息类型："<<msgType<<"--------------\n";
 		pNetwork->m_recvQueue->push(tmp);
 

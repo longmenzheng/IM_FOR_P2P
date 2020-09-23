@@ -11,8 +11,10 @@
 #include <iostream>
 #include <arpa/inet.h>
 #include <ctime>
+#include "BuildP2P.h"
 
 class ServerManager;
+class BuildP2P;
 
 
 
@@ -38,6 +40,7 @@ class Network
 		friend void sendMsg(Network*);
 		friend void recvMsg(Network*);
 		friend class ServerManager; 
+		friend class BuildP2P;
 
 		template<class T>
 			void addMsg(T& msg);
